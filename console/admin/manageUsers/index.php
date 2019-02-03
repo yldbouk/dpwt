@@ -30,10 +30,13 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
       </div>
     </div>
   </header>
-  <!-- SPLITTER -->
   <br>
   <center>
-    <input type="text" id="search" placeholder="Search">
+  <a id="showallbtn" onclick="searchall();">Show All Accounts</a>
+  <!-- SPLITTER -->
+  <br>
+  
+    <input type="text" id="search" value="Awaiting Review" placeholder="Search">
     <table id="jobs">
       <thead>
         <tr>
@@ -49,13 +52,30 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
         <?php
             if (mysqli_num_rows($result) > 0) {
               while($row = mysqli_fetch_assoc($result)) {
+                if ($row['permsUsers'] == 'developer') {
+                  $permsUsers = "Developer";
+                } elseif ($row['permsUsers'] == 'admin') {
+                  $permsUsers = "Admin";
+                } elseif ($row['permsUsers'] == 'awaitingAction') {
+                  $permsUsers = "<b>Awaiting Review</b>";
+                } elseif ($row['permsUsers'] == 'none') {
+                  $permsUsers = "Access Denied";
+                } elseif ($row['permsUsers'] == 'revoked') {
+                  $permsUsers = "Access Revoked";
+                } elseif ($row['permsUsers'] == 'deleted') {
+                  $permsUsers = "Account Deleted";
+                } elseif ($row['permsUsers'] == 'default') {
+                  $permsUsers = "Default Permissions";
+                } else {
+                  $permsUsers = $row['permsUsers'];
+                }
                 echo "
                   <tr>
                   <td>".$row["idUsers"]."</td>
                   <td>".$row["nameUsers"]."</td>
                   <td>".$row["uidUsers"]."</td>
                   <td>".$row["emailUsers"]."</td>
-                  <td>".$row["permsUsers"]."</td>
+                  <td>".$permsUsers."</td>
                   <td><i><a onclick='editActions(".$row["idUsers"].")'>View</a></i></td>
                   </tr>
                   ";
@@ -83,9 +103,22 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
       }).hide();
     });
 
+    var e = jQuery.Event("keyup");
+    e.which = 13; 
+    $("#search").trigger(e);
+
+    function searchall() {
+      document.getElementById("search").value="";
+      var e = jQuery.Event("keyup");
+      e.which = 13; 
+      $("#search").trigger(e);
+      document.getElementById("showallbtn").style="visibility:hidden;";
+    }
+
     function editActions(id) {
       document.location = "./?edit="+id;
     }
+
   </script>
   <div id="editActions" class="upload">
     <div class="uploadc">
@@ -118,10 +151,15 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
           <form method='post' id="editform" action='scripts/editUsers.script.php'>
             <input type="text" style="visibility:hidden;" name="id" value="<?php echo $id?>">
             <input id="delete" type="text" name="delete" style="visibility:hidden;"><br>
-            <?php if($perms == "deleted" || $perms == "developer" || $perms == "admin") {} else { 
-              echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-perms"><b><i>Change Permissions</i></b></button>|';
-              echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-user"><b><i>Edit User</i></b></button>|';
-              echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:not-allowed;"type="button"onclick="editdelete();"><b><i>Delete User</i></b></button>|';}?>
+            <div id="buttons">
+            <?php if($perms == "deleted" || $perms == "developer" || $perms == "admin" || $perms == "awaitingAction") {} else { 
+              echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editperms();"><b><i>Change Permissions</i></b></button>|';
+              echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:not-allowed;"type="button"onclick="editdelete();"><b><i>Delete User</i></b></button>|';}
+            if($perms == "awaitingAction"){
+              echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editperms();"><b><i>Give Permissions</i></b></button>|';
+              echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-deny"><b><i>Deny</i></b></button>|';}
+              ?>
+            </div>
           </form>
 
 
@@ -135,11 +173,14 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
   <?php if (isset($_GET['edit'])) echo "<script>document.getElementById('editActions').style.display='block'</script>"; ?>
   <script>
     function editdelete() {
-      var tmp008=prompt('WARNING: YOU ARE ABOUT TO FULLY DELETE THE USER, "<?php echo $username; ?>". THIS WILL DELETE ALL DATA AND JOBS RELATED TO THIS USER. TO CONTINUE, TYPE IN THE NAME OF THAT USER (<?php echo $username; ?>)');
+      var tmp008 = prompt('WARNING: YOU ARE ABOUT TO FULLY DELETE THE USER, "<?php echo $username; ?>". THIS WILL DELETE ALL DATA AND JOBS RELATED TO THIS USER. TO CONTINUE, TYPE IN THE NAME OF THAT USER (<?php echo $username; ?>)');
       if (tmp008 == "<?php echo $username; ?>"){
         document.getElementById("delete").value = "true";
         document.getElementById("editform").submit();
       } else alert("Delete Aborted: Names do not match.")
+    }
+    function editperms() {
+      document.getElementById("buttons").innerHTML=`<select name='perms'> <?php if($_SESSION['permsUsers']=='admin'){echo '<option value="admin">Admin</option><option value="default">Default Permissions</option><option value="revoked">Revoke Access</option>';} else {echo '<option value="developer">Developer</option><option value="admin">Admin</option><option value="default">Default Permissions</option><option value="revoked">Revoke Access</option>';}?></select><br><br><button style='background:none!important;color:black;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;'type='submit'name='edit-perms'><b><i>Go</i></b></button>`
     }
   </script>
   <?php require "../../../footer.php"; ?>
