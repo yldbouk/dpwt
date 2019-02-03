@@ -22,6 +22,7 @@ if (isset($_POST['login-submit'])) {
             if ($row = mysqli_fetch_assoc($result)) {
                 if ($row["permsUsers"] == "deleted") {
                     header("Location: ../login/index.php?result=accdel");
+                    exit();
                 }
                 $pwdCheck = password_verify($password, $row['pwdUsers']);
                 if ($pwdCheck == false) {

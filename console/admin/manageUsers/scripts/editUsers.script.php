@@ -20,57 +20,67 @@ if (isset($_SESSION['userUid'])) {
       $result = mysqli_stmt_get_result($stmt);
       if ($row = mysqli_fetch_assoc($result)) {
         $username = $row['uidUsers'];
-            $sql = "SELECT * FROM job_data WHERE createdBy=?";
-          if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../../error.php/?e=internal");
-            exit();
-          } else {
-            mysqli_stmt_bind_param($stmt, "s", $username);
-            mysqli_stmt_execute($stmt);
-            $result = mysqli_stmt_get_result($stmt);
-            $jobExist = 0;
-            if (mysqli_num_rows($result) > 0) {
-              while($row = mysqli_fetch_assoc($result)) {
-                if ($row['jobStatus'] == "queue" || $row['jobStatus'] == "printing" || $row['jobStatus'] == "complete_waiting") {
-                  $jobExist = $jobExist + 1;
-                }
+        $sql = "SELECT * FROM job_data WHERE createdBy=?";
+        if (!mysqli_stmt_prepare($stmt, $sql)) {
+          header("Location: ../../error.php/?e=internal");
+          exit();
+        } else {
+          mysqli_stmt_bind_param($stmt, "s", $username);
+          mysqli_stmt_execute($stmt);
+          $result = mysqli_stmt_get_result($stmt);
+          $jobExist = 0;
+          if (mysqli_num_rows($result) > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+              if ($row['jobStatus'] == "queue" || $row['jobStatus'] == "printing" || $row['jobStatus'] == "complete_waiting") {
+                $jobExist = $jobExist + 1;
               }
             }
-              if ($jobExist == 0) {
-                echo 'Please Wait...
-                 This may take a long time.';
-                $sql = "UPDATE `login_data` SET `nameUsers`= ?, `emailUsers`= ?, `pwdUsers`= ?, `permsUsers`= ? WHERE `login_data`.`idUsers`= ?;";
-                if (!mysqli_stmt_prepare($stmt, $sql)) {
-                  header("Location: ../../error.php/?e=internal");
-                  exit();
-                } else {
-                  mysqli_stmt_bind_param($stmt, "sssss", $empty, $empty, $empty, $do, $id);
-                 mysqli_stmt_execute($stmt);
-                }
-              } else {
-                  die("ACCOUNT DELETION ABORTED: USER HAS ".$jobExist." UNPURGED JOBS. PLEASE PURGE THEM, THEN RETRY.");
+          }
+          if ($jobExist == 0) {
+            $do2 = "purge";
+            echo 'Please Wait...
+            This may take a long time.
+            ';
+            $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`createdBy`= ?";
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+              die("");
+              exit();
+            } else {
+              if (mysqli_num_rows($result) > 0) {
+                while ($row = mysqli_fetch_assoc($result)) {
+                  $id1 = $row['id'];
+                  $dir = '../../../uploads/'.$id1;
+                  emptyDir($dir);
+                  if (rmdir('../../../uploads/'.$id1)) {
+                  } else {
+                    die("Could Not Successfully Purge Job. Reload the page and confirm resubmission to try again.");
+                  }
                 }
               }
-
-//                $dir = '../../../uploads/'.$id;
-               // emptyDir($dir);
-              //  if(rmdir('../../uploads/'.$id)) {
-              //    echo "<script>history.go(-1);</script>";
-              ///  } else {
-              //    die("Could Not Successfully Purge Job. Reload the page and confirm resubmission to try again.");
-              //  }
-
-                
-              
+              mysqli_stmt_bind_param($stmt, "ss", $do2, $username);
+              mysqli_stmt_execute($stmt);
+              $sql = "UPDATE `login_data` SET `nameUsers`=?,`emailUsers`=?,`pwdUsers`=?,`permsUsers`=? WHERE `idUsers`=?";
+              if (!mysqli_stmt_prepare($stmt, $sql)) {
+                header("Location: ../../error.php/?e=internal");
+                exit();
+              } else {
+                mysqli_stmt_bind_param($stmt, "sssss", $empty, $empty, $empty, $do, $id);
+                mysqli_stmt_execute($stmt);
+                echo "<script>history.go(-1);</script>";
+              }
+            }
+          } else {
+            die("ACCOUNT DELETION ABORTED: USER HAS ".$jobExist." JOBS THAT NEED ACTION. PLEASE PURGE THEM, THEN RETRY.");
           }
+        }
+      }
 
-      
-    
-  }
+
+
+    }
   } else {
     die("No Action to Take.");
   }
-  
 } else {
   header("Location: ../index.php/");
 }

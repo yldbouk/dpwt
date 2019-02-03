@@ -118,9 +118,10 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
           <form method='post' id="editform" action='scripts/editUsers.script.php'>
             <input type="text" style="visibility:hidden;" name="id" value="<?php echo $id?>">
             <input id="delete" type="text" name="delete" style="visibility:hidden;"><br>
-            <?php echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-perms"><b><i>Change Permissions</i></b></button>|';?>
-            <?php echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-user"><b><i>Edit User</i></b></button>|';?>
-            <?php echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:not-allowed;"type="button"onclick="editdelete();"><b><i>Delete User</i></b></button>|';?>
+            <?php if($perms == "deleted" || $perms == "developer" || $perms == "admin") {} else { 
+              echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-perms"><b><i>Change Permissions</i></b></button>|';
+              echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-user"><b><i>Edit User</i></b></button>|';
+              echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:not-allowed;"type="button"onclick="editdelete();"><b><i>Delete User</i></b></button>|';}?>
           </form>
 
 
