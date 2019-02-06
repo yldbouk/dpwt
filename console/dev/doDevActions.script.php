@@ -3,7 +3,6 @@ session_start();
 if (isset($_SESSION['userUid'])) {
   if ($_SESSION['permsUsers'] == "developer") {
     include "../../scripts/handledb.script.php";
-
     if (isset($_POST['stop-apache']) && !$_POST['stop-apache'] == "") {
       $password = $_POST['stop-apache'];
       $username = $_SESSION['userUid'];
@@ -18,7 +17,7 @@ if (isset($_SESSION['userUid'])) {
         $result = mysqli_stmt_get_result($stmt);
         if ($row = mysqli_fetch_assoc($result)) {
           if ($row["permsUsers"] == "deleted") {
-            header("Location: ../login/index.php?result=accdel");
+            header("Location: ".$_SERVER["DOCUMENT_ROOT"]."/acc/login/index.php?result=accdel");
             exit();
           }
           $pwdCheck = password_verify($password, $row['pwdUsers']);
@@ -28,22 +27,14 @@ if (isset($_SESSION['userUid'])) {
           }
           elseif($pwdCheck == true) {
           
-          
-            //exec('httpd -k stop 2>&1', $output);
+            echo "Stoppin Apache2.4 Service...";
             exec('NET STOP Apache2.4 2>&1', $output);
-            print_r($output);  // to see the response to your command
-
-            
-            
-            die("<|deadend|>");
-          
+            print_r($output);  
+            die("done.");
           }
         }
       }
-
     }
-
-
   } else {
     header("Location: ../../");
   }
