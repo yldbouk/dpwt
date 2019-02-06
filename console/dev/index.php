@@ -34,18 +34,24 @@
  <h1>DPWT Developer Console</h1>
 <br><br>
 <a href="../admin" style="color:inherit;text-decoration:none;"><b><i>&nbsp Admin Console &nbsp</i></b></a><br><br>
-<a onclick="alert('not linked')" style="color:red;text-decoration:none;"><b><i>&nbsp STOP WEBSITE &nbsp</i></b></a><br><br>
+<a onclick="STOPaPACHE()" style="color:red;text-decoration:none;"><b><i>&nbsp STOP WEBSITE &nbsp</i></b></a><br><br>
 <a onclick="alert('not linked')" style="color:red;text-decoration:none;"><b><i>&nbsp STOP OCTOPRINT &nbsp</i></b></a><br><br>
 <a onclick="alert('not linked')" style="color:red;text-decoration:none;"><b><i>&nbsp RESTART OCTOPRINT &nbsp</i></b></a><br><br>
  
    
    </div>
-
-    <?php 
-      require "../../footer.php";
-    ?>
+   <form id="action"method="post"action="./doDevActions.script.php"style="visibility:hidden;"></form>
+  <script>
   
-  
+  function STOPaPACHE() {
+    //var password = prompt("Please Enter Your Password:");
+    document.getElementById("action").innerHTML='<label for="stop-apache"><b>Password:</b></label><br><input type="password"id="stopapache"name="stop-apache" required>';
+    document.getElementById("action").style="visibility:visible;text-align:center;"
+    //document.getElementById("stopapache").value=password;
+    //document.getElementById("action").submit();
+  }
+  </script>
+    <?php require "../../footer.php"; ?>
   </body>
 </html>
 

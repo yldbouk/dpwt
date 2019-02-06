@@ -99,7 +99,6 @@ require "../scripts/getJobs.script.php";
       </table>
     </center>
     <!-- SPLITTER -->
-    <?php function showViewer() {require "../../view3d/index.php";} ?>
     <script>
       var $rows = $('#jobs tr');
       $('#search').keyup(function() {
