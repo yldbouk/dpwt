@@ -22,6 +22,7 @@ if(isset($_SESSION['userUid'])) {
         $requestor0 = $row['createdBy'];
         $location0 = $row["location"];
         $reviewedBy0 = $row['reviewedBy'];
+        $printer0 = $row["whatPrinter"];
        
       } else {
         header("Location: ../../error.php/?e=internal");

@@ -19,7 +19,6 @@ if (!isset($_SESSION['name'])) {
                     exit();
                 } else {
                 $_SESSION['printid'] = $row["id"];
-                $_SESSION['name'] = $row["name"];
                 $_SESSION['friendlyname'] = $row["friendlyname"];
                 $_SESSION['grade'] = $row["grade"];
                 $_SESSION['filamentColor'] = $row["filamentColor"];
