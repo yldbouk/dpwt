@@ -3,7 +3,7 @@ session_start();
 if (!isset($_SESSION['name'])) {
     require '../../../scripts/handledb.script.php';
 
-        $sql = "SELECT * FROM `printer_data` WHERE `printer_data`.`id` = 1";
+        $sql = "SELECT * FROM `printer_data` WHERE `printer_data`.`id` = 2";
         $stmt = mysqli_stmt_init($conn);
 
         if (!mysqli_stmt_prepare($stmt, $sql)) {
