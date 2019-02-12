@@ -24,6 +24,7 @@ if (!isset($_SESSION['name'])) {
                 $_SESSION['filamentColor'] = $row["filamentColor"];
                 $_SESSION['locked'] = $row["locked"];
                 header("Location: /console");
+                exit();
                 }
                 } else {
                     header("Location: ../error.php");

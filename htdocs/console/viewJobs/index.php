@@ -49,6 +49,7 @@ require "scripts/getJobs.script.php";
             <th>Reviewed By</th>
             <th>Finished Print Location</th>
             <th>Printer</th>
+            <th>View File</th>
           </tr>
         </thead>
         <tbody>
@@ -85,6 +86,7 @@ require "scripts/getJobs.script.php";
                     <td>".$row["reviewedBy"]."</td>
                     <td>".$row["location"]."</td>
                     <td>".$row["whatPrinter"]."</td>
+                    <td><i><a onclick='document.location=`/console/view3d/?id=".$row['id']."`'>View</a></i></td>
                   </tr>
                 ";
               }  

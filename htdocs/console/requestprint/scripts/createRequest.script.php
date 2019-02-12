@@ -34,12 +34,12 @@ require "../../scripts/handledb.script.php";
         exit();
       } else {
             
-        $sql = "INSERT INTO job_data (jobName, reason, jobStatus, createdBy) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO job_data (jobName, reason, jobStatus, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?)";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../requestprint/index.php?result=sqlerror");
           exit();
         } else {
-            mysqli_stmt_bind_param($stmt, "ssss", $name, $reason, $status, $createdBy);
+            mysqli_stmt_bind_param($stmt, "sssss", $name, $reason, $status, $createdBy, $_SESSION['friendlyname']);
             mysqli_stmt_execute($stmt);
             $sql = "SELECT * FROM job_data WHERE jobName=?";
             $stmt = mysqli_stmt_init($conn);
@@ -61,7 +61,7 @@ require "../../scripts/handledb.script.php";
                   $uploadOk = 0;
               }
                 // Check file size
-                if ($_FILES["stlobj"]["size"] > 50000) {
+                if ($_FILES["stlobj"]["size"] > 5000000) {
                   header("Location: ../requestprint/index.php?result=filesize");
                   $uploadOk = 0;
                   exit();
