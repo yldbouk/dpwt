@@ -6,18 +6,16 @@ Dimensional Printing Web Terminal
 
 - Download [XAMPP](https://www.apachefriends.org)
   
-- In order to have a service console console from the web, the xampp control panel will not be used. Instead, a custom application named "NEWCONTROLPANEL.exe" will be used. Administrator privileges are required to control services. It is known for it to be a false positive on many AVs, so make sure to exclude it.
   
 - Set System Enviornemnt Variables: "xamppdir" = Root location of XAMPP.
 
-- Place the contents in htdocs in htdocs.
+- Navigate to apache/bin and locate "httpd." Open a command prompt as admin there and run "httpd -k install". When complete, run "NET START Apache2.4". When Started, stop it. ("NET STOP Apache2.4")
 
-- Create a folder named "uploads" at /console.
+- Place the contents of htdocs in htdocs.
 
-- Open the custom control panel and launch Apache and SQL.
+- Create a folder named "uploads" at htdocs/console.
 
-
-[More on the False Positive](https://forums.malwarebytes.com/topic/187305-bat-to-exe-converter-files-detected-as-false-positives)
+- Open control panel and start Apache and SQL. (Set to autostart also.)
 
 ## Restoring from Backup
 
