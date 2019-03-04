@@ -32,7 +32,7 @@ if(isset($_SESSION['userUid'])) {
 
 if($access == "true") {
 require "../../../scripts/handledb.script.php";
-    $sql = "SELECT * FROM `job_data` WHERE `jobStatus` != 'purge' AND `jobStatus` != 'complete'";
+    $sql = "SELECT * FROM `job_data` WHERE `jobStatus` != 'purge' AND `jobStatus` != 'complete' AND `jobName` NOT LIKE 'T.DONOTMODIFY'";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
       header("Location: ../../error.php/?e=internal");
@@ -41,7 +41,7 @@ require "../../../scripts/handledb.script.php";
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
       if (!$row = mysqli_fetch_assoc($result)) { 
-        header("Location: ../../error.php/?e=.internal");
+       header("Location: ../../error.php/?e=.internal");
   }
   if(!isset($row["reviewedBy"])){ $reviewedBy = "<i>None</i>";}
   if(!isset($row["location"])){ $location = "<i>None</i>";}
@@ -49,7 +49,7 @@ require "../../../scripts/handledb.script.php";
 
 if($access == "true-personal") {
   require "../../scripts/handledb.script.php";
-      $sql = "SELECT * FROM job_data WHERE createdBy=?;";
+      $sql = "SELECT * FROM job_data WHERE createdBy=? AND `jobName` NOT LIKE 'T.DONOTMODIFY'";
       $stmt = mysqli_stmt_init($conn);
       if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../../error.php/?e=internal");
@@ -59,7 +59,7 @@ if($access == "true-personal") {
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         if (!$row = mysqli_fetch_assoc($result)) { 
-          header("Location: ../../error.php/?e=internal");
+          header("Location: /console/error.php/?e=internal");
           exit();
     }
    if(!isset($row["reviewedBy"])){ $reviewedBy = "<i>None</i>";}
@@ -68,7 +68,7 @@ if($access == "true-personal") {
  
   if($access == "true-showall") {
     require "../../../scripts/handledb.script.php";
-        $sql = "SELECT * FROM job_data";
+        $sql = "SELECT * FROM job_data WHERE `jobName` NOT LIKE 'T.DONOTMODIFY'";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../../../error.php/?e=internal");
