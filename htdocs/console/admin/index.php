@@ -35,7 +35,8 @@
  <h1>DPWT Admin Console</h1>
 <br><br>
 <a href="manageUsers/" style="color:inherit;text-decoration:none;"><b><i>&nbsp Manage DPWT Users &nbsp</i></b></a><br><br>
-<a href="../viewJobs/admin" style="color:inherit;text-decoration:none;"><b><i>&nbsp Manage DPWT Prints &nbsp</i></b></a>
+<a href="../viewJobs/admin" style="color:inherit;text-decoration:none;"><b><i>&nbsp Manage DPWT Prints &nbsp</i></b></a><br><br>
+<a href="../printerControl" style="color:inherit;text-decoration:none;"><b><i>&nbsp Manage Printers &nbsp</i></b></a>
   
    
    </div>
