@@ -16,6 +16,8 @@ Dimensional Printing Web Terminal
 
 - Open the custom control panel and launch Apache and SQL.
 
+- Set to autostart.
+
 
 [More on the False Positive](https://forums.malwarebytes.com/topic/187305-bat-to-exe-converter-files-detected-as-false-positives)
 
