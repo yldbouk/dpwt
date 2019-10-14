@@ -15,7 +15,13 @@ Dimensional Printing Web Terminal
 
 - Create a folder named "uploads" at htdocs/console.
 
-- Open control panel and start Apache and SQL. (Set to autostart also.)
+
+
+[More on the False Positive](https://forums.malwarebytes.com/topic/187305-bat-to-exe-converter-files-detected-as-false-positives)
+=======
+- Open control panel and start Apache and SQL.
+
+- Set to autostart
 
 ## Restoring from Backup
 
