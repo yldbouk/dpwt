@@ -49,6 +49,7 @@
             <option value="orion">SeeMeCNC Orion Delta</option>
             <option disabled value="minimaker">da Vinci miniMaker</option>
             <option disabled value="flashforge">FlashForge Finder</option>
+            <option disabled value="minimaker2">da Vinci miniMaker2</option>
           </select>
         </div>
         <button type="submit" name="printerselect-submit">Select This Printer</button>
