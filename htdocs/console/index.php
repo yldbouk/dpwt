@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_SESSION['userUid'])) {
-  if (isset($_SESSION['name'])) {
+  if (isset($_SESSION['friendlyname'])) {
     header("Location: console.php");
   } else {
     header("Location: selectprinter.php");

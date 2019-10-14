@@ -27,6 +27,7 @@ webdav/*
 *.exe
 RELEASENOTES
 *.txt
+!htdocs/robots.txt
 *.ini
 *.dat
 *.log

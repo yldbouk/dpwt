@@ -48,6 +48,8 @@ require "scripts/getJobs.script.php";
             <th>Requestor</th>
             <th>Reviewed By</th>
             <th>Finished Print Location</th>
+            <th>Printer</th>
+            <th>View File</th>
           </tr>
         </thead>
         <tbody>
@@ -83,6 +85,8 @@ require "scripts/getJobs.script.php";
                     <td>".$row["createdBy"]."</td>
                     <td>".$row["reviewedBy"]."</td>
                     <td>".$row["location"]."</td>
+                    <td>".$row["whatPrinter"]."</td>
+                    <td><i><a onclick='document.location=`/console/view3d/?id=".$row['id']."`'>View</a></i></td>
                   </tr>
                 ";
               }  
@@ -128,6 +132,7 @@ require "scripts/getJobs.script.php";
                   <th>Requestor</th>
                   <th>Reviewed By</th>
                   <th>Finished Print Location</th>
+                  <th>Printer</th>
                 </tr>
               </thead>
               <?php 
@@ -142,6 +147,8 @@ require "scripts/getJobs.script.php";
                       <td>".$requestor0."</td>
                       <td>".$reviewedBy0."</td>
                       <td>".$location0."</td>
+                      <td>".$printer0."</td>
+
                     </tr>
                   ";
                 }

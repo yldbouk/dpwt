@@ -44,11 +44,8 @@
   <script>
   
   function STOPaPACHE() {
-    //var password = prompt("Please Enter Your Password:");
     document.getElementById("action").innerHTML='<label for="stop-apache"><b>Password:</b></label><br><input type="password"id="stopapache"name="stop-apache" required>';
     document.getElementById("action").style="visibility:visible;text-align:center;"
-    //document.getElementById("stopapache").value=password;
-    //document.getElementById("action").submit();
   }
   </script>
     <?php require "../../footer.php"; ?>

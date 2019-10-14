@@ -45,6 +45,7 @@ require "../scripts/getJobs.script.php";
             <th>Requestor</th>
             <th>Reviewed By</th>
             <th>Finished Print Location</th>
+            <th>Printer</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -81,6 +82,7 @@ require "../scripts/getJobs.script.php";
                     <td>".$row["createdBy"]."</td>
                     <td>".$row["reviewedBy"]."</td>
                     <td>".$row["location"]."</td>
+                    <td>".$row["whatPrinter"]."</td>
                     <td><i><a onclick='editActions(".$row["id"].")'>View</a></i></td>
                   </tr>
                 ";
@@ -126,6 +128,7 @@ require "../scripts/getJobs.script.php";
                   <th>Requestor</th>
                   <th>Reviewed By</th>
                   <th>Finished Print Location</th>
+                  <th>Printer</th>
                 </tr>
               </thead>
               <?php 
@@ -139,6 +142,7 @@ require "../scripts/getJobs.script.php";
                     <td>".$requestor0."</td>
                     <td>".$reviewedBy0."</td>
                     <td>".$location0."</td>
+                    <td>".$printer0."</td>
                   </tr>
                 "; 
               ?>
@@ -152,7 +156,8 @@ require "../scripts/getJobs.script.php";
                 echo '<input type="text" name="id" style="visibility:hidden;" value="'.$id.'"><br>';
                 if ($status0 == "queue") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-pause"><b><i>Pause Job</i></b></button>|';
                 if ($status0 == "review") {echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-accept"><b><i>Accept Job</i></b></button>|';
-                echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-deny"><b><i>Deny Job</i></b></button>|';}
+                  if ($status0 == "purge") {} else echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="document.location=`/console/view3d/?id='.$id.'`"><b><i>View in 3D</button></i></b></button>|';
+                  echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-deny"><b><i>Deny Job</i></b></button>|';}
                 if ($status0 == "complete_waiting") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editcomplete();"><b><i>Finish Completion Process</i></b></button>|';
                 if ($status0 == "purge" || $status0 == "printing" || $status0 == "complete_waiting") {} else echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editpurge();"><b><i>Purge</i></b></button>|';
               ?>

@@ -35,6 +35,8 @@ session_start();
        echo '<h4>Please Fill out all Fields.</h4>';
       } elseif ($_GET['result'] == "sqlerror") {
         echo '<h4>An internal error has occured. Please try again later.</h4>';
+      } elseif ($_GET['result'] == "servername") {
+        echo '<h4>The text either in your name or reason is blacklisted. Please replace it and try again.</h4>';
       } elseif ($_GET['result'] == "filetype") {
         echo '<h4>Sorry, we only accept STL and OBJ files.</h4>';
       } elseif ($_GET['result'] == "filesize") {

@@ -36,6 +36,8 @@
        echo '<h4>Please Fill out all Fields.</h4>';
       } elseif ($_GET['result'] == "sqlerror") {
         echo '<h4>An internal error has occured. Please try again later.</h4>';
+      } elseif ($_GET['result'] == "usrname") {
+        echo '<h4>There is no account with that username. Please try again.</h4>';
       } elseif ($_GET['result'] == "pwdnogo") {
         echo '<h4>That password did not match our records. Please try again.</h4>';
       } elseif ($_GET['result'] == "signup") {

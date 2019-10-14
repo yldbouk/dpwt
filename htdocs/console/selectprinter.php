@@ -30,10 +30,10 @@
       <br><br> 
       <div style="text-align:center;">
          <!-- SPLITTER -->
-      <h1>Log In</h1><br><h3>
+      <h1>Select Printer</h1><br><h3>
       <?php
       if (isset($_SESSION['friendlyname'])) {
-        echo 'You have selected '.$friendlyname;
+        echo 'You have selected '.$_SESSION['friendlyname'];
       } else {
         echo 'Please select the printer you want to use.';
       }

@@ -1,4 +1,5 @@
 <?php
+// !!!makee sure priinter is set
 session_start();
 if(isset($_POST["request-submit"])) {    
 require "../../scripts/handledb.script.php";
@@ -16,13 +17,17 @@ require "../../scripts/handledb.script.php";
 
 
   if (empty($name) || empty($reason) || empty($_FILES['stlobj'])){
-    header("Location: ../requestprint/index.php?result=incomplete");
+    header("Location: ../index.php?result=incomplete");
+    exit();
+  }
+  if ($name == "T.DONOTMODIFY" || $reason == "T.DONOTMODIFY"){
+    header("Location: ../index.php?result=servername");
     exit();
   }
     $sql = "SELECT jobName FROM job_data WHERE jobName=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-      header("Location: ../requestprint/index.php?result=sqlerror");
+      header("Location: ../index.php?result=sqlerror");
       exit();
     } else {
       mysqli_stmt_bind_param($stmt, "s", $name);
@@ -30,16 +35,16 @@ require "../../scripts/handledb.script.php";
       mysqli_stmt_store_result($stmt);
       $resultcheck = mysqli_stmt_num_rows($stmt);
       if ($resultcheck > 0) {
-        header("Location: ../requestprint/index.php?result=existingjob");
+        header("Location: ../index.php?result=existingjob");
         exit();
       } else {
             
-        $sql = "INSERT INTO job_data (jobName, reason, jobStatus, createdBy) VALUES (?, ?, ?, ?)";
+        $sql = "INSERT INTO job_data (jobName, reason, jobStatus, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?)";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../requestprint/index.php?result=sqlerror");
           exit();
         } else {
-            mysqli_stmt_bind_param($stmt, "ssss", $name, $reason, $status, $createdBy);
+            mysqli_stmt_bind_param($stmt, "sssss", $name, $reason, $status, $createdBy, $_SESSION['friendlyname']);
             mysqli_stmt_execute($stmt);
             $sql = "SELECT * FROM job_data WHERE jobName=?";
             $stmt = mysqli_stmt_init($conn);
@@ -61,7 +66,7 @@ require "../../scripts/handledb.script.php";
                   $uploadOk = 0;
               }
                 // Check file size
-                if ($_FILES["stlobj"]["size"] > 50000) {
+                if ($_FILES["stlobj"]["size"] > 5000000) {
                   header("Location: ../requestprint/index.php?result=filesize");
                   $uploadOk = 0;
                   exit();

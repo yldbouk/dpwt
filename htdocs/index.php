@@ -3,9 +3,6 @@ session_start();
 # TO-DO
 # get octoprint running
 # find online slicer
-# css for select printer
-#requestPrint uploads file to /console/uploads/(jobid)/(jobid).(.stl or .obj) Splice it
-# create ui for reviewing jobs
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
