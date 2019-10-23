@@ -1,4 +1,5 @@
 <footer>
+  <div style="padding-top: 100px;">
   <div class="footer">
     <div class="left">
       <br>
@@ -19,4 +20,5 @@
         </nav>
     </div>
   </div>
+</div>
 </footer>

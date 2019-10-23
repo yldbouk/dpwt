@@ -19,9 +19,9 @@
             <a href="../../console">Console</a>
             <?php
             if (isset($_SESSION['userUid'])) {
-              echo '<a class="blacknav" href="acc/logout">Logout</a>';
+              echo '<a class="blacknav" href="../logout">Logout</a>';
             } else {
-              echo '<a class="blacknav" href="acc/">Login</a>';
+              echo '<a class="blacknav" href="../">Login</a>';
             }
             ?>
           </nav>

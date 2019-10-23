@@ -39,6 +39,8 @@ session_start();
         echo '<h4>The text either in your name or reason is blacklisted. Please replace it and try again.</h4>';
       } elseif ($_GET['result'] == "filetype") {
         echo '<h4>Sorry, we only accept STL and OBJ files.</h4>';
+      } elseif ($_GET['result'] == "existingjob") {
+        echo '<h4>Sorry, this job already exists. Please confirm your job does not already exist or rename it.</h4>';
       } elseif ($_GET['result'] == "filesize") {
         echo '<h4>Your file is too large. Please contact us for a special request.</h4>';
       } else {
