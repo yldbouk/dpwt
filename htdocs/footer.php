@@ -16,7 +16,6 @@
         <a href="/console">Console</a><br>
         <a href="/about.php">About</a><br>
         <a href="/contact.php">Contact</a><br>
-        <a href="/About-Us.html">About Us</a><br>
         </nav>
     </div>
   </div>
