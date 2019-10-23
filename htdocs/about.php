@@ -27,6 +27,8 @@ session_start();
   </header>
   <center><div style="width:92%;">
   <h1>About</h1><br>
+  <h2>Who are We?</h2><br>
+We are a small group of fellow programmers who created this website to add ease to using 3D printers for students at our middle school. We are creating this because we enjoy coding and want to help make the world a better place and to help bring 3d printing to students. Our goal is to implicate and finish this program before summer. We are not paid or endorsed to create this program.
 <h2>What is DPWT?</h2><br>
 The Dimenstional Printing Web Terminal (or DPWT for short) is a website that allows students to print what they want off of our 3D printers. 
 <br><br>
