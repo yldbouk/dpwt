@@ -1,8 +1,5 @@
 <?php
 session_start();
-# TO-DO
-# get octoprint running
-# find online slicer
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -20,7 +17,7 @@ session_start();
           <nav>
             <?php if(isset($_SESSION['userUid'])) echo "<text>".$_SESSION['userUid']."</text>"?><a />
             <a class="active">Home</a>
-            <?php if(isset($_SESSION['userUid'])) echo "<a href='../../console'>Console</a>"?><a />
+            <?php if(isset($_SESSION['userUid'])) echo "<a href='console'>Console</a>"?><a />
             <?php
             if (isset($_SESSION['userUid'])) {
               echo '<a class="blacknav" href="acc/logout">Logout</a>';

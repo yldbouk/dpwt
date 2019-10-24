@@ -43,6 +43,7 @@ if (isset($_POST['login-submit'])) {
 						$_SESSION['userUid'] = $row["uidUsers"];
 						$_SESSION['userName'] = $row["nameUsers"];;
 						$_SESSION['permsUsers'] = $row["permsUsers"];
+						$_SESSION['userMail'] = $row["emailUsers"];
 						header("Location: ../../console");
 					}
 				} else {
