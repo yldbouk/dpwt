@@ -40,6 +40,7 @@ if (isset($_POST['login-submit'])) {
 						header("Location: ../login/index.php?result=revoke");
 					} else {
 						session_start();
+						$_SESSION['userid'] = $row["idUsers"];
 						$_SESSION['userUid'] = $row["uidUsers"];
 						$_SESSION['userName'] = $row["nameUsers"];;
 						$_SESSION['permsUsers'] = $row["permsUsers"];
