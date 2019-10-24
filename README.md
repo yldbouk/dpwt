@@ -47,9 +47,9 @@ This install guide is intended for Windows only on the hosting computer.
 
 ## Permission Roles
 
-Roles are ordered from most to least powerful. 
+Roles are ordered from most to least powerful.\
+Note that `/console/uploads` is restricted from the web and can only be accessed through the local machine or ftp. Not that you need to access the folder anyway.
 
-- Server: Not a real role. Just here to tell you that `/console/uploads` is restricted from the web.
 - Developer (`developer`): Strongest role; Access to everything.
 - Admin (`admin`): Access to the Admin Console. Can create and manage jobs created by anyone. Can manage DPWT users. Can manage printers.
 - Default (`default`): Default Permissions. Can Request and view jobs created by user.
@@ -57,13 +57,28 @@ Roles are ordered from most to least powerful.
 - Unapproved (`awaitingAction`) Newly created account that still needs approval. Unable to login.
 - Deleted Account (`deleted`): Placeholder for deleted account. Unable to login.
 
+## Job Roles
 
+These are used to identify the status of print jobs.
 
+- Needs Review (`review`): Newly created job that needs review.
+- On Queue (`queue`): On queue for printing. 
+- Paused (`paused`): Was previously accepted, but is not on queue.
+- Printing (`printing`): Is currently printing.
+- Needs Processing (`complete_waiting`): Is finished printing and still on the printer. Complete the form while setting the job as complete in job viewer.
+- Complete (`complete`): It's a complete job.
+- Denied (`denied`): Is a job that was denied.
+- Purged (`purge`): Placeholder for deleted job.
 
+## Printer Settings
 
+These are settings for the printers.
 
+- Name (readonly): The name of the printer.
+- Grade (readonly): Restricts printers that are not the same grade as user. (not implemented)
+- Filament Color: Color of the filament currently in the printer. Only used for file preview.
+- Locked: Locks the printer so users can not access or create jobs on it.
 
--
 ## Copyright
 Dimensional Printing Web Terminal (DPWT)
 
