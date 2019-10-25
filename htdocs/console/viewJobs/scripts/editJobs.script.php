@@ -138,7 +138,7 @@ if(isset($_POST['edit-pause'])) {
           } else {
             mysqli_stmt_bind_param($stmt, "sss", $do, $by, $id);
             mysqli_stmt_execute($stmt);
-            copy('../../uploads/'.$id."/".$id.".stl", '../../uploads/__accepted/'.$id.".stl");
+            copy('../../uploads/'.$id."/".$id.".stl", '../../uploads/__queue/'.$id.".stl");
             echo "<script>history.go(-1);</script>";
           }
         } 

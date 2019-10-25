@@ -1,7 +1,7 @@
 <?php
   session_start();
   if (!isset($_SESSION['userUid'])) {
-    header("Location: console");
+    header("Location: login");
   }
   ?>
 <!DOCTYPE html>
