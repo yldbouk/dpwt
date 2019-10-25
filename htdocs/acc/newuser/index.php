@@ -40,7 +40,7 @@
             <br>
           <label for="psw2"><b>Repeat Password</b></label><br> 
           <input type="password" placeholder="Repeat Password" name="psw2" required>
-          <button type="submit" name="pwd-submit">Change</button>
+          <button type="submit" name="replacepwd-submit">Change</button>
       </form>
     </center>
   

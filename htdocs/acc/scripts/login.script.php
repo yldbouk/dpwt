@@ -45,7 +45,10 @@ if (isset($_POST['login-submit'])) {
 						$_SESSION['userName'] = $row["nameUsers"];;
 						$_SESSION['permsUsers'] = $row["permsUsers"];
 						$_SESSION['userMail'] = $row["emailUsers"];
-						header("Location: ../../console");
+						if ($row["permsUsers"] == "deleted") {
+							header("Location: ../newuser");
+							exit();
+						} else header("Location: ../../console");
 					}
 				} else {
 					header("Location: ../login/index.php?result=pwdnogo");
