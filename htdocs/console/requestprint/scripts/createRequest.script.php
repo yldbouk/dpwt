@@ -6,7 +6,7 @@ require "../../scripts/handledb.script.php";
  
   $name = $_POST['name'];
   $reason = $_POST['reason'];
-  $createdBy = $_SESSION['userUid'];
+  $createdBy = $_SESSION['userName'];
       
   if (isset($_POST['autoaccept']) && $_POST['autoaccept'] == 1 ? 1 : 0) {
     $status = "queue";

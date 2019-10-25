@@ -74,9 +74,6 @@ if (isset($_SESSION['userUid'])) {
           }
         }
       }
-
-
-
     }
   } else if (isset($_POST['edit-perms'])) {
     $do = $_POST['perms'];

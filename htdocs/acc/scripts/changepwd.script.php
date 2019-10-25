@@ -86,13 +86,13 @@ if (isset($_POST['pwd-submit'])) {
         header("Location: ../changepwd/index.php?result=sqlerror");
         exit();
         } else {
-          mysqli_stmt_bind_param($stmt, "ss", "default", $userID);
+          $default = "default";
+          mysqli_stmt_bind_param($stmt, "ss", $default, $userID);
           mysqli_stmt_execute($stmt);
-
+          session_unset();
+          session_destroy();
+          header("Location: ../login/index.php?result=logout");
         }
-
-          header("Location: ../../console");
-          exit();
         }
       }
      }
