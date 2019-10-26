@@ -121,7 +121,40 @@ if (isset($_SESSION['userUid'])) {
           }}
       
       
-        } else {
+        } else if (isset($_POST['reset-pwd'])) {
+          $sql = "SELECT * FROM login_data WHERE idUsers=?;";
+          if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("Location: ../../error.php/?e=internal");
+            exit();
+          } else {
+            mysqli_stmt_bind_param($stmt, "s", $id);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+            if ($row = mysqli_fetch_assoc($result)) { 
+              $sql = "UPDATE `login_data` SET `pwdUsers`= ? WHERE `login_data`.`idUsers`= ?";
+              if (!mysqli_stmt_prepare($stmt, $sql)) {
+                header("Location: ../../error.php/?e=internal");
+                exit();
+              } else {
+                $password = "lmps3D";
+                $hashpwd = password_hash($password, PASSWORD_DEFAULT);
+                mysqli_stmt_bind_param($stmt, "ss", $hashpwd, $id);
+                mysqli_stmt_execute($stmt);
+                $sql = "UPDATE `login_data` SET `permsUsers`= ? WHERE `login_data`.`idUsers`= ?";
+                if (!mysqli_stmt_prepare($stmt, $sql)) {
+                  header("Location: ../../error.php/?e=internal");
+                  exit();
+             } else { 
+                  $newUser = "newUser";
+                  mysqli_stmt_bind_param($stmt, "ss", $newUser, $id);
+                  mysqli_stmt_execute($stmt);
+                  echo "<script>history.go(-1);</script>";
+              }
+              }
+            }}
+        
+        
+            } else {
     die("No Action to Take.");
   }
 } else {

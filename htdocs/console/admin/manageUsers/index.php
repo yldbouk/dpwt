@@ -152,8 +152,9 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
             <input type="text" style="visibility:hidden;" name="id" value="<?php echo $id?>">
             <input id="delete" type="text" name="delete" style="visibility:hidden;"><br>
             <div id="buttons">
-            <?php if($perms == "deleted" || $perms == "developer" || $perms == "admin" || $perms == "awaitingAction") {} else { 
+            <?php if($perms == "deleted" || $perms == "developer" || $perms == "admin") {} else {
               echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editperms();"><b><i>Change Permissions</i></b></button>|';
+              echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="resetpwd();"><b><i>Reset Password</i></b></button>|';
               echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:not-allowed;"type="button"onclick="editdelete();"><b><i>Delete User</i></b></button>|';}
             if($perms == "awaitingAction"){
               echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editperms();"><b><i>Give Permissions</i></b></button>|';
@@ -166,7 +167,7 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
         </center>
       </div>
       <div class="container" style="padding: 16px; text-align: center; background-color:#f1f1f1">
-        <button type="button" onclick="document.location='./'" class="cancelbtn">OK</button>
+        <button type="button" onclick="document.location='./'" class="red">Cancel</button>
       </div>
     </div>
   </div>
@@ -181,6 +182,10 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
     }
     function editperms() {
       document.getElementById("buttons").innerHTML=`<select name='perms'> <?php if($_SESSION['permsUsers']=='admin'){echo '<option value="admin">Admin</option><option value="default">Default Permissions</option><option value="revoked">Revoke Access</option>';} else {echo '<option value="developer">Developer</option><option value="admin">Admin</option><option value="default">Default Permissions</option><option value="revoked">Revoke Access</option>';}?></select><br><br><button style='background:none!important;color:black;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;'type='submit'name='edit-perms'><b><i>Go</i></b></button>`
+    }
+
+    function resetpwd() {
+      document.getElementById("buttons").innerHTML=`<br><button style='background:none!important;color:black;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;'type='submit'name='reset-pwd'><b><i>Confirm</i></b></button>`
     }
   </script>
   <?php require "../../../footer.php"; ?>

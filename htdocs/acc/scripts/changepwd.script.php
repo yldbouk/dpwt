@@ -91,7 +91,7 @@ if (isset($_POST['pwd-submit'])) {
           mysqli_stmt_execute($stmt);
           session_unset();
           session_destroy();
-          header("Location: ../login/index.php?result=logout");
+          header("Location: ../login/index.php?result=changedpwd");
         }
         }
       }

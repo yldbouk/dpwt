@@ -48,6 +48,8 @@
         echo '<h4>You need to log in to view this page!</h4>';
       } elseif ($_GET['result'] == "awaitingAction") {
         echo '<h4>Your request is still being reviewed. Please try again later.</h4>';
+      } elseif ($_GET['result'] == "changedpwd") {
+        echo '<h4>You have successfully changed your password! Please login again.</h4>';
       } elseif ($_GET['result'] == "noperms") {
         echo '<h4>Your request for access has been reviewed and denied. If you believe this is a mistake, please try to contact us.</h4>';
       } elseif ($_GET['result'] == "revoke") {
