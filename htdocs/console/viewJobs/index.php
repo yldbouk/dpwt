@@ -34,7 +34,7 @@ require "scripts/getJobs.script.php";
       <!-- SPLITTER -->
     <center>
       <?php if ($_SESSION['permsUsers'] == "admin" || $_SESSION['permsUsers'] == "developer") {
-          echo '<h3><a id="i" href="admin/" style="width:auto;"><b>Review and Manage Print Requests Here!</b></a></h3>';
+          echo '<h3><a id="i" href="admin/" style="width:auto;"><b>Admin Job Management</b></a></h3>';
         } ?>
       <input type="text" id="search" placeholder="Search">
       <table id="jobs">
