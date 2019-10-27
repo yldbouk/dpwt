@@ -70,7 +70,7 @@ if (isset($_SESSION['userUid'])) {
               }
             }
           } else {
-            die("ACCOUNT DELETION ABORTED: USER HAS ".$jobExist." JOBS THAT NEED ACTION. PLEASE PURGE THEM, THEN RETRY.");
+            die("ACCOUNT DELETION ABORTED: USER HAS ".$jobExist." JOBS THAT NEED ACTION. PLEASE PURGE THEM, THEN RETRY. USE THE GO BACK BUTTON TO THE LEFT OF THE RELOAD BUTTON.");
           }
         }
       }

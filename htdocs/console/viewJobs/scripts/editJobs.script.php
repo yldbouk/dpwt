@@ -32,6 +32,32 @@ if(isset($_POST['edit-pause'])) {
      }
     }
   }  
+} elseif(isset($_POST['edit-unpause'])) {
+  $do = "queue";
+  $sql = "SELECT * FROM job_data WHERE id=?;";
+  if (!mysqli_stmt_prepare($stmt, $sql)) {
+    header("Location: ../../error.php/?e=internal");
+    exit();
+  } else {
+    mysqli_stmt_bind_param($stmt, "s", $id);
+    mysqli_stmt_execute($stmt);
+    $result = mysqli_stmt_get_result($stmt);
+    if ($row = mysqli_fetch_assoc($result)) { 
+      if ($row == "printing") {
+        die('Job can not be editied because it is printing.');
+        } else {
+      $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`id`= ?";
+      if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../../error.php/?e=internal");
+        exit();
+      } else {
+        mysqli_stmt_bind_param($stmt, "ss", $do, $id);
+        mysqli_stmt_execute($stmt);
+        echo "<script>history.go(-1);</script>";
+      } 
+     }
+    }
+  }  
 } elseif (isset($_POST['purge']) && !$_POST['purge'] == "") {
   $do = "purge";
   $sql = "SELECT * FROM job_data WHERE id=?;";
