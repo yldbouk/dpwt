@@ -53,6 +53,7 @@ Note that `/console/uploads` is restricted from the web and can only be accessed
 - Developer (`developer`): Strongest role; Access to everything.
 - Admin (`admin`): Access to the Admin Console. Can create and manage jobs created by anyone. Can manage DPWT users. Can manage printers.
 - Default (`default`): Default Permissions. Can Request and view jobs created by user.
+- Password Reset (`newUser`): Will force user to reset their password upon login. (The Default Password is `lmps3D`.)
 - Revoked (`revoked`): Previously higher role but access was revoked. Permissions can be returned. Unable to login.
 - Unapproved (`awaitingAction`) Newly created account that still needs approval. Unable to login.
 - Deleted Account (`deleted`): Placeholder for deleted account. Unable to login.
