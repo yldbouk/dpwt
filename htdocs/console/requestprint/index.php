@@ -1,5 +1,6 @@
 <?php
 session_start();
+$needsAcc=TRUE;
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

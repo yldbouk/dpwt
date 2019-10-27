@@ -1,8 +1,8 @@
 <?php 
   session_start();
-  if (!isset($_SESSION['userUid'])) {
-    header("Location: /acc/login/index.php?result=perm");
-  }
+  $needsAcc=TRUE;
+  $needsAdmin=TRUE;
+  $consoleActive=TRUE;
   require $_SERVER['DOCUMENT_ROOT']."/header.php";
   require "scripts/getFile.script.php"
 ?>

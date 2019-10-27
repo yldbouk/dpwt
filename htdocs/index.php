@@ -14,7 +14,7 @@ session_start();
     $homeActive = TRUE;
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
-     i didnt think it would be that serious
+     
     <?php 
       require "footer.php";
     ?>

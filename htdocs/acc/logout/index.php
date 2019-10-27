@@ -1,8 +1,6 @@
 <?php
   session_start();
-  if (!isset($_SESSION['userUid'])) {
-    header("Location: ../login/index.php?result=perm");
-  }
+  $needsAcc=TRUE;
     ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -16,18 +14,9 @@
 </head>
 
 <body>
-  <header>
-    <div class="header">
-      <a href="/" class="logo">D P W T</a>
-      <div class="header-right">
-        <nav>
-          <?php if(isset($_SESSION['userUid'])) echo "<text>".$_SESSION['userUid']."</text>"?><a />
-          <a href="/">Home</a>
-          <a href="/console">Console</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+<?php
+    require $_SERVER['DOCUMENT_ROOT']."/header.php";
+  ?>
   <br><br>
   <center>
     Are you sure you want to log out?

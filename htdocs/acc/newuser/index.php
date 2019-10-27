@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); $needsAcc=TRUE;?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

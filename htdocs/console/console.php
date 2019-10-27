@@ -1,8 +1,6 @@
 <?php
   session_start();
-  if (!isset($_SESSION['userUid'])) {
-    header("Location: ../acc/login/index.php?result=perm");
-  }
+  $needsAcc=TRUE;
   ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

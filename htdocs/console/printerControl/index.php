@@ -1,13 +1,7 @@
 <?php 
   session_start();
-  if (!isset($_SESSION['userUid'])) {
-    header("Location: /acc/login");
-  } elseif ($_SESSION['permsUsers'] == "developer" || $_SESSION['permsUsers'] == "admin"){
-    $access = "true";
-  require "./getPrinterStatus.script.php";
-  } else {
-    echo '<script>history.go(-1);</script>';
-  }
+  $needsAcc=TRUE;
+  $needsAdmin=TRUE;
   
 ?>
 <!DOCTYPE html>

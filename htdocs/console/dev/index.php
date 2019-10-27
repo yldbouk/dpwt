@@ -1,10 +1,7 @@
 <?php
   session_start();
-  if (!isset($_SESSION['userUid'])) {
-    header("Location: /acc/login");
-  } elseif (!$_SESSION['permsUsers'] == "developer"){
-    echo '<script>history.go(-1);</script>';
-  }
+  $needsAcc=TRUE;
+  $needsDev=TRUE;
   ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

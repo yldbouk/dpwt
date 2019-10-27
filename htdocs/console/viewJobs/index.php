@@ -1,5 +1,6 @@
 <?php
 session_start();
+$needsAcc=TRUE;
 if (isset($_GET['edit'])) {
   $id = $_GET['edit'];
 }
