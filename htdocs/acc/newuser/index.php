@@ -1,4 +1,4 @@
-<?php session_start(); $needsAcc=TRUE; $forcePwdReset=TRUE;?>
+<?php session_start(); $needsAcc=TRUE; $forcePwdReset=FALSE;?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
