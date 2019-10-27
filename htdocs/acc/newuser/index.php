@@ -1,4 +1,4 @@
-<?php session_start(); $needsAcc=TRUE;?>
+<?php session_start(); $needsAcc=TRUE; $forcePwdReset=TRUE;?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -19,7 +19,7 @@
       <br><br>
        <center>
          <!-- SPLITTER -->
-      <h1>Change Password</h1><h6>Hello, <?php echo $_SESSION['userUid'] ?>! You seem to be a new user. For securty reasons, please change your password.</h6>
+      <h1>Change Password</h1><h3>Hello, <?php echo $_SESSION['userUid'] ?>! You seem to be a new user. For security reasons, please change your password.</h3>
       <br>
       <?php 
     if (isset($_GET['result'])) {
