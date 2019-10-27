@@ -29,7 +29,7 @@ if(!isset($devActive)) $devActive = FALSE;
             <a />
             <?php if(isset($_SESSION['userid'])) {echo "<a onclick='window.location.href=window.location.origin+`/acc`;'"; if($accActive) echo "class='active'"; echo ">Account</a>";}?>
             <a />
-            <?php if(isset($_SESSION['userid'])){echo '<a class="blacknav" onclick="document.location.href=window.location.origin+`/acc/logout`;">Logout</a>'; else {echo '<a '; if($loginActive) echo "class='active'"; echo ' onclick="document.location.href=window.location.origin+`/acc/login`;">Login</a>';}} ?>
+            <?php if(isset($_SESSION['userid'])){echo '<a class="blacknav" onclick="document.location.href=window.location.origin+`/acc/logout`;">Logout</a>';} else {echo '<a '; if($loginActive) echo "class='active'"; echo ' onclick="document.location.href=window.location.origin+`/acc/login`;">Login</a>';} ?>
           </nav>
         </div>
       </div>
