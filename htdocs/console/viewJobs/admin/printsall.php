@@ -18,19 +18,10 @@ require "../scripts/getJobs.script.php";
   </head>
 
   <body style="padding-bottom:3in;">
-    <header>
-      <div class="header">
-        <a href="/" class="logo">D P W T</a>
-        <div class="header-right">
-          <nav>
-            <?php echo "<text>".$_SESSION['userUid']."</text>"; ?><a />
-            <a href="/">Home</a>
-            <a class="active" href='/console'>Console</a> <a />
-            <a class="blacknav" href="/acc/logout">Logout</a>
-          </nav>
-        </div>
-      </div>
-    </header>
+  <?php
+    $adminActive = TRUE;
+    require $_SERVER['DOCUMENT_ROOT']."/header.php";
+  ?>
       <!-- SPLITTER -->
     <center>
       <input type="text" id="search" placeholder="Search">

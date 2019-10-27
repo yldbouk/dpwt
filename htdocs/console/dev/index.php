@@ -16,19 +16,10 @@
     <title>Developer Console - DPWT</title>
   </head>
   <body>
-    <header>
-      <div class="header">
-        <a href="../../" class="logo">{ D P W T }</a>
-        <div class="header-right">
-        <nav>
-            <?php echo "<text>".$_SESSION['userUid']."</text>"?><a />
-            <a href="../../../">Home</a>
-            <a class='active'>Console</a><a />
-            <a class="blacknav" href="/acc/logout">Logout</a>
-          </nav>
-        </div>
-      </div>
-    </header>
+  <?php
+    $devActive = TRUE;
+    require $_SERVER['DOCUMENT_ROOT']."/header.php";
+  ?>
       <br><br> 
       <div style="text-align:center;font-size:25px;">
  <h1>DPWT Developer Console</h1>
