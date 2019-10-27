@@ -3,8 +3,10 @@
   if (!isset($_SESSION['userUid'])) {
     header("Location: /acc/login/index.php?result=perm");
   }
+  include_once("header.php");
   require "scripts/getFile.script.php"
 ?>
+
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
@@ -73,9 +75,11 @@
       | <a href="#" onclick="thingiview.setObjectColor('#CDFECD')">Green</a> | <a href="#" onclick="thingiview.setObjectColor('#C0D8F0')">Blue</a><br />
     </p>
 
-    <div style="position:fixed;bottom:0;"> <a href='https://github.com/tbuser/thingiview.js/'>thingiview.js</a> by Tony
-      Buser</div>
+    
   </center>
 </body>
 
 </html>
+<?php
+include_once("header.php");
+?>
