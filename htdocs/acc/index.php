@@ -14,17 +14,10 @@
     <title>Account - DPWT</title>
   </head>
   <body>
-    <header>
-      <div class="header">
-        <a href="../../" class="logo">D P W T</a>
-        <div class="header-right">
-        <nav>
-            <a href="../../">Home</a>
-            <a class="blacknav" href="../acc/logout">Logout</a>
-          </nav>
-        </div>
-      </div>
-    </header> 
+  <?php
+    $accActive = TRUE;
+    require $_SERVER['DOCUMENT_ROOT']."/header.php";
+  ?>
          <!-- SPLITTER -->
          <div style='text-align: center;'>
       <h1>Account</h1>

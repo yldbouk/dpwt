@@ -10,25 +10,10 @@ session_start();
     <title>Home - DPWT</title>
   </head>
   <body>
-    <header>
-      <div class="header">
-        <a href="../../" class="logo">D P W T</a>
-        <div class="header-right">
-          <nav>
-            <?php if(isset($_SESSION['userUid'])) echo "<text>".$_SESSION['userUid']."</text>"?><a />
-            <a class="active">Home</a>
-            <?php if(isset($_SESSION['userUid'])) echo "<a href='console'>Console</a>"?><a />
-            <?php
-            if (isset($_SESSION['userUid'])) {
-              echo '<a class="blacknav" href="acc/logout">Logout</a>';
-            } else {
-              echo '<a href="acc/">Login</a>';
-            }
-            ?>
-          </nav>
-        </div>
-      </div>
-    </header>
+  <?php
+    $homeActive = TRUE;
+    require $_SERVER['DOCUMENT_ROOT']."/header.php";
+  ?>
      i didnt think it would be that serious
     <?php 
       require "footer.php";

@@ -9,25 +9,9 @@
     <title>Request Access - DPWT</title>
   </head>
   <body>
-    <header>
-      <div class="header">
-        <a href="../../" class="logo">D P W T</a>
-        <div class="header-right">
-          <nav>
-            <?php if(isset($_SESSION['userUid'])) echo "<text>".$_SESSION['userUid']."</text>"?><a />
-            <a href="/">Home</a>
-            <a href="../../console">Console</a>
-            <?php
-            if (isset($_SESSION['userUid'])) {
-              echo '<a class="blacknav" href="../logout">Logout</a>';
-            } else {
-              echo '<a class="blacknav" href="../">Login</a>';
-            }
-            ?>
-          </nav>
-        </div>
-      </div>
-    </header>
+  <?php
+    require $_SERVER['DOCUMENT_ROOT']."/header.php";
+  ?>
       <br><br>
        <center>
          <!-- SPLITTER -->

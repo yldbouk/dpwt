@@ -15,19 +15,10 @@
 </head>
 
 <body>
-  <header>
-    <div class="header">
-      <a href="../../" class="logo">D P W T</a>
-      <div class="header-right">
-        <nav>
-          <?php echo "<text>".$_SESSION['userUid']."</text>"?><a />
-          <a href="../">Home</a>
-          <a class="active">Console</a><a />
-          <a class="dest" href="../acc/logout">Logout</a>
-        </nav>
-      </div>
-    </div>
-  </header>
+<?php
+    $consoleActive = TRUE;
+    require $_SERVER['DOCUMENT_ROOT']."/header.php";
+  ?>
   <nav style="text-align:center;">
     <a href="requestprint/" style="color:inherit;text-decoration:none;"><b><i>&nbsp Make a Print &nbsp</i></b></a>
     <a href="viewJobs" style="color:inherit;text-decoration:none;"><b><i>&nbsp View Your Prints &nbsp</i></b></a>

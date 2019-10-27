@@ -12,19 +12,10 @@ session_start();
   </head>
   <body>
     
-    <header>
-      <div class="header">
-        <a href="../../" class="logo">D P W T</a>
-        <div class="header-right">
-          <nav>
-            <?php echo "<text>".$_SESSION['userUid']."</text>" ?><a />
-            <a href="/">Home</a>
-            <a class="active"href='../../console'>Console</a> <a />
-            <a class="blacknav" href="/acc/logout">Logout</a>
-          </nav>
-        </div>
-      </div>
-    </header>
+    <<?php
+    $consoleActive = TRUE;
+    require $_SERVER['DOCUMENT_ROOT']."/header.php";
+  ?>
     <center>
          <!-- SPLITTER -->
 		<h1>Request to Print a Model</h1><br><h3>Please fill out the form. Once submitted, your request will be reviewed, then put on queue.</h3>

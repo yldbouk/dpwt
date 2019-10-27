@@ -12,25 +12,16 @@ session_start();
 </head>
 
 <body>
-  <header>
-    <div class="header">
-      <a href="/" class="logo">D P W T</a>
-      <div class="header-right">
-        <nav>
-          <?php if(isset($_SESSION['userUid'])) echo "<text>".$_SESSION['userUid']."</text>"?><a />
-          <a href="/">Home</a>
-          <?php if(isset($_SESSION['userUid'])) echo "<a href='../../console'>Console</a>"?><a />
-          <?php if (isset($_SESSION['userUid'])) echo '<a class="blacknav" href="acc/logout">Logout</a>'; else echo '<a href="acc/">Login</a>';?>
-        </nav>
-      </div>
-    </div>
-  </header>
+<?php
+    $homeActive = TRUE;
+    require $_SERVER['DOCUMENT_ROOT']."/header.php";
+  ?>
   <center><div style="width:92%;">
   <h1>About</h1><br>
   <h2>Who are We?</h2><br>
 We are a small group of fellow programmers who created this website to add ease to using 3D printers for students at our middle school. We are creating this because we enjoy coding and want to help make the world a better place and to help bring 3d printing to students. Our goal is to implicate and finish this program before summer. We are not paid or endorsed to create this program.
 <h2>What is DPWT?</h2><br>
-The Dimenstional Printing Web Terminal (or DPWT for short) is a website that allows students to print what they want off of our 3D printers. 
+The Dimentional Printing Web Terminal (or DPWT for short) is a website that allows students to print what they want off of our 3D printers. 
 <br><br>
 <h2>How Does It Work?</h2><br>
 DPWT works by allowing students to make requests to print what ever they want. In this case, let's use a cube. A student fills out the form and requests for the cube to be printed. An admin, like a teacher, will then review their request. They can either allow or deny it. If allowed, the cube will be printed. The teacher will then put it somewhere for the student to pick it up.

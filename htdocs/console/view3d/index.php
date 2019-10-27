@@ -3,7 +3,7 @@
   if (!isset($_SESSION['userUid'])) {
     header("Location: /acc/login/index.php?result=perm");
   }
-  include_once("header.php");
+  require $_SERVER['DOCUMENT_ROOT']."/header.php";
   require "scripts/getFile.script.php"
 ?>
 
@@ -11,8 +11,9 @@
 <html lang="en" class="no-js">
 
 <head>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+  <link rel="stylesheet" href="/css/header.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
-
   <script src="scripts/Three.js"></script>
   <script src="scripts/plane.js"></script>
   <script src="scripts/thingiview.js"></script>
@@ -81,5 +82,5 @@
 
 </html>
 <?php
-include_once("header.php");
+require $_SERVER['DOCUMENT_ROOT']."/footer.php";
 ?>
