@@ -16,7 +16,7 @@
         <a href="/acc/request">Request Access</a><br>
         <a href="/console">Console</a><br>
         <a href="/about.php">About</a><br>
-        <a href="/contact.php">Contact</a><br>
+        <a href="/contact.php">Contact</a><br> 
         </nav>
     </div>
   </div>
