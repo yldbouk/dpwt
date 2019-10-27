@@ -43,7 +43,7 @@ This install guide is intended for Windows only on the hosting computer.
 - After making an account, go back to phpmyadmin to the users table. Set the perms (`permsUsers`) to to whatever the appropriate permission group is. (See below for permission descriptions.) **NOTE:** The first entry in a table is hidden in the web console. This is becasue I'm bad at code. 
 
 
-# Guides
+# Roles
 
 ## Permission Roles
 
@@ -79,6 +79,9 @@ These are settings for the printers.
 - Grade (readonly): Restricts printers that are not the same grade as user. (not implemented)
 - Filament Color: Color of the filament currently in the printer. Only used for file preview.
 - Locked: Locks the printer so users can not access or create jobs on it.
+
+# Guides
+The guides are located [here.](Guides.md)
 
 ## Copyright
 Dimensional Printing Web Terminal (DPWT)
