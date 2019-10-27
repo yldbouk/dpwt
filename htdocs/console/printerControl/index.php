@@ -47,7 +47,7 @@
 
 <body>
 <?php
-    $consoleActive = TRUE;
+    $adminActive = TRUE;
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
   <br>
