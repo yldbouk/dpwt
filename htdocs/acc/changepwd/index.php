@@ -1,4 +1,4 @@
-<?php session_start(); ?>
+<?php session_start(); $needsAcc=TRUE;?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -16,7 +16,7 @@
       <br><br>
        <center>
          <!-- SPLITTER -->
-      <h1>Change Password</h1><h6>You can change your password below.</h6>
+      <h1>Change Password</h1><h3>You can change your password below.</h3>
       <br>
       <?php 
     if (isset($_GET['result'])) {
