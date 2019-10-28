@@ -1,6 +1,7 @@
 <?php
 session_start();
 $needsAcc=TRUE;
+$needsPrinter=TRUE;
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

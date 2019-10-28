@@ -9,11 +9,13 @@ if(!isset($devActive)) $devActive = FALSE;
 if(!isset($needsAcc)) $needsAcc = FALSE;
 if(!isset($needsAdmin)) $needsAdmin = FALSE;
 if(!isset($needsDev)) $needsDev = FALSE;
+if(!isset($needsPrinter)) $needsPrinter = FALSE;
 if(!isset($forcePwdReset)) $forcePwdReset = TRUE;
 
 
 #Use this part to check for page prerequisites.
 if($needsAcc){if(!isset($_SESSION['userUid'])){echo '<script>window.location.href=window.location.origin + "/acc/login/index.php?result=perm";</script>';}}
+if($needsPrinter){if(!isset($_SESSION['printid'])){echo '<script>window.location.href=window.location.origin + "/console/selectprinter.php";</script>';}}
 if($needsAdmin){if(!$_SESSION['permsUsers'] == "admin" || !$_SESSION['permsUsers'] == "developer"){echo '<script>history.go(-1);</script>';}}
 if($needsDev){if(!$_SESSION['permsUsers'] == "developer"){echo '<script>history.go(-1);</script>';}}
 if(isset($_SESSION['permsUsers'])){if($_SESSION['permsUsers'] == "newUser"){if($forcePwdReset){echo '<script>window.location.href=window.location.origin + "/acc/newuser";</script>';}}}
