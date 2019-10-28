@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['userUid'])) {
   if ($_SESSION['permsUsers'] == "developer") {
     include "../../scripts/handledb.script.php";
-    if($_POST['payload']){
+    if($_POST['payload'] || isset($_POST['pull'])){
       shell_exec('cd C:\xampp && git reset --hard HEAD && git pull');
    } else if (isset($_POST['stop-apache']) && !$_POST['stop-apache'] == "") {
       $password = $_POST['stop-apache'];
