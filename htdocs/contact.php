@@ -21,7 +21,7 @@ session_start();
 
       <br>
         Youssef Dbouk<br>
-        Lead Designer
+        Lead Programmer and Designer
           <br><br>
 
         <br>
