@@ -5,7 +5,8 @@ if (isset($_SESSION['userUid'])) {
     include "../../scripts/handledb.script.php";
     if(isset($_POST['payload']) || isset($_POST['pull'])){
       shell_exec('cd C:\xampp && git reset --hard HEAD && git pull');
-      header( "refresh:10; url=../ " );
+      echo "please wait 10 seconds for git to pull.";
+      header( "refresh:10; url=index.php " );
    } else if (isset($_POST['stop-apache']) && !$_POST['stop-apache'] == "") {
       $password = $_POST['stop-apache'];
       $username = $_SESSION['userUid'];
