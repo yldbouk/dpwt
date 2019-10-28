@@ -13,9 +13,7 @@
       <div class="header">
         <a class="logo">D P W T</a>
         <div class="header-right">
-        <form action="../scripts/logout.script.php" method="get">
-      <button class="blacknav" type="submit">Log Out</button>
-    </form>
+      <a class="blacknav" href="../scripts/logout.script.php">Log Out</a>
         </div>
       </div>
     </header>
