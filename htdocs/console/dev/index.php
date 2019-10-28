@@ -38,7 +38,7 @@
   }
     
   function push() {
-    document.getElementById("action").innerHTML='<label for="pull"><b>Confirm:</b></label><br><button type="submit" name="pull">Login</button>';
+    document.getElementById("action").innerHTML='<label for="pull"><b>Confirm:</b></label><br><button type="submit" name="pull">Pull from GitHub</button>';
     document.getElementById("action").style="visibility:visible;text-align:center;"
   }
     
