@@ -59,7 +59,7 @@ body {
 .header-right {
   float: right;
 }
-.blacknav {
+.header a.blacknav {
   background-color: #404040;
   color: white;
 }
