@@ -10,6 +10,7 @@ This install guide is intended for Windows only on the hosting computer.
 
 - Download [XAMPP](https://www.apachefriends.org)
 - Set System Enviornemnt Variables: `xamppdir` = Root location of xampp (`C:\xampp`).
+- Make sure `git` is a valid command in cmd.
 - Navigate to apache/bin and locate "httpd." Open a command prompt as admin there and run `httpd -k install`. When complete, run `NET START Apache2.4`. When Started, stop it. (`NET STOP Apache2.4`) This is so that you can stop the website from the developer console.
 - Replace `htdocs` in xampp with the contents of `htdocs` in the repo.
 - Navigate to `xampp/apache/conf` and apphend the following code somewhere in the middle of `http.conf`:
