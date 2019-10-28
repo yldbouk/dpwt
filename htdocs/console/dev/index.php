@@ -23,6 +23,7 @@
 <br><br>
 <a href="../admin" style="color:inherit;text-decoration:none;"><b><i>&nbsp Admin Console &nbsp</i></b></a><br><br>
 <a onclick="STOPaPACHE()" style="color:red;text-decoration:none;"><b><i>&nbsp STOP WEBSITE &nbsp</i></b></a><br><br>
+<a onclick="push()" style="color:red;text-decoration:none;"><b><i>&nbsp PUSH FROM GITHUB &nbsp</i></b></a><br><br>
 <a onclick="alert('not linked')" style="color:red;text-decoration:none;"><b><i>&nbsp STOP OCTOPRINT &nbsp</i></b></a><br><br>
 <a onclick="alert('not linked')" style="color:red;text-decoration:none;"><b><i>&nbsp RESTART OCTOPRINT &nbsp</i></b></a><br><br>
  
@@ -35,6 +36,12 @@
     document.getElementById("action").innerHTML='<label for="stop-apache"><b>Password:</b></label><br><input type="password"id="stopapache"name="stop-apache" required>';
     document.getElementById("action").style="visibility:visible;text-align:center;"
   }
+    
+  function push() {
+    document.getElementById("action").innerHTML='<button type="submit">Confirm</button>';
+    document.getElementById("action").style="visibility:visible;text-align:center;"
+  }
+    
   </script>
     <?php require "../../footer.php"; ?>
   </body>
