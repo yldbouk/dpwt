@@ -38,7 +38,7 @@
   }
     
   function push() {
-    document.getElementById("action").innerHTML='<button type="submit">Confirm</button>';
+    document.getElementById("action").innerHTML='<label for="pull"><b>Confirm:</b></label><br><input type="button" id="pull" name="pull" required>';
     document.getElementById("action").style="visibility:visible;text-align:center;"
   }
     
