@@ -1,4 +1,21 @@
-<?php
+<?php
+
+# check for user changed
+require $_SERVER['DOCUMENT_ROOT']."/scripts/handledb.script.php";
+$sql = "SELECT * FROM login_data WHERE uidUsers=?;";
+		$stmt = mysqli_stmt_init($conn);
+		if (mysqli_stmt_prepare($stmt, $sql)) {
+			mysqli_stmt_bind_param($stmt, "s", $_SESSION['userUid']);
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+			if ($row = mysqli_fetch_assoc($result)) {
+        if ($row["lastUpdated"] !== $_SESSION['lastUpdated']) {
+          echo '<script>window.location.href=window.location.origin + "/acc/scripts/logout.script.php?e=change";</script>';
+        }
+      }
+    }
+
+
 #if not defined, define.
 if(!isset($homeActive)) $homeActive = FALSE;
 if(!isset($consoleActive)) $consoleActive = FALSE;

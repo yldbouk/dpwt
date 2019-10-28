@@ -47,6 +47,8 @@
         echo '<h4>Your request for access has been reviewed and denied. If you believe this is a mistake, please try to contact us.</h4>';
       } elseif ($_GET['result'] == "revoke") {
         echo '<h4>Your access has been revoked. If you believe this is a mistake, please try to contact us.</h4>';
+      } elseif ($_GET['result'] == "change") {
+        echo '<h4>Sorry, but your account has been changed. Please sign in again.</h4>';
       } elseif ($_GET['result'] == "accdel") {
         echo '<h4>Your account has been permanently deleted. Please create a new account.</h4>';
       } else {

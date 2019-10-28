@@ -45,6 +45,7 @@ if (isset($_POST['login-submit'])) {
 						$_SESSION['userName'] = $row["nameUsers"];;
 						$_SESSION['permsUsers'] = $row["permsUsers"];
 						$_SESSION['userMail'] = $row["emailUsers"];
+						$_SESSION['lastUpdated'] = $row["lastUpdated"];
 						if ($row["permsUsers"] == "newUser") {
 							header("Location: ../newuser");
 							exit();
