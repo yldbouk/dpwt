@@ -3,7 +3,9 @@ session_start();
 if (isset($_SESSION['userUid'])) {
   if ($_SESSION['permsUsers'] == "developer") {
     include "../../scripts/handledb.script.php";
-    if (isset($_POST['stop-apache']) && !$_POST['stop-apache'] == "") {
+    if($_POST['payload']){
+      shell_exec('cd C:\xampp && git reset --hard HEAD && git pull');
+   } else if (isset($_POST['stop-apache']) && !$_POST['stop-apache'] == "") {
       $password = $_POST['stop-apache'];
       $username = $_SESSION['userUid'];
       $sql = "SELECT * FROM login_data WHERE uidUsers=?;";
@@ -27,7 +29,7 @@ if (isset($_SESSION['userUid'])) {
           }
           elseif($pwdCheck == true) {
           
-            echo "Stoppin Apache2.4 Service...";
+            echo "Stopping Apache2.4 Service...";
             exec('NET STOP Apache2.4 2>&1', $output);
             print_r($output);  
             die("done.");
