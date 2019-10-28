@@ -25,7 +25,9 @@ session_start();
           <br><br>
 
         <br>
-      Contribute To Be Here!
+      Dean Anderson<br>
+      Lead Assistant
+        <br><br>
 
 </div>
 
