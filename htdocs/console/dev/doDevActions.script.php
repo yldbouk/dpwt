@@ -3,7 +3,7 @@ session_start();
 if (isset($_SESSION['userUid'])) {
   if ($_SESSION['permsUsers'] == "developer") {
     include "../../scripts/handledb.script.php";
-    if(isset($_POST['payload']) || isset($_POST['pull'])){
+    if(isset($_POST['pull'])){
       shell_exec('cd C:\xampp && git reset --hard HEAD && git pull');
       echo "please wait 10 seconds for git to pull.";
       header( "refresh:10; url=index.php " );
