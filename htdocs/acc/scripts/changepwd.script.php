@@ -18,7 +18,7 @@ if (isset($_POST['pwd-submit'])) {
     exit();
 
   } else {
-    $sql = "SELECT idUsers FROM login_data WHERE idUsers=?";
+    $sql = "SELECT * FROM login_data WHERE idUsers=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
       header("Location: ../changepwd/index.php?result=sqlerror");
@@ -27,7 +27,7 @@ if (isset($_POST['pwd-submit'])) {
       mysqli_stmt_bind_param($stmt, "s", $userID);
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
-			if ($row = mysqli_fetch_assoc($result)) {
+	    if ($row = mysqli_fetch_assoc($result)) {
 				$pwdCheck = password_verify($oldPassword, $row['pwdUsers']);
 				if ($pwdCheck == false) {
 					header("Location: ../changepwd/index.php?result=pwdnogo");
