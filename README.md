@@ -2,7 +2,8 @@
 
 Dimensional Printing Web Terminal
 
-Currently a web server to create and manage requests to print objects on specified 3D printers.
+Currently a web server to create and manage requests to print objects on specified 3D printers.\
+**NOTE:** The website is constantly changing, so things here might not be accurate.
 
 ## Initial Installation
 
