@@ -4,7 +4,7 @@ if (isset($_POST['pwd-submit'])) {
   session_start();
   require '../../scripts/handledb.script.php';
 
-  $oldPassword = $_POST['oldpsw']
+  $oldPassword = $_POST['oldpsw'];
   $password = $_POST['psw'];
   $confirmPassword = $_POST['psw2'];
   $userID = $_SESSION['userid'];
