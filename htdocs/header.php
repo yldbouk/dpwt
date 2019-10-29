@@ -1,4 +1,4 @@
-<?php
+<?php
 
 #if not defined, define.
 if(!isset($homeActive)) $homeActive = FALSE;
@@ -12,6 +12,22 @@ if(!isset($needsAdmin)) $needsAdmin = FALSE;
 if(!isset($needsDev)) $needsDev = FALSE;
 if(!isset($needsPrinter)) $needsPrinter = FALSE;
 if(!isset($forcePwdReset)) $forcePwdReset = TRUE;
+
+
+# check for user changed
+require $_SERVER['DOCUMENT_ROOT']."/scripts/handledb.script.php";
+$sql2 = "SELECT * FROM login_data WHERE uidUsers=?;";
+		$stmt2 = mysqli_stmt_init($conn);
+		if (mysqli_stmt_prepare($stmt2, $sql2)) {
+			mysqli_stmt_bind_param($stmt2, "s", $_SESSION['userUid']);
+			mysqli_stmt_execute($stmt2);
+			$result2 = mysqli_stmt_get_result($stmt2);
+			if ($row2 = mysqli_fetch_assoc($result2)) {
+        if ($row2["lastUpdated"] !== $_SESSION['lastUpdated']) {
+          echo '<script>window.location.href=window.location.origin + "/acc/scripts/logout.script.php?e=change";</script>';
+        }
+      }
+    }
 
 
 #Use this part to check for page prerequisites.
@@ -46,20 +62,6 @@ if(isset($_SESSION['permsUsers'])){if($_SESSION['permsUsers'] == "newUser"){if($
     </header> 
 <?php 
 
-# check for user changed
-require $_SERVER['DOCUMENT_ROOT']."/scripts/handledb.script.php";
-$sql = "SELECT * FROM login_data WHERE uidUsers=?;";
-		$stmt = mysqli_stmt_init($conn);
-		if (mysqli_stmt_prepare($stmt, $sql)) {
-			mysqli_stmt_bind_param($stmt, "s", $_SESSION['userUid']);
-			mysqli_stmt_execute($stmt);
-			$result = mysqli_stmt_get_result($stmt);
-			if ($row = mysqli_fetch_assoc($result)) {
-        if ($row["lastUpdated"] !== $_SESSION['lastUpdated']) {
-          echo '<script>window.location.href=window.location.origin + "/acc/scripts/logout.script.php?e=change";</script>';
-        }
-      }
-    }
 
 # Use this part as a section for banner or popup code.
 
