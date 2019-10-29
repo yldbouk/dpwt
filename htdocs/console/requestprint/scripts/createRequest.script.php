@@ -94,7 +94,7 @@ require "../../scripts/handledb.script.php";
                       } else {
                         mysqli_stmt_bind_param($stmt, "ss", $fileLocation, $id);
                         mysqli_stmt_execute($stmt);
-
+                        if ($status == 'queue') copy('../../uploads/'.$id."/".$id.".stl", '../../uploads/__queue/'.$id.".stl");
 
                         
                         header("Location: ../../viewJobs/index.php?edit=".$id);
