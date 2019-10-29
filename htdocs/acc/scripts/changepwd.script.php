@@ -9,10 +9,10 @@ if (isset($_POST['pwd-submit'])) {
   $userID = $_SESSION['userid'];
 
   if (empty($password) || empty($confirmPassword)) {
-    header("Location: ../login/changepwd/index.php?result=incomplete");
+    header("Location: ../changepwd/index.php?result=incomplete");
     exit();
   }
-  elseif(!$password == $confirmPassword) {
+  elseif($password !== $confirmPassword) {
     header("Location: ../changepwd/index.php?result=pwd");
     exit();
 
