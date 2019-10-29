@@ -27,6 +27,7 @@ if(isset($_POST['edit-pause'])) {
       } else {
         mysqli_stmt_bind_param($stmt, "ss", $do, $id);
         mysqli_stmt_execute($stmt);
+        unlink('../../uploads/__queue/'.$id.".stl");
         echo "<script>history.go(-1);</script>";
       } 
      }
@@ -53,6 +54,7 @@ if(isset($_POST['edit-pause'])) {
       } else {
         mysqli_stmt_bind_param($stmt, "ss", $do, $id);
         mysqli_stmt_execute($stmt);
+        copy('../../uploads/'.$id."/".$id.".stl", '../../uploads/__queue/'.$id.".stl");
         echo "<script>history.go(-1);</script>";
       } 
      }
