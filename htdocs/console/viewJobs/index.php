@@ -128,7 +128,7 @@ require "scripts/getJobs.script.php";
                 </tr>
               </thead>
               <?php 
-                if ($requestor0 == $_SESSION['userUid']) {
+                if ($requestor0 == $_SESSION['userName']) {
                   echo "
                     <tr>
                       <td>".$id."</td>
