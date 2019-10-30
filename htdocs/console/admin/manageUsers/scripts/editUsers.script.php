@@ -66,6 +66,7 @@ if (isset($_SESSION['userUid'])) {
               } else {
                 mysqli_stmt_bind_param($stmt, "sssss", $empty, $empty, $empty, $do, $id);
                 mysqli_stmt_execute($stmt);
+                usleep(250);
                 echo "<script>history.go(-1);</script>";
               }
             }
@@ -93,6 +94,7 @@ if (isset($_SESSION['userUid'])) {
         } else {
           mysqli_stmt_bind_param($stmt, "ss", $do, $id);
           mysqli_stmt_execute($stmt);
+          usleep(250);
           echo "<script>history.go(-1);</script>";
         }
       }}
@@ -116,6 +118,7 @@ if (isset($_SESSION['userUid'])) {
             } else {
               mysqli_stmt_bind_param($stmt, "ss", $do, $id);
               mysqli_stmt_execute($stmt);
+              usleep(250);
               echo "<script>history.go(-1);</script>";
             }
           }}
@@ -148,6 +151,7 @@ if (isset($_SESSION['userUid'])) {
                   $newUser = "newUser";
                   mysqli_stmt_bind_param($stmt, "ss", $newUser, $id);
                   mysqli_stmt_execute($stmt);
+                  usleep(250);
                   echo "<script>history.go(-1);</script>";
               }
               }
