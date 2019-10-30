@@ -148,12 +148,14 @@ require "../scripts/getJobs.script.php";
               <?php  
                 echo '<input type="text" name="id" style="visibility:hidden;" value="'.$id.'"><br>';
                 if ($status0 == "queue") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-pause"><b><i>Pause Job</i></b></button>|';
+                if ($status0 == "pause") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-unpause"><b><i>Unpause Job</i></b></button>|';
                 if ($status0 == "review") {echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-accept"><b><i>Accept Job</i></b></button>|';
-                  if ($status0 == "purge") {} else echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="document.location=`/console/view3d/?id='.$id.'`"><b><i>View in 3D</button></i></b></button>|';
-                  echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-deny"><b><i>Deny Job</i></b></button>|';}
+                echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-deny"><b><i>Deny Job</i></b></button>|';}
+                if ($status0 == "printing") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editcomplete();"><b><i>Set as Complete</i></b></button>|';
                 if ($status0 == "complete_waiting") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editcomplete();"><b><i>Finish Completion Process</i></b></button>|';
-                if ($status0 == "purge" || $status0 == "printing" || $status0 == "complete_waiting") {} else echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editpurge();"><b><i>Purge</i></b></button>|';
-              ?>
+                if ($status0 == "purge") {} else echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="document.location=`/console/view3d/?id='.$id.'`"><b><i>View in 3D</button></i></b></button>|';
+                if ($status0 == "purge" || $status0 == "printing" || $status0 == "complete_waiting") {} else echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editpurge();"><b><i>Purge</i></b></button>|';
+                  ?>
            </form>
           </center>
         </div>
