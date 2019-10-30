@@ -101,7 +101,7 @@ require "../scripts/getJobs.script.php";
         }).hide();
       });
       function editActions(id) {
-        document.location = "./?edit="+id;
+        document.location = "./printsall.php/?edit="+id;
       }
     </script>
  
