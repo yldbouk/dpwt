@@ -55,7 +55,7 @@ if($access == "true-personal") {
         header("Location: ../../error.php/?e=internal");
         exit();
       } else {
-        mysqli_stmt_bind_param($stmt, "s", $_SESSION['userUid']);
+        mysqli_stmt_bind_param($stmt, "s", $_SESSION['userName']);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         if (!$row = mysqli_fetch_assoc($result)) { 
