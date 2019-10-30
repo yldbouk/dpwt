@@ -43,7 +43,11 @@
         </div>
         <button type="submit" name="printerselect-submit">Select This Printer</button>
       </form>
+     <?php if ($_SESSION['permsUsers'] == "admin" || $_SESSION['permsUsers'] == "developer") {
+          echo '<br><br><h3><a id="i" href="./printerControl" style="width:auto;"><b>Printer Management</b></a></h3>';
+        } ?>
     </div>
+   
   
     <?php 
       require "../footer.php";
