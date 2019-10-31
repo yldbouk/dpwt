@@ -14,10 +14,11 @@ if(isset($_SESSION['userUid'])) {
         header("Location: ../../error.php/?e=internal");
       } else {
         if ($row['locked'] == "1") $deltaLocked = true; else $deltaLocked = false;
+        $row['']
       }
   
     }
-  } else header("Location: ../console.php/");
+  } else header("Location: ../console.php");
 } else {
-  header("Location: ../../index.php/");
+  header("Location: ../../index.php");
 }
