@@ -2,7 +2,7 @@
   session_start();
   $needsAcc=TRUE;
   $needsAdmin=TRUE;
-  
+  require "./getPrinterStatus.script.php";
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
