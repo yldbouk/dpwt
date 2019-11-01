@@ -1,6 +1,7 @@
 # Guides
 This is a guide on operating DPWT.\
-To make the guide simpler, we will use a fake URL at http://www.dpwt.org. **DO NOT ACTUALLY GO TO THIS WEBSITE.** Just translate this to wherever it is hosted currently.
+To make the guide simpler, we will use a fake URL at http://www.dpwt.org. **DO NOT ACTUALLY GO TO THIS WEBSITE.** Just translate this to wherever it is hosted currently. \
+**NOTE:** The site is constantly changing, so things on here may not be accurate with the website.
 
 ## Basics
 
