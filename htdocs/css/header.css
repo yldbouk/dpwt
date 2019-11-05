@@ -1,7 +1,10 @@
 /* Style the header with a grey background and some padding */
-body {
+html, body {
+  margin: 0;
+  height: 100%;
   font-family: 'Roboto Condensed', sans-serif;
 }
+
 .header {
   overflow: hidden;
   background-color: #fafafa;
