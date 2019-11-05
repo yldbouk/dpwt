@@ -1,4 +1,6 @@
+<div class="fill">
 <?php
+# ^ fill up page so footer is always on bottom
 
 #if not defined, define.
 if(!isset($homeActive)) $homeActive = FALSE;
