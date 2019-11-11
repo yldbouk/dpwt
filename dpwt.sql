@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.4
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2019 at 04:18 AM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.3.0
+-- Generation Time: Nov 09, 2019 at 10:28 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,23 +32,14 @@ CREATE TABLE `job_data` (
   `id` int(11) NOT NULL,
   `jobName` tinytext NOT NULL,
   `reason` text NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `jobStatus` tinytext NOT NULL,
   `createdBy` tinytext NOT NULL,
-  `location` tinytext,
-  `reviewedBy` tinytext,
-  `fileLocation` tinytext,
+  `location` tinytext DEFAULT NULL,
+  `reviewedBy` tinytext DEFAULT NULL,
+  `fileLocation` tinytext DEFAULT NULL,
   `whatPrinter` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `job_data`
---
-
-INSERT INTO `job_data` (`id`, `jobName`, `reason`, `date`, `jobStatus`, `createdBy`, `location`, `reviewedBy`, `fileLocation`, `whatPrinter`) VALUES
-(1, 'T.DONOTMODIFY', 'T.DONOTMODIFY', '2000-01-01 01:00:00', 'T.DONOTMODIFY', 'root', 'T.DONOTMODIFY', 'T.DONOTMODIFY', 'T.DONOTMODIFY', 'T.DONOTMODIFY');
-
--- --------------------------------------------------------
 
 --
 -- Table structure for table `login_data`
@@ -60,9 +51,9 @@ CREATE TABLE `login_data` (
   `nameUsers` tinytext NOT NULL,
   `emailUsers` tinytext NOT NULL,
   `pwdUsers` longtext NOT NULL,
-  `permsUsers` tinytext NOT NULL
+  `permsUsers` tinytext NOT NULL,
+  `lastUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 
 --
 -- Table structure for table `printer_data`
@@ -73,16 +64,17 @@ CREATE TABLE `printer_data` (
   `friendlyname` tinytext NOT NULL,
   `grade` tinyint(4) NOT NULL,
   `filamentColor` tinytext NOT NULL,
-  `locked` tinyint(1) NOT NULL
+  `locked` tinyint(1) NOT NULL,
+  `lastUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `printer_data`
 --
 
-INSERT INTO `printer_data` (`id`, `friendlyname`, `grade`, `filamentColor`, `locked`) VALUES
-(1, 'T.DONOTMODIFY', 0, 'T.DONOTMODIFY', 1),
-(2, 'CeeMeCNC Orion Delta', 8, 'purple', 0);
+INSERT INTO `printer_data` (`id`, `friendlyname`, `grade`, `filamentColor`, `locked`, `lastUpdated`) VALUES
+(1, 'T.DONOTMODIFY', 1, 'T.DONOTMODIFY', 1, '2019-11-09 21:22:27'),
+(2, 'CeeMeCNC Orion Delta', 8, 'red', 0, '2019-11-09 21:22:05');
 
 --
 -- Indexes for dumped tables
@@ -114,13 +106,13 @@ ALTER TABLE `printer_data`
 -- AUTO_INCREMENT for table `job_data`
 --
 ALTER TABLE `job_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `login_data`
 --
 ALTER TABLE `login_data`
-  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `printer_data`
