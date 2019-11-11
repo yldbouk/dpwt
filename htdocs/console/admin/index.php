@@ -25,8 +25,8 @@
 <a href="manageUsers/" style="color:inherit;text-decoration:none;"><b><i>&nbsp User Management &nbsp</i></b></a><br><br>
 <a href="../viewJobs/admin" style="color:inherit;text-decoration:none;"><b><i>&nbsp Job Management &nbsp</i></b></a><br><br>
 <a href="../printerControl" style="color:inherit;text-decoration:none;"><b><i>&nbsp Printer Management &nbsp</i></b></a>
-  
-   
+<br>
+<a href="./guides.md.php" style="color:inherit;text-decoration:none;"><b><i>&nbsp DPWT Help &nbsp</i></b></a><br><br>
    </div>
     <?php require "../../footer.php"; ?>
   </body>
