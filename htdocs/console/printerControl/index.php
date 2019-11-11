@@ -86,7 +86,14 @@
   Filament Color: <div style="background-color: <?php echo $deltaColor; ?>;"><a style="color: white;"><?php echo $deltaColor; ?></a><br></div><br>
   <select id="color" onchange="changeColor('delta')">
     <option selected disabled>Change Filament Color</option>
-    <option>remember to insert more colors youssef</option>
+    <option value="red">Red</option>
+    <option value="blue">Blue</option>
+    <option value="purple">Purple</option>
+    <option value="pink">Pink</option>
+    <option value="brown">Brown</option>
+    <option value="black">Black</option>
+    <option value="green">Green</option>
+    <option value="orange">Orange</option>
   </select>
 
   </div>
