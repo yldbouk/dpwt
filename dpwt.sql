@@ -64,8 +64,7 @@ CREATE TABLE `printer_data` (
   `friendlyname` tinytext NOT NULL,
   `grade` tinyint(4) NOT NULL,
   `filamentColor` tinytext NOT NULL,
-  `locked` tinyint(1) NOT NULL,
-  `lastUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `locked` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -73,8 +72,8 @@ CREATE TABLE `printer_data` (
 --
 
 INSERT INTO `printer_data` (`id`, `friendlyname`, `grade`, `filamentColor`, `locked`, `lastUpdated`) VALUES
-(1, 'T.DONOTMODIFY', 1, 'T.DONOTMODIFY', 1, '2019-11-09 21:22:27'),
-(2, 'CeeMeCNC Orion Delta', 8, 'red', 0, '2019-11-09 21:22:05');
+(1, 'T.DONOTMODIFY', 1, 'T.DONOTMODIFY', 1),
+(2, 'CeeMeCNC Orion Delta', 8, 'red', 0);
 
 --
 -- Indexes for dumped tables
