@@ -30,7 +30,26 @@ $sql2 = "SELECT * FROM login_data WHERE uidUsers=?;";
         }
       }
     }
-
+# check for printer changed
+if (isset($_SESSION['printid'])) {
+  $sql3 = "SELECT * FROM printer_data WHERE id=?;";
+	$stmt3 = mysqli_stmt_init($conn);
+	if (mysqli_stmt_prepare($stmt3, $sql3)) {
+    mysqli_stmt_bind_param($stmt3, "s", $_SESSION['printid']);
+		mysqli_stmt_execute($stmt3);
+		$result3 = mysqli_stmt_get_result($stmt3);
+    if ($row3 = mysqli_fetch_assoc($result3)) {
+       if ($row3["locked"] == 1) {
+        unset($_SESSION['printid']);
+        unset($_SESSION['friendlyname']);
+        unset($_SESSION['grade']);
+        unset($_SESSION['filamentColor']);
+        unset($_SESSION['locked']);
+        echo '<script>window.location.href=window.location.origin + "/console/selectprinter.php?e=change";</script>';
+      }
+    } 
+  }
+}
 
 #Use this part to check for page prerequisites.
 if($needsAcc){if(!isset($_SESSION['userUid'])){echo '<script>window.location.href=window.location.origin + "/acc/login/index.php?result=perm";</script>';}}

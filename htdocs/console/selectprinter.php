@@ -27,9 +27,19 @@
         echo 'Please select the printer you want to use.';
       }
       ?>
-        
       </h3>
-      <br>
+      
+      <?php 
+    if (isset($_GET['e'])) {
+      if ($_GET['e'] == "locked") {
+        echo '<h4>Sorry, but this printer is locked. Please try again later.</h4>';
+      } elseif ($_GET['e'] == "change") {
+        echo '<h4>Sorry, but this printer has been locked. Please try again later.</h4>';
+      } else {
+        echo '<h4>An unknown error occured. Please try again.</h4>';
+      }
+    }
+   ?>      <br>
       <br>
       <form action="scripts/printerselect.script.php" method="post"> 
         <div class="container">
