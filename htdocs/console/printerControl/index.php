@@ -3,7 +3,7 @@
   $needsAcc=TRUE;
   $needsAdmin=TRUE;
   $access="true";
-  require 'getPrinterStatus.script.php';
+  require './getPrinterStatus.script.php';
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -83,9 +83,9 @@
 
     <br>
   
-  Filament Color: <div style="background-color: <?php echo $_SESSION['filamentColor']; ?>;"><a style="color: white;"><?php echo $_SESSION['filamentColor']; ?></a><br></div>
-  <select id="color" onchange="changeColor(delta)">
-    <option>Change Filament Color</option>
+  Filament Color: <div style="background-color: <?php echo $deltaColor; ?>;"><a style="color: white;"><?php echo $deltaColor; ?></a><br></div><br>
+  <select id="color" onchange="changeColor('delta')">
+    <option selected disabled>Change Filament Color</option>
     <option>remember to insert more colors youssef</option>
   </select>
 
@@ -99,13 +99,14 @@
 </div><br><br>
 
 
-<form id="action" method="post" action="./changePrinterStatus.script.php" style="visibility:hidden;"></form>
+<center><form id="action" method="post" action="./changePrinterStatus.script.php" style="visibility:hidden;"></form></center>
 
 <script>
 
 function changeColor(printer) {
-    var color = document.getElementById("color").options[document.getElementById("color").selectedIndex].value;
-    document.getElementById("action").innerHTML='<input style="visibility: hidden;" type="text" name="color" required><input type="submit" name="change-color" required>';
+    var color = document.getElementById("color").options[document.getElementById("color").selectedIndex].text;
+    document.getElementById("action").innerHTML='<input style="visibility: hidden;" type="text" name="color" value="'+color+'" required><input type="submit" name="color-'+printer+'" required>';
+    document.getElementById("action").style="visibility:visible;text-align:center;"
   }
 
 function lockOrion() {

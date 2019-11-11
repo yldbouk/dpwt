@@ -10,13 +10,12 @@ if(isset($_SESSION['userUid'])) {
     } else {
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
-      if (!$row = mysqli_fetch_assoc($result)) { 
+      if (!$delta = mysqli_fetch_assoc($result)) { 
         header("Location: ../../error.php/?e=internal");
       } else {
-        if ($row['locked'] == "1") $deltaLocked = true; else $deltaLocked = false;
-        
+        if ($delta['locked'] == "1") $deltaLocked = true; else $deltaLocked = false;
+        $deltaColor = $delta['filamentColor'];
       }
-  
     }
   } else header("Location: ../console.php");
 } else {

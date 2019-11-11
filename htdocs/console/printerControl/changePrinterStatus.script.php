@@ -36,9 +36,6 @@ if (isset($_SESSION['userUid'])) {
               mysqli_stmt_execute($stmt);
               echo "<script>history.go(-1)</script>";
             }
-
-
-
           }
         }
       }
@@ -74,15 +71,23 @@ if (isset($_SESSION['userUid'])) {
               mysqli_stmt_execute($stmt);
               echo "<script>history.go(-1)</script>";
             }
-
-
-
           }
         }
       }
-    }
+    } else if (isset($_POST['color-delta']) && !$_POST['color'] == "") {
+      $color = $_POST['color'];
+      $sql = "UPDATE `printer_data` SET `filamentColor` = ? WHERE `printer_data`.`id` = 2";
+      $stmt = mysqli_stmt_init($conn);
+      if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../error.php?result=internal");
+        exit();
+      } else {
+        mysqli_stmt_bind_param($stmt, "s", $color);
+        mysqli_stmt_execute($stmt);
+        echo "<script>history.go(-1)</script>";
+      }
 
-
+    } else die("No Action to Take.");
   } else {
     header("Location: ../");
   }
