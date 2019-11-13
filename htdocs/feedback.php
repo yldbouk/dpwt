@@ -42,14 +42,14 @@
             <br>
           <label for="feedback"><b>Feedback:</b></label><br>
           <textarea cols="60" rows="5" placeholder="Type your feedback in here." name="feedback" required></textarea>
-               
+               <br><br>
           <button type="submit" name="feedback-submit">Submit</button>
       </form>
     <br>
     </center>
   
     <?php 
-      require "../../footer.php";
+      require $_SERVER['DOCUMENT_ROOT']."/footer.php";
     ?>
   
   
