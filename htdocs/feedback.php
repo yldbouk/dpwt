@@ -34,7 +34,7 @@
       <form action="./scripts/feedback.script.php" method="post">
         <div class="container">
           <label for="name"><b>Name</b></label><br>
-          <input type="text" placeholder="Enter Name" name="name" required>
+          <input type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
             <br><br>
             <input type="radio" name="type" value="issue" checked> Issue<br>
             <input type="radio" name="type" value="suggestion"> Suggestion<br>
