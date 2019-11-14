@@ -34,7 +34,7 @@ session_start();
       <form action="./scripts/feedback.script.php" method="get">
         <div class="container">
           <label for="name"><b>Name</b></label><br>
-          <input type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
+          <input style="text-align: center;" type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
             <br><br><div style="display: inline-block; text-align: left;">
             <input type="radio" name="type" value="contact"> Contact<br>
             <input type="radio" name="type" value="issue"> Issue<br>
@@ -44,7 +44,7 @@ session_start();
             </div><br><br>
           <label for="feedback"><b>Form:</b></label><br>
           <textarea cols="60" rows="5" placeholder="Type details in here." name="feedback" required></textarea>
-               <br><input type="hidden" name="username" value="<?php if(isset($_SESSION['userUid'])) echo $_SESSION['userUid']; else echo 'none'; ?>"<br>
+               <br><input style="visibility: hidden;" type="text" name="username" value="<?php if(isset($_SESSION['userUid'])) echo $_SESSION['userUid']; else echo 'none'; ?>"<br>
           <button type="submit" name="feedback-submit">Submit</button>
       </form>
     <br>
