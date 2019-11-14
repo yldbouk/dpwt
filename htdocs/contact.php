@@ -34,7 +34,7 @@ session_start();
         <div class="container">
           <label for="name"><b>Name</b></label><br>
           <input type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
-            <br><br><div style="text-align: left;">
+            <br><br><div style="display: inline-block; text-align: left;">
             <input type="radio" name="type" value="contact"> Contact<br>
             <input type="radio" name="type" value="issue"> Issue<br>
             <input type="radio" name="type" value="account"> Account Change<br>
