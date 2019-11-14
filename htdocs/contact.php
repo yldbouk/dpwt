@@ -19,15 +19,6 @@ session_start();
  <div style="text-align:center;">
 <h1>Contact</h1><br>
 
-      <br>
-        Youssef Dbouk<br>
-        Lead Programmer and Designer
-          <br><br>
-
-        <br>
-      Dean Anderson<br>
-      Lead Assistant
-        <br><br>
 
 </div>
 
