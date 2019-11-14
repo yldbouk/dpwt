@@ -34,13 +34,13 @@ session_start();
         <div class="container">
           <label for="name"><b>Name</b></label><br>
           <input type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
-            <br><br>
+            <br><br><div style="text-align: left;">
             <input type="radio" name="type" value="contact"> Contact<br>
             <input type="radio" name="type" value="issue"> Issue<br>
             <input type="radio" name="type" value="account"> Account Change<br>
             <input type="radio" name="type" value="suggestion"> Suggestion<br>
             <input type="radio" name="type" value="other" checked> Other
-            <br><br>
+            </div><br><br>
           <label for="feedback"><b>Form:</b></label><br>
           <textarea cols="60" rows="5" placeholder="Type details in here." name="feedback" required></textarea>
                <br><input type="hidden" value="<?php if(isset($_SESSION['userUid'])) echo $_SESSION['userUid']; else echo 'none'; ?>"<br>
