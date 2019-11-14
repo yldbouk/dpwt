@@ -1,4 +1,3 @@
-<div class="fill"></div>
 <footer>
   <div style="padding-top: 100px;">
   <div class="footer">
