@@ -8,7 +8,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="/css/header.css">
     <meta charset="utf-8">
-    <title>About - DPWT</title>
+    <title>Contact - DPWT</title>
 </head>
 
 <body>
@@ -17,7 +17,7 @@ session_start();
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
  <div style="text-align:center;">
-<h1>Contact</h1><br><h3>Please submit issues, suggestions, or other feedback here.</h3>
+<h1>Contact</h1><br><h3>Please use this form to contact us or send feedback.</h3>
       <br><br>
    <?php 
     if (isset($_GET['result'])) {
@@ -35,14 +35,15 @@ session_start();
           <label for="name"><b>Name</b></label><br>
           <input type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
             <br><br>
-            <input type="radio" name="type" value="issue" checked> Issue<br>
+            <input type="radio" name="type" value="contact"> Contact<br>
+            <input type="radio" name="type" value="issue"> Issue<br>
             <input type="radio" name="type" value="account"> Account Change<br>
             <input type="radio" name="type" value="suggestion"> Suggestion<br>
-            <input type="radio" name="type" value="other"> Other
+            <input type="radio" name="type" value="other" checked> Other
             <br><br>
-          <label for="feedback"><b>Feedback:</b></label><br>
-          <textarea cols="60" rows="5" placeholder="Type your feedback in here." name="feedback" required></textarea>
-               <br><br>
+          <label for="feedback"><b>Form:</b></label><br>
+          <textarea cols="60" rows="5" placeholder="Type details in here." name="feedback" required></textarea>
+               <br><input type="hidden" value="<?php if(isset($_SESSION['userUid'])) echo $_SESSION['userUid']; else echo 'none'; ?>"<br>
           <button type="submit" name="feedback-submit">Submit</button>
       </form>
     <br>
