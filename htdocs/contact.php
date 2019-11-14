@@ -17,7 +17,35 @@ session_start();
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
  <div style="text-align:center;">
-<h1>Contact</h1><br>
+<h1>Contact</h1><br><h3>Please submit issues, suggestions, or other feedback here.</h3>
+      <br><br>
+   <?php 
+    if (isset($_GET['result'])) {
+      if ($_GET['result'] == "success") {
+       echo '<h4>Thank you! Your feedback has been submitted.</h4>';
+      } elseif ($_GET['result'] == "sqlerror") {
+        echo '<h4>An internal error has occured. Please try again later.</h4>';
+      } else {
+        echo '<h4>An unknown error occured. Please try again.</h4>';
+      }
+    }
+   ?>
+      <form action="./scripts/feedback.script.php" method="post">
+        <div class="container">
+          <label for="name"><b>Name</b></label><br>
+          <input type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
+            <br><br>
+            <input type="radio" name="type" value="issue" checked> Issue<br>
+            <input type="radio" name="type" value="account"> Account Change<br>
+            <input type="radio" name="type" value="suggestion"> Suggestion<br>
+            <input type="radio" name="type" value="other"> Other
+            <br><br>
+          <label for="feedback"><b>Feedback:</b></label><br>
+          <textarea cols="60" rows="5" placeholder="Type your feedback in here." name="feedback" required></textarea>
+               <br><br>
+          <button type="submit" name="feedback-submit">Submit</button>
+      </form>
+    <br>
 
 
 </div>
