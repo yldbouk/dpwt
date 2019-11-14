@@ -29,7 +29,16 @@ DPWT works by allowing students to make requests to print what ever they want. I
 <h2>How Do I Make A Request?</h2><br>
 First, you need an account. <a href="/acc/login">Sign in</a> or <a href="/acc/request">Request Access Here</a>. Next, select the printer you want to print on. Then, go to the "Request A Print" page. Fill out the form, then submit. Now, assuming that your print was accepted, wait for it to print. The website will then notify you when it is done. Just come to the place it tells you and pick it up.
 <br><br>
+<h2>The Team</h2>
+<br>
+        Youssef Dbouk<br>
+        Lead Programmer and Designer
+          <br><br>
 
+        <br>
+      Dean Anderson<br>
+      Lead Assistant
+        <br><br>
 
 
   </div></center>
