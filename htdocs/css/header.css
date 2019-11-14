@@ -76,7 +76,7 @@ html, body {
 .footer {
   position: fixed;
   left: 0;
-  /* bottom: 0; remove lock on bottom */
+  bottom: 0; /* lock on bottom */
   width: 100%;
   background-color: #424242;
   color: white;
