@@ -44,7 +44,7 @@ session_start();
             </div><br><br>
           <label for="feedback"><b>Form:</b></label><br>
           <textarea cols="60" rows="5" placeholder="Type details in here." name="feedback" required></textarea>
-               <br><input type="hidden" value="<?php if(isset($_SESSION['userUid'])) echo $_SESSION['userUid']; else echo 'none'; ?>"<br>
+               <br><input type="hidden" name="username" value="<?php if(isset($_SESSION['userUid'])) echo $_SESSION['userUid']; else echo 'none'; ?>"<br>
           <button type="submit" name="feedback-submit">Submit</button>
       </form>
     <br>
