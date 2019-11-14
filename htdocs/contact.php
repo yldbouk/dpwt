@@ -7,6 +7,7 @@ session_start();
 <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/form.css">
     <meta charset="utf-8">
     <title>Contact - DPWT</title>
 </head>
@@ -30,7 +31,7 @@ session_start();
       }
     }
    ?>
-      <form action="./scripts/feedback.script.php" method="post">
+      <form action="./scripts/feedback.script.php" method="get">
         <div class="container">
           <label for="name"><b>Name</b></label><br>
           <input type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
