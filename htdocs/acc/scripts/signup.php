@@ -11,30 +11,30 @@ if (isset($_POST['signup-submit'])) {
   $permissions = "awaitingAction";
 
   if (empty($username) || empty($email) || empty($password) || empty($confirmPassword)) {
-    header("Location: ../request/index.php?result=incomplete");
+    header("Location: ../request?result=incomplete");
     exit();
   }
   elseif(!filter_var($email, FILTER_VALIDATE_EMAIL) && !preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-    header("Location: ../request/index.php?result=emailandusr");
+    header("Location: ../request?result=emailandusr");
     exit();
   }
   elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    header("Location: ../request/index.php?result=email");
+    header("Location: ../request?result=email");
     exit();
   }
   elseif(!preg_match("/^[a-zA-Z0-9]*$/", $username)) {
-    header("Location: ../request/index.php?result=username");
+    header("Location: ../request?result=username");
     exit();
   }
   elseif(!$password == $confirmPassword) {
-    header("Location: ../request/index.php?result=pwd");
+    header("Location: ../request?result=pwd");
     exit();
 
   } else {
     $sql = "SELECT uidUsers FROM login_data WHERE uidUsers=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-      header("Location: ../request/index.php?result=sqlerror&user=".$username.
+      header("Location: ../request?result=sqlerror&user=".$username.
         "&email=".$email);
       exit();
     } else {
@@ -43,13 +43,13 @@ if (isset($_POST['signup-submit'])) {
       mysqli_stmt_store_result($stmt);
       $resultcheck = mysqli_stmt_num_rows($stmt);
       if ($resultcheck > 0) {
-        header("Location: ../request/index.php?result=usertaken&email=".$email);
+        header("Location: ../request?result=usertaken&email=".$email);
         exit();
       } else {
         $sql = "INSERT INTO login_data (uidUsers, nameUsers, emailUsers, pwdUsers, permsUsers) VALUES (?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../request/index.php?result=sqlerror");
+          header("Location: ../request?result=sqlerror");
           exit();
         } else {
           $hashpwd = password_hash($password, PASSWORD_DEFAULT);
@@ -58,7 +58,7 @@ if (isset($_POST['signup-submit'])) {
           
           $sql = "INSERT INTO job_data (jobName, reason, jobStatus, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?)";
           if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../requestprint/index.php?result=sqlerror");
+            header("Location: ../requestprint?result=sqlerror");
             exit();
           } else {
             $tmp0="T.DONOTMODIFY";$tmp1="T.DONOTMODIFY";$tmp2="T.DONOTMODIFY";$tmp3="T.DONOTMODIFY";
@@ -66,7 +66,7 @@ if (isset($_POST['signup-submit'])) {
             unset($tmp0);unset($tmp1);unset($tmp2);unset($tmp3);
             mysqli_stmt_execute($stmt);
           }
-          header("Location: ../login/index.php?result=signup");
+          header("Location: ../login?result=signup");
           exit();
         }
       }
@@ -75,5 +75,5 @@ if (isset($_POST['signup-submit'])) {
   mysqli_stmt_close($stmt);
   mysqli_close($conn);
 } else {
-  header("Location: ../request/index.php");
+  header("Location: ../request");
 }

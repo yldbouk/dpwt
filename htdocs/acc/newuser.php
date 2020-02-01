@@ -34,7 +34,7 @@
     }
    ?>
    
-      <form action="scripts/changepwd" method="post">
+      <form action="../scripts/changepwd" method="post">
         <div class="container">
           <label for="psw"><b>Password</b></label><br> 
           <input type="password" placeholder="Password" name="psw" required>
