@@ -36,7 +36,7 @@
     <br>
  </div>
     <?php 
-      require "../footer.php";
+      require $_SERVER['DOCUMENT_ROOT']."/footer.php";
     ?>
   
   

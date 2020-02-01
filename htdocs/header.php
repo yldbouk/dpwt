@@ -1,5 +1,6 @@
 <div class="fill">
 <?php
+# ^ fill up page so footer is always on bottom
 
 #if not defined, define.
 if(!isset($homeActive)) $homeActive = FALSE;
@@ -25,7 +26,7 @@ $sql2 = "SELECT * FROM login_data WHERE uidUsers=?;";
 			$result2 = mysqli_stmt_get_result($stmt2);
 			if ($row2 = mysqli_fetch_assoc($result2)) {
         if ($row2["lastUpdated"] !== $_SESSION['lastUpdated']) {
-          echo '<script>window.location.href=window.location.origin + "/acc/scripts/logout.script.php?e=change";</script>';
+          echo '<script>window.location.href=window.location.origin + "/acc/scripts/logout?e=change";</script>';
         }
       }
     }
@@ -51,7 +52,7 @@ if (isset($_SESSION['printid'])) {
 }
 
 #Use this part to check for page prerequisites.
-if($needsAcc){if(!isset($_SESSION['userUid'])){echo '<script>window.location.href=window.location.origin + "/acc/login/index.php?result=perm";</script>';}}
+if($needsAcc){if(!isset($_SESSION['userUid'])){echo '<script>window.location.href=window.location.origin + "/acc/login?result=perm";</script>';}}
 if($needsPrinter){if(!isset($_SESSION['printid'])){echo '<script>window.location.href=window.location.origin + "/console/selectprinter.php";</script>';}}
 if($needsAdmin){if(!$_SESSION['permsUsers'] == "admin" || !$_SESSION['permsUsers'] == "developer"){echo '<script>history.go(-1);</script>';}}
 if($needsDev){if(!$_SESSION['permsUsers'] == "developer"){echo '<script>history.go(-1);</script>';}}

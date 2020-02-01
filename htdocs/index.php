@@ -16,7 +16,7 @@ session_start();
   ?>
      
     <?php 
-      require "footer.php";
+      require $_SERVER['DOCUMENT_ROOT']."/footer.php";
     ?>
   
   
