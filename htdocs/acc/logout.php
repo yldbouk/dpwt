@@ -21,7 +21,7 @@
   <center>
     Are you sure you want to log out?
     <br><br><br>
-    <form action="../scripts/logout" method="get">
+    <form action="scripts/logout" method="get">
       <button type="submit" name="login-submit">Log Out</button>
     </form><br><br>
     <button class="red" onclick="history.go(-1)">Go Back</button>
