@@ -26,7 +26,7 @@ $sql2 = "SELECT * FROM login_data WHERE uidUsers=?;";
 			$result2 = mysqli_stmt_get_result($stmt2);
 			if ($row2 = mysqli_fetch_assoc($result2)) {
         if ($row2["lastUpdated"] !== $_SESSION['lastUpdated']) {
-          echo '<script>window.location.href=window.location.origin + "/acc/scripts/logout?e=change";</script>';
+          echo '<script>window.location.href=window.location.origin + "/acc/scripts/logout.php?e=change";</script>';
         }
       }
     }

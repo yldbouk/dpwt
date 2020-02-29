@@ -32,7 +32,7 @@
     }
    ?>
    
-      <form action="../scripts/changepwd.script.php" method="post">
+      <form action="../scripts/changepwd.php" method="post">
         <div class="container">
           <label for="oldpsw"><b>Old Password</b></label><br> 
           <input type="password" placeholder="Old Password" name="oldpsw" required>

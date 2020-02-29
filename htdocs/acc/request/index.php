@@ -39,7 +39,7 @@
     }
    ?>
    
-      <form action="../scripts/signup.script.php" method="post">
+      <form action="../scripts/signup.php" method="post">
         <div class="container">
           <label for="user"><b>Username</b></label><br>
           <input type="text" placeholder="Username" name="uname" required>
