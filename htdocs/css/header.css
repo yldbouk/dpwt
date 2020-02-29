@@ -52,6 +52,10 @@ html, body {
   color: black;
 }
 
+/* ignore non-links */
+.noclick:hover {
+  background-color: #fafafa;
+}
 
 /* Style the active/current link*/
 .header a.active {
