@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['userUid'])) {
+if (isset($_SESSION['userName'])) {
   if (isset($_SESSION['friendlyname'])) {
     header("Location: console.php");
   } else {

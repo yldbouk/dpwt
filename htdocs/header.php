@@ -26,7 +26,7 @@ $sql2 = "SELECT * FROM login_data WHERE uidUsers=?;";
 			$result2 = mysqli_stmt_get_result($stmt2);
 			if ($row2 = mysqli_fetch_assoc($result2)) {
         if ($row2["lastUpdated"] !== $_SESSION['lastUpdated']) {
-          echo '<script>window.location.href=window.location.origin + "/acc/scripts/logout?e=change";</script>';
+          echo '<script>window.location.href=window.location.origin + "/acc/scripts/logout.php?e=change";</script>';
         }
       }
     }
@@ -64,17 +64,17 @@ if(isset($_SESSION['permsUsers'])){if($_SESSION['permsUsers'] == "newUser"){if($
         <?php if($devActive) echo '<a onclick="document.location.href=window.location.origin;" class="logo">{ D P W T }</a>'; else echo '<a onclick="document.location.href=window.location.origin;" class="logo">D P W T</a>'; ?>
         <div class="header-right">
         <nav> 
-           <?php if(isset($_SESSION['userid'])) echo "<text>".$_SESSION['userUid']."</text>"?>
-            <a class='noclick'></a>
+           <?php if(isset($_SESSION['userid'])) echo "<text>".$_SESSION['userName']."</text>"?>
+           <a class='noclick'></a>
            <a onclick="document.location.href=window.location.origin;" <?php if($homeActive) echo "class='active'";?>>Home</a>
-            <a class='noclick'></a>
-            <?php if(isset($_SESSION['userid'])){if($_SESSION['permsUsers'] == "developer") {echo "<a onclick='window.location.href=window.location.origin+`/console/dev`;'"; if($devActive) echo "class='active'"; echo ">Developer</a><a class='noclick'></a>";}}
+            <a class="noclick" />
+            <?php if(isset($_SESSION['userid'])){if($_SESSION['permsUsers'] == "developer") {echo "<a onclick='window.location.href=window.location.origin+`/console/dev`;'"; if($devActive) echo "class='active'"; echo ">Developer</a><a class=noclick' />";}}
            
-           if(isset($_SESSION['userid'])){if($_SESSION['permsUsers'] == "admin" || $_SESSION['permsUsers'] == "developer") {echo "<a onclick='window.location.href=window.location.origin+`/console/admin`;'"; if($adminActive) echo "class='active'"; echo ">Admin</a><a class='noclick'></a>";}}
+           if(isset($_SESSION['userid'])){if($_SESSION['permsUsers'] == "admin" || $_SESSION['permsUsers'] == "developer") {echo "<a onclick='window.location.href=window.location.origin+`/console/admin`;'"; if($adminActive) echo "class='active'"; echo ">Admin</a><a class=noclick'></a>";}}
             
-           if(isset($_SESSION['userid'])){ echo "<a onclick='window.location.href=window.location.origin+`/console`;'"; if($consoleActive) echo "class='active'"; echo ">Console</a><a class='noclick'></a>";}
+           if(isset($_SESSION['userid'])){ echo "<a onclick='window.location.href=window.location.origin+`/console`;'"; if($consoleActive) echo "class='active'"; echo ">Console</a><a class=noclick'></a>";}
 
-             if(isset($_SESSION['userid'])) {echo "<a onclick='window.location.href=window.location.origin+`/acc`;'"; if($accActive) echo "class='active'"; echo ">Account</a><a class='noclick'></a>";}
+             if(isset($_SESSION['userid'])) {echo "<a onclick='window.location.href=window.location.origin+`/acc`;'"; if($accActive) echo "class='active'"; echo ">Account</a><a class=noclick'></a>";}
             
              if(isset($_SESSION['userid'])){echo '<a class="blacknav" onclick="document.location.href=window.location.origin+`/acc/logout`;">Logout</a>';} else {echo '<a '; if($loginActive) echo "class='active'"; echo ' onclick="document.location.href=window.location.origin+`/acc/login`;">Login</a>';} ?>
           </nav>

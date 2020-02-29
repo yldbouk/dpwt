@@ -56,7 +56,7 @@
       }
     }
    ?>
-      <form action="../scripts/login.script.php" method="post">
+      <form action="../scripts/login.php" method="post">
         <div class="container">
           <label for="user"><b>Username</b></label><br>
           <input type="text" placeholder="Enter Username" name="uname" required>
