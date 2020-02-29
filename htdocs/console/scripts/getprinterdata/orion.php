@@ -15,7 +15,7 @@ if (!isset($_SESSION['name'])) {
             $result = mysqli_stmt_get_result($stmt);
             if ($row = mysqli_fetch_assoc($result)) {
                 if ($row["locked"] == 1) {
-                    header("Location: ../../error.php?e=printerlocked");
+                    header("Location: ../../selectprinter.php?e=locked");
                     exit();
                 } else {
                 $_SESSION['printid'] = $row["id"];
