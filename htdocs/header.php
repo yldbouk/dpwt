@@ -64,7 +64,7 @@ if(isset($_SESSION['permsUsers'])){if($_SESSION['permsUsers'] == "newUser"){if($
         <?php if($devActive) echo '<a onclick="document.location.href=window.location.origin;" class="logo">{ D P W T }</a>'; else echo '<a onclick="document.location.href=window.location.origin;" class="logo">D P W T</a>'; ?>
         <div class="header-right">
         <nav> 
-           <?php if(isset($_SESSION['userid'])) echo "<text>".$_SESSION['userUid']."</text>"?>
+           <?php if(isset($_SESSION['userid'])) echo "<text>".$_SESSION['userName']."</text>"?>
             <a class="noclick" />
            <a onclick="document.location.href=window.location.origin;" <?php if($homeActive) echo "class='active'";?>>Home</a>
             <a class="noclick" />
