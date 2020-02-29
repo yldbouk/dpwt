@@ -25,6 +25,8 @@
       //add more colors in the future
       if ($_SESSION["filamentColor"] == "purple") {
         $color = "800080";
+      } else if ($_SESSION["filamentColor"] == "red") {
+        $color = "ff0000";
       }
       ?>
       thingiview.setObjectColor('#<?php echo $color;?>');
