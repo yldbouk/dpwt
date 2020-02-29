@@ -53,7 +53,7 @@ html, body {
 }
 
 /* ignore non-links */
-.noclick:hover {
+.header a.noclick:hover {
   background-color: #fafafa;
 }
 
