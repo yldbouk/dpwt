@@ -25,7 +25,7 @@ if (isset($_SESSION["userUid"])) {
         if ($jobStatus == "purge") die("The job with id ".$id." is purged. (".$jobStatus.")");
         else {
 
-          if ($row["createdBy"] == $_SESSION['userUid'] || $_SESSION["permsUsers"] == "admin" || $_SESSION["permsUsers"] == "developer") {
+          if ($row["createdBy"] == $_SESSION['userName'] || $_SESSION["permsUsers"] == "admin" || $_SESSION["permsUsers"] == "developer") {
 
             if (file_exists("../uploads/".$id."/".$id.".stl")) {
               $extension = "STL";
