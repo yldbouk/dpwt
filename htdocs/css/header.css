@@ -52,6 +52,10 @@ html, body {
   color: black;
 }
 
+/* Overwrite hover color for fillers */
+.header a.noclick:hover {
+  background-color: #fafafa;
+}
 
 /* Style the active/current link*/
 .header a.active {
