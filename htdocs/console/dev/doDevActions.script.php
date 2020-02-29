@@ -4,7 +4,7 @@ if (isset($_SESSION['userUid'])) {
   if ($_SESSION['permsUsers'] == "developer") {
     include "../../scripts/handledb.script.php";
     if(isset($_POST['pull'])){
-      shell_exec('cd C:\xampp && git reset --hard HEAD && git pull');
+      shell_exec('cd /opt/lampp && git reset --hard HEAD && git pull');
       echo "please wait 10 seconds for git to pull.";
       header( "refresh:10; url=index.php " );
    } else if (isset($_POST['stop-apache']) && !$_POST['stop-apache'] == "") {
@@ -31,8 +31,8 @@ if (isset($_SESSION['userUid'])) {
           }
           elseif($pwdCheck == true) {
           
-            echo "Stopping Apache2.4 Service...";
-            exec('NET STOP Apache2.4 2>&1', $output);
+            echo "Stopping Apache2...";
+            exec('/opt/lampp/lampp stopapache 2>&1', $output);
             print_r($output);  
             die("done.");
           }
