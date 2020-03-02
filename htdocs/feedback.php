@@ -52,7 +52,7 @@
       }
     }
    ?>
-      <form action="./scripts/feedback.script.php" method="post">
+      <form id="mainform" action="./scripts/feedback.script.php" method="post">
         <div class="container">
           <label for="name"><b>Name</b></label><br>
           <input type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
@@ -82,6 +82,7 @@
          window.onload = function() {
            if(localStorage.getItem("abuseAgreed") != "true"){
              consent.style.display = "block";
+             document.getElementById("mainform").innerHTML="";
             }
           }
           function consentAgree(){
