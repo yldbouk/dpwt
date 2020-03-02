@@ -57,14 +57,14 @@
           <label for="name"><b>Name</b></label><br>
           <input type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
             <br><br>
-            <input type="radio" name="type" value="issue" checked> Issue<br>
-            <input type="radio" name="type" value="suggestion"> Suggestion<br>
-            <input type="radio" name="type" value="other"> Other
+            <input id="feedbackForm" type="radio" name="type" value="issue" checked> Issue<br>
+            <input id="feedbackForm" type="radio" name="type" value="suggestion"> Suggestion<br>
+            <input id="feedbackForm" type="radio" name="type" value="other"> Other
             <br><br>
-          <label for="feedback"><b>Feedback:</b></label><br>
-          <textarea cols="60" rows="5" placeholder="Type your feedback in here." name="feedback" required></textarea>
+          <label id="feedbackForm" for="feedback"><b>Feedback:</b></label><br>
+          <textarea id="feedbackForm" cols="60" rows="5" placeholder="Type your feedback in here." name="feedback" required></textarea>
                <br><br>
-          <button type="submit" name="feedback-submit">Submit</button>
+          <button id="feedbackForm" type="submit" name="feedback-submit">Submit</button>
       </form>
     <br>
         <!-- Consent Form -->
@@ -82,6 +82,7 @@
          window.onload = function() {
            if(localStorage.getItem("abuseAgreed") != "true"){
              consent.style.display = "block";
+             document.getElementById('feedbackForm').disabled = true;
             }
           }
           function consentAgree(){
