@@ -80,12 +80,12 @@
          
          <script>
          window.onload = function() {
-           if(localStorage.getItem("abuseAgreed") != true){
+           if(localStorage.getItem("abuseAgreed") != "true"){
              consent.style.display = "block";
             }
           }
           function consentAgree(){
-            localStorage.setItem("abuseAgreed", true);
+            localStorage.setItem("abuseAgreed", "true");
             window.location.reload();
           }
          </script>
