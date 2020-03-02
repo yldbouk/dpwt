@@ -56,6 +56,14 @@
       </div>
     </div>
   </center>
+         
+         <script>
+           if(localStorage.getItem("abuseAgreed") != true){
+             consent.style.display = "block";
+           }
+
+           function
+         </script>
   
     <?php 
       require $_SERVER['DOCUMENT_ROOT']."/footer.php";
