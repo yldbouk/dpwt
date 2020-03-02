@@ -79,11 +79,11 @@
   </center>
          
          <script>
+         window.onload(){
            if(localStorage.getItem("abuseAgreed") != true){
              consent.style.display = "block";
-           }
-
-           function
+            }
+          }
          </script>
   
     <?php 
