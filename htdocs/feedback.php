@@ -46,7 +46,16 @@
           <button type="submit" name="feedback-submit">Submit</button>
       </form>
     <br>
-    </center>
+        <!-- Consent Form -->
+    <div id="consent" class="modal">
+      <div class="modal-content">
+        <p><b>Please note that misuse of the feedback form may result in you no longer being able to submit feedback. By pressing Agree, you agree to not misuse the feedback form.</b></p>
+        <button style="float:left;">Agree</button> 
+        <button style="float:right;" class="red">Decline</button>
+        <p>&nbsp</p>
+      </div>
+    </div>
+  </center>
   
     <?php 
       require $_SERVER['DOCUMENT_ROOT']."/footer.php";
