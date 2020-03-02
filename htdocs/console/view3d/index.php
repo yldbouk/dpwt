@@ -3,8 +3,8 @@
   $needsAcc=TRUE;
   $needsAdmin=TRUE;
   $consoleActive=TRUE;
-  require $_SERVER['DOCUMENT_ROOT']."/header.php";
-  require "scripts/getFile.script.php"
+  require "scripts/getFile.script.php";
+  require $_SERVER['DOCUMENT_ROOT']."/header.php"
 ?>
 
 <!DOCTYPE html>
