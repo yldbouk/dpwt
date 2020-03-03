@@ -29,7 +29,7 @@
     Are you sure you want to log out?
     <br><br><br>
    
-      <button onclick="var auth2 = gapi.auth2.getAuthInstance(); auth2.signOut().then(function({document.href = document.location.origin + '/acc/scripts/logout.php';});">Log Out</button>
+      <button onclick="var auth2 = gapi.auth2.getAuthInstance(); auth2.signOut().then(function({document.location = document.location.origin + '/acc/scripts/logout.php';});">Log Out</button>
   <br><br>
     <button class="red" onclick="history.go(-1)">Go Back</button>
   </center>
