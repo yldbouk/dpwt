@@ -25,7 +25,10 @@
         $color = "ff0000";
       ?>
       var stl_viewer=new StlViewer(document.getElementById("stl_cont"), { models: [ {id:1, filename:"./openFile.script.php?fileID=<?php echo $id; ?>&extension=<?php echo $extension; ?>"} ] });
-      stl_viewer.set_color(1, '<?php echo $color; ?>');
+      window.onload=function(){
+        stl_viewer.set_color(1, '<?php echo $color; ?>');
+      }
+      
     }
   </script>
 </head>
