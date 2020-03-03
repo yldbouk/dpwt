@@ -28,10 +28,10 @@ if (isset($_SESSION["userUid"])) {
           if ($row["createdBy"] == $_SESSION['userName'] || $_SESSION["permsUsers"] == "admin" || $_SESSION["permsUsers"] == "developer") {
 
             if (file_exists("../uploads/".$id."/".$id.".stl")) {
-              $extension = "STL";
+              $extension = ".STL";
             }
             elseif(file_exists("../uploads/".$id."/".$id.".obj")) {
-              $extension = "OBJ";
+              $extension = ".OBJ";
 
             } else die("Job has no viewable files.");
 

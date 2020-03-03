@@ -7,7 +7,7 @@ if ($_GET['fileID']) {
   if (isset($_GET['extension'])) {
     $id = $_GET['fileID'];
     $extension = $_GET['extension'];
-    $file = "../../uploads/".$id."/".$id.".".$extension;
+    $file = "../../uploads/".$id."/".$id.$extension;
     if (isset($_SESSION['view3d_jobOwner'])) {
       $owner = $_SESSION['view3d_jobOwner'];
     } else die("Please do not manually navigate to this page.");
