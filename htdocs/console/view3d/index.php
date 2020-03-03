@@ -15,8 +15,7 @@
   <link rel="stylesheet" href="/css/header.css">
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
   <script src="stl_viewer.min.js"></script>
-  <script>var stl_viewer=
-  new StlViewer(document.getElementById("stl_cont"), { models: [ {id:1, filename:"./openFile.script.php?fileID=<?php echo $id; ?>&extension=<?php echo $extension; ?>"} ] });
+  <script>
     window.onload = function() {
       <?php
       //add more colors in the future
@@ -25,8 +24,11 @@
       else if ($_SESSION["filamentColor"] == "red")
         $color = "ff0000";
       ?>
+      var stl_viewer=new StlViewer(document.getElementById("stl_cont"), { models: [ {id:1, filename:"./openFile.script.php?fileID=<?php echo $id; ?>&extension=<?php echo $extension; ?>"} ] });
+      window.onload=function(){
+        stl_viewer.set_color(1, '<?php echo $color; ?>');
+      }
       
-      stl_viewer.set_color(1, '<?php echo $color; ?>');
     }
   </script>
 </head>
