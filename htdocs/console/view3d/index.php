@@ -3,7 +3,7 @@
   $needsAcc=TRUE;
   $needsAdmin=TRUE;
   $consoleActive=TRUE;
-  require "scripts/getFile.script.php";
+  require "./getFile.script.php";
   require $_SERVER['DOCUMENT_ROOT']."/header.php"
 ?>
 
