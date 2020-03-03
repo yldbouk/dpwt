@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/css/header.css">
   <link rel="stylesheet" href="/css/form.css">
   <meta charset="utf-8">
-  <script src="https://apis.google.com/js/platform.js" async defer></script><meta name="google-signin-client_id" content="944575927528-hs8dm7ogbn804qksdffdq3dk9uletued.apps.googleusercontent.com">
+  <meta name="google-signin-client_id" content="944575927528-hs8dm7ogbn804qksdffdq3dk9uletued.apps.googleusercontent.com">
   <title>Logout - DPWT</title>
 </head>
 <body>
@@ -23,7 +23,11 @@
       auth2.signOut().then(function () {
         document.href = document.location.origin + "/acc/scripts/logout.php";
       });
-
+    }
+    function onLoad() {
+      gapi.load('auth2', function() {
+        gapi.auth2.init();
+      });
     }
   </script>
   <br><br>
@@ -35,6 +39,7 @@
   <br><br>
     <button class="red" onclick="history.go(-1)">Go Back</button>
   </center>
+  <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
   <?php 
       require "../../footer.php";
     ?>
