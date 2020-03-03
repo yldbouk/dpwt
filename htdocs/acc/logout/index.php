@@ -35,7 +35,7 @@
     Are you sure you want to log out?
     <br><br><br>
    
-      <button onclick="signOut();" type="submit">Log Out</button>
+      <button onclick="signOut();">Log Out</button>
   <br><br>
     <button class="red" onclick="history.go(-1)">Go Back</button>
   </center>
