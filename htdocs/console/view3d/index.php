@@ -25,7 +25,7 @@
         $color = "ff0000";
       ?>
       var stl_viewer=new StlViewer(document.getElementById("stl_cont"), { models: [ {id:0, filename:"./openFile.script.php?fileID=<?php echo $id; ?>&extension=<?php echo $extension; ?>"} ] });
-      set_color(this, '<?php echo $color; ?>');
+      stl_viewer.set_color(0, '<?php echo $color; ?>');
     }
   </script>
 </head>
@@ -34,7 +34,7 @@
 <input onclick="history.go(-1)" type="button" value="<< Back" />
   <center>
     <p> View:
-    <select onchange="set_orientation(this.value);">
+    <select onchange="stl_viewer.set_orientation(this.value);">
       <option value="front">Front</option>
       <option value="right">Right</option>
       <option value="top">Top</option>
