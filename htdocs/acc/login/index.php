@@ -20,11 +20,9 @@
     $loginActive = TRUE;
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
-      <br><br> 
        <center>
          <!-- SPLITTER -->
       <h1>Log In</h1><br><h3>Welcome Back, you can log in here.</h3>
-      <br><br>
    <?php 
     if (isset($_GET['result'])) {
       if ($_GET['result'] == "incomplete") {
@@ -58,7 +56,7 @@
       }
     }
    ?>
-         <br><br>
+         <br>
          <div class="g-signin2" data-onsuccess="onSignIn"></div>
          <br>
       <form action="../scripts/login.php" method="post">
