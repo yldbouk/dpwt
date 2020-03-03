@@ -24,7 +24,7 @@
       else if ($_SESSION["filamentColor"] == "red")
         $color = "ff0000";
       ?>
-      var stl_viewer=new StlViewer(document.getElementById("stl_cont"), { models: [ {id:0, filename:"openFile.script.php?fileID=<?php echo $id; ?>&extension=<?php echo $extension; ?>"} ] });
+      var stl_viewer=new StlViewer(document.getElementById("stl_cont"), { models: [ {id:0, filename:"./openFile.script.php?fileID=<?php echo $id; ?>&extension=<?php echo $extension; ?>"} ] });
       set_color(this, '<?php echo $color; ?>');
     }
   </script>
