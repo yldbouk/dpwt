@@ -58,7 +58,9 @@
       }
     }
    ?>
-         <br><br><br>
+         <br><br>
+         <div class="g-signin2" data-onsuccess="onSignIn"></div>
+         <br>
       <form action="../scripts/login.php" method="post">
         <div class="container">
           <label for="user"><b>Username</b></label><br>
