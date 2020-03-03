@@ -18,12 +18,6 @@
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
   <script>
-    function signOut(){
-      var auth2 = gapi.auth2.getAuthInstance();
-      auth2.signOut().then(function () {
-        document.href = document.location.origin + "/acc/scripts/logout.php";
-      });
-    }
     function onLoad() {
       gapi.load('auth2', function() {
         gapi.auth2.init();
@@ -35,7 +29,7 @@
     Are you sure you want to log out?
     <br><br><br>
    
-      <button onclick="signOut();">Log Out</button>
+      <button onclick="var auth2 = gapi.auth2.getAuthInstance(); auth2.signOut().then(function({document.href = document.location.origin + '/acc/scripts/logout.php';});">Log Out</button>
   <br><br>
     <button class="red" onclick="history.go(-1)">Go Back</button>
   </center>
