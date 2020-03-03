@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/form.css">
     <meta charset="utf-8">
+    <script src="https://apis.google.com/js/platform.js" async defer></script><meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+    
     <title>Login - DPWT</title>
   </head>
   <body>
@@ -56,6 +58,7 @@
       }
     }
    ?>
+         <br><br><br>
       <form action="../scripts/login.php" method="post">
         <div class="container">
           <label for="user"><b>Username</b></label><br>
