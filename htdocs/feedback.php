@@ -38,6 +38,14 @@
   ?>
       <br><br> 
        <center>
+       <div id="consent" class="modal">
+      <div class="modal-content">
+        <p><b>Please note that misuse of the feedback form may result in you no longer being able to submit feedback. By pressing Agree, you agree to not misuse the feedback form.</b></p>
+        <button style="float:left;" onclick="consentAgree();">Agree</button> 
+        <button style="float:right;" class="red" onclick="window.location=window.location.origin;">Decline</button>
+        <p>&nbsp</p>
+      </div>
+    </div>
          <!-- SPLITTER -->
       <h1>Submit Feedback</h1><br><h3>Please submit issues, suggestions, or other feedback here.</h3>
       <br><br>
@@ -52,7 +60,7 @@
       }
     }
    ?>
-      <form action="./scripts/feedback.script.php" method="post">
+      <form action="./scripts/feedback.script.php" method="post" id="realForm">
         <div class="container">
           <label for="name"><b>Name</b></label><br>
           <input type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
@@ -67,21 +75,13 @@
           <button type="submit" name="feedback-submit">Submit</button>
       </form>
     <br>
-        <!-- Consent Form -->
-    <div id="consent" class="modal">
-      <div class="modal-content">
-        <p><b>Please note that misuse of the feedback form may result in you no longer being able to submit feedback. By pressing Agree, you agree to not misuse the feedback form.</b></p>
-        <button style="float:left;" onclick="consentAgree();">Agree</button> 
-        <button style="float:right;" class="red" onclick="window.location=window.location.origin;">Decline</button>
-        <p>&nbsp</p>
-      </div>
-    </div>
   </center>
          
-         <script>
-         window.onload = function() {
-           if(localStorage.getItem("abuseAgreed") != "true"){
-             consent.style.display = "block";
+          <script>
+          window.onload = function() {
+            if(localStorage.getItem("abuseAgreed") != "true"){
+              document.getElementById().innerHTML="";
+              consent.style.display = "block";
             }
           }
           function consentAgree(){
