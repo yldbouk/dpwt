@@ -7,6 +7,27 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/form.css">
+    <style>
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        left: 0;
+        top: 0;
+        width: 100%; 
+        height: 100%; 
+        overflow: auto; 
+        background-color: rgb(0,0,0); 
+        background-color: rgba(0,0,0,0.4); 
+      }
+     .modal-content {
+       background-color: #fefefe;
+       margin: 15% auto; 
+       padding: 20px;
+       border: 1px solid #888;
+       width: 80%;
+}
+    </style>
     <meta charset="utf-8">
     <title>Feedback - DPWT</title>
   </head>
@@ -46,7 +67,28 @@
           <button type="submit" name="feedback-submit">Submit</button>
       </form>
     <br>
-    </center>
+        <!-- Consent Form -->
+    <div id="consent" class="modal">
+      <div class="modal-content">
+        <p><b>Please note that misuse of the feedback form may result in you no longer being able to submit feedback. By pressing Agree, you agree to not misuse the feedback form.</b></p>
+        <button style="float:left;" onclick="consentAgree();">Agree</button> 
+        <button style="float:right;" class="red" onclick="window.location=window.location.origin;">Decline</button>
+        <p>&nbsp</p>
+      </div>
+    </div>
+  </center>
+         
+         <script>
+         window.onload = function() {
+           if(localStorage.getItem("abuseAgreed") != "true"){
+             consent.style.display = "block";
+            }
+          }
+          function consentAgree(){
+            localStorage.setItem("abuseAgreed", "true");
+            window.location.reload();
+          }
+         </script>
   
     <?php 
       require $_SERVER['DOCUMENT_ROOT']."/footer.php";

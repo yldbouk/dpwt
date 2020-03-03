@@ -12,6 +12,7 @@ locale/*
 mailoutput/*
 mailtodisk/*
 MercuryMail/*
+phpmyadmin/*
 mysql/*
 perl/*
 php/*
