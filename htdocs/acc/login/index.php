@@ -45,6 +45,8 @@
         echo '<h4>You have successfully changed your password! Please login again.</h4>';
       } elseif ($_GET['result'] == "noperms") {
         echo '<h4>Your request for access has been reviewed and denied. If you believe this is a mistake, please try to contact us.</h4>';
+      } elseif ($_GET['result'] == "gauth") {
+        echo '<h4>Please log in with Google.</h4>';
       } elseif ($_GET['result'] == "revoke") {
         echo '<h4>Your access has been revoked. If you believe this is a mistake, please try to contact us.</h4>';
       } elseif ($_GET['result'] == "change") {
