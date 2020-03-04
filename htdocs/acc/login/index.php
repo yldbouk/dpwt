@@ -76,19 +76,14 @@
     </center>
     <script>
       function onSignIn(googleUser) {
-        var profile = googleUser.getBasicProfile();
-        console.log('Name: ' + profile.getName());
-        console.log('Image URL: ' + profile.getImageUrl());
-        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
         var id_token = googleUser.getAuthResponse().id_token;
-
         var xhr = new XMLHttpRequest();
         xhr.open('POST', document.location.origin+'/acc/scripts/gauth.php');
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
         xhr.onload = function() {
           console.log('Signed in as: ' + xhr.responseText);
         };
-        xhr.send('idtoken=' + id_token);
+        xhr.send('auth_token=' + id_token);
       }
     </script>
     <?php 
