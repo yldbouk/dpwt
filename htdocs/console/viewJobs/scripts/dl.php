@@ -18,13 +18,11 @@ if (isset($_SESSION["userUid"])) {
       if (!$row = mysqli_fetch_assoc($result)) {
         die("There was an error. The most likely possibility is that the job doesn't exist.");
       } else {
-        $DL_jobOwner = $row['createdBy'];
+        $owner = $row['createdBy'];
         $jobStatus = $row['jobStatus'];
         if ($jobStatus == "purge") die("The job with id ".$id." is purged. (".$jobStatus.")");
         else {
-
           if ($row["createdBy"] == $_SESSION['userName'] || $_SESSION["permsUsers"] == "admin" || $_SESSION["permsUsers"] == "developer") {
-
             if (file_exists("../uploads/".$id."/".$id.".stl")) {
               $extension = ".STL";
             }
@@ -32,6 +30,24 @@ if (isset($_SESSION["userUid"])) {
               $extension = ".OBJ";
 
             } else die("Job has no viewable files.");
+            $ok = 0;
+    $file = "../../uploads/".$id."/".$id.$extension;
+  if (!file_exists($file)) {
+    $ok = 0;
+    die("The file you are trying to access doesn't exist. Check the file format in your URL.");
+  } 
+     
+  if ($_SESSION['permsUsers'] == "admin" || $_SESSION['permsUsers'] == "developer") {
+      $ok = 1;
+   } elseif ($_SESSION['userUid'] == $owner) {
+      $ok = 1;
+   } else $ok = 0;
+   
+   if ($ok == 1){
+     unset($_SESSION['view3d_jobOwner']);
+    readfile($file);
+  } else die("An authorization error has occured. You do not have permission.");
+
 
           } else die("Job Creator does not match current user or does not have sufficient permissions to view jobs.");
         }
