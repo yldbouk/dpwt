@@ -63,7 +63,8 @@
          <br>
          <div class="g-signin2" data-onsuccess="onSignIn"></div>
          <br>
-      <form id="loginForm" action="../scripts/login.php" method="post">
+         <div id="loginFormContainer">
+        <form action="../scripts/login.php" method="post">
         <div class="container">
           <label for="user"><b>Username</b></label><br>
           <input type="text" placeholder="Enter Username" name="uname" required>
@@ -72,18 +73,15 @@
           <input type="password" placeholder="Enter Password" name="psw" required>
                
           <button type="submit" name="login-submit">Login</button>
-  </div>
+        </div>
         </form>
+  </div>
     <br>
-    No Account? Request Access <a href="../request">Here</a>
     </center>
     <script>
       function onSignIn(googleUser) {
-        var id_token = googleUser.getAuthResponse().id_token;
-        var form = document.getElementById('loginForm');
-        form.style="visibility:hidden;";
-        form.innerHTML=`<form id="loginForm" action="../scripts/gauth.php" method="post"><input type="password" value="`+id_token+`" name="auth_token"></form>`;
-        form.submit();
+        document.getElementById('loginFormContainer').innerHTML=`<form id="oAuthLoginForm" action="../scripts/gauth.php" method="post"><input type="password" value="`+googleUser.getAuthResponse().id_token+`" name="auth_token"></form>`;
+        document.getElementById('oAuthLoginForm').submit();
      }
     </script>
     <?php 
