@@ -52,8 +52,8 @@ if(!isset($_SESSION['userUid'])){echo '<script>window.location.href=window.locat
           <b>Email</b><br>
           <input style ="text-align: center;" type="text" value="<?php echo $_SESSION['userMail']; ?>" readonly>
             <br>
-          <b>Password</b><br>
-         <?php if($passwordAccount) echo '<a href="changepwd">Change Password</a>'; ?>
+         
+         <?php if($passwordAccount) echo '<b>Password</b><br><a href="changepwd">Change Password</a>'; ?>
     <br>
  </div>
     <?php 
