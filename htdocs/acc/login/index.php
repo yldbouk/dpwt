@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/form.css">
     <meta charset="utf-8">
-  <?php if (!isset($_GET['result'])) echo '<script src="https://apis.google.com/js/platform.js" async defer></script>';
+  <?php if (!isset($_GET['result'])) echo '<script src="https://apis.google.com/js/platform.js" async defer></script>'; ?>
     <meta name="google-signin-client_id" content="944575927528-hs8dm7ogbn804qksdffdq3dk9uletued.apps.googleusercontent.com">
     
     <title>Login - DPWT</title>
