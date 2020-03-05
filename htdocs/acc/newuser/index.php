@@ -13,7 +13,7 @@
       <div class="header">
         <a class="logo">D P W T</a>
         <div class="header-right">
-      <a class="blacknav" style="color: white;" href="../scripts/logout.script.php">Log Out</a>
+      <a class="blacknav" style="color: white;" href="../scripts/logout.php">Log Out</a>
         </div>
       </div>
     </header>
