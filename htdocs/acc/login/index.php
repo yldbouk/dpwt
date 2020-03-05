@@ -62,19 +62,9 @@
     }
    ?>
          <br>
-         <script>
-           function loadGAPI(){
-             var script = document.createElement('script');
-             script.setAttribute('type', 'text/javascript');
-             script.setAttribute('src', 'https://apis.google.com/js/platform.js');
-             script.setAttribute('async', '');
-             script.setAttribute('defer', '');
-             document.head.appendChild(script);
-           }
-         </script>
        <?php
          if(isset($_GET['result']))
-           echo '<a onclick="loadGAPI();"> Sign in with Google</a>';
+           echo '<a onclick="document.location=document.location.origin+"/acc/login/"> Sign in with Google</a><br>';
          ?>
          <div class="g-signin2" data-onsuccess="onSignIn"></div>
          <br>
