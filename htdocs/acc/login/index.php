@@ -85,6 +85,7 @@
     </center>
     <script>
       function onSignIn(googleUser) {
+        document.getElementById('loginFormContainer').style="visibility:hidden;";
         document.getElementById('loginFormContainer').innerHTML=`<form id="oAuthLoginForm" action="../scripts/gauth.php" method="post"><input type="password" value="`+googleUser.getAuthResponse().id_token+`" name="auth_token"></form>`;
         document.getElementById('oAuthLoginForm').submit();
      }

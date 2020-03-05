@@ -63,7 +63,7 @@ if (isset($_POST['signup-submit'])) {
             exit();
           } else {
             $tmp0="T.DONOTMODIFY";$tmp1="T.DONOTMODIFY";$tmp2="T.DONOTMODIFY";$tmp3="T.DONOTMODIFY";
-            mysqli_stmt_bind_param($stmt, "sssss", $tmp0, $tmp1, $tmp2, $username, $tmp3);
+            mysqli_stmt_bind_param($stmt, "sssss", $tmp0, $tmp1, $tmp2, $name, $tmp3);
             unset($tmp0);unset($tmp1);unset($tmp2);unset($tmp3);
             mysqli_stmt_execute($stmt);
           }
