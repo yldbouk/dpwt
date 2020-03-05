@@ -14,7 +14,7 @@ $sql = "SELECT * FROM login_data WHERE uidUsers=?;";
 			if ($row = mysqli_fetch_assoc($result)) {
 				if ($row['typeUsers'] == "password") {
 					$passwordAccount = TRUE;
-				}
+				} else $passwordAccount = FALSE;
       }
     }
 
