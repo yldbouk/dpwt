@@ -1,6 +1,7 @@
 <?php
   session_start();
-  $needsAcc=TRUE;
+  //use special $needsacc to not redirect to a perms error
+if(!isset($_SESSION['userUid'])){echo '<script>window.location.href=window.location.origin + "/acc/login";</script>';}
   ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
