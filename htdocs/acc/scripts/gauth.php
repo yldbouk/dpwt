@@ -10,8 +10,8 @@ if (isset($_POST['auth_token'])) {
     $email = $GAuthResponse['email'];
     $domain = $GAuthResponse['hd'];
 
-   // if($domain != "lakelandk12.org")
-   //   die('Account Domain does not match requirements. Make an account with a username and password instead.');
+    if($domain != "lakelandk12.org")
+      die('Account Domain does not match requirements. Make an account with a username and password instead.');
 
     $sql = "SELECT uidUsers FROM login_data WHERE uidUsers=?";
     $stmt = mysqli_stmt_init($conn);
@@ -76,7 +76,7 @@ if (isset($_POST['auth_token'])) {
           $type = "gauth";
           $permissions = "default";
 
-          mysqli_stmt_bind_param($stmt, "sssss", $username, $name, $email, $hashpwd, $type, $permissions);
+          mysqli_stmt_bind_param($stmt, "ssssss", $username, $name, $email, $hashpwd, $type, $permissions);
           mysqli_stmt_execute($stmt);
           
           $sql = "INSERT INTO job_data (jobName, reason, jobStatus, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?)";

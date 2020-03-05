@@ -54,7 +54,7 @@ if (isset($_POST['signup-submit'])) {
         } else {
           $hashpwd = password_hash($password, PASSWORD_DEFAULT);
           $password = "password";
-          mysqli_stmt_bind_param($stmt, "sssss", $username, $name, $email, $hashpwd, $password, $permissions);
+          mysqli_stmt_bind_param($stmt, "ssssss", $username, $name, $email, $hashpwd, $password, $permissions);
           mysqli_stmt_execute($stmt);
           
           $sql = "INSERT INTO job_data (jobName, reason, jobStatus, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?)";
