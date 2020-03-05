@@ -64,7 +64,7 @@
          <br>
        <?php
          if(isset($_GET['result']))
-           echo '<a href=document.location.origin+"/acc/login/"> Sign in with Google</a><br>';
+           echo '<a href="../"> Sign in with Google</a><br>';
          ?>
          <div class="g-signin2" data-onsuccess="onSignIn"></div>
          <br>
