@@ -58,11 +58,15 @@
       } else {
         echo '<h4>An unknown error occured. Please try again.</h4>';
       }
-   echo "<script>var auth2 = gapi.auth2.getAuthInstance(); auth2.signOut().then(function () {});</script>";
     }
    ?>
          <br>
-         <div class="g-signin2" data-onsuccess="onSignIn"></div>
+       <?php
+         if(isset($_GET['result']))
+           echo '<a onclick="document.location=document.location.origin+"/acc/login/"> Sign in with Google</a>';
+         else
+         echo '<div class="g-signin2" data-onsuccess="onSignIn"></div>';   
+         ?>
          <br>
          <div id="loginFormContainer">
         <form action="../scripts/login.php" method="post">
