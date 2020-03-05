@@ -1,4 +1,24 @@
-<?php session_start(); $needsAcc=TRUE;?>
+<?php session_start(); 
+
+require "../../scripts/handledb.script.php";
+$sql = "SELECT * FROM login_data WHERE uidUsers=?;";
+		$stmt = mysqli_stmt_init($conn);
+		if (!mysqli_stmt_prepare($stmt, $sql)) {
+			header("Location: ../login/index.php?result=sqlerror");
+			exit();
+		} else {
+			mysqli_stmt_bind_param($stmt, "s", $_SESSION["userUid"]);
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+			if ($row = mysqli_fetch_assoc($result)) {
+				if ($row['typeUsers'] != "password") {
+					header("Location: ../");
+          exit();
+				}
+      }
+    }
+
+$needsAcc=TRUE;?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
