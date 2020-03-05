@@ -150,9 +150,12 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
             if($perms == "deleted" || $perms == "developer" || $perms == "admin") {} else {
               $changePerms = TRUE; $resetPwd = TRUE; $delUser = TRUE; 
             }
-            if($perms == "awaitingAction"){
+            if($perms == "awaitingAction")
               $givePerms = TRUE; $denyPerms = TRUE; $changePerms = FALSE;
-            }
+            if($type == "password")
+              $resetPwd = FALSE;
+            
+                   
               if($changePerms) echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editperms();"><b><i>Change Permissions</i></b></button>|';
               if($givePerms) echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editperms();"><b><i>Give Permissions</i></b></button>|';
               if($denyPerms) echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-deny"><b><i>Deny</i></b></button>|';
