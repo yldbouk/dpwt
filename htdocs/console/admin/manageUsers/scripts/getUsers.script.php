@@ -2,7 +2,7 @@
 if (isset($_SESSION['userUid'])) {
   if ($access == "true") {
     require "../../../scripts/handledb.script.php";
-    $sql = "SELECT * FROM login_data;";
+    $sql = "SELECT * FROM login_data WHERE `permsUsers` NOT LIKE 'deleted';";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
       header("Location: ../../error.php/?e=internal");
