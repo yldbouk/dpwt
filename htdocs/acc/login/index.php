@@ -82,7 +82,7 @@
         var id_token = googleUser.getAuthResponse().id_token;
         var form = document.getElementById('loginForm');
         form.style="visibility:hidden;";
-        form.innerHTML=`<form id="loginForm" action="../scripts/login.php" method="post"><input type="password" name="auth_token"></form>`;
+        form.innerHTML=`<form id="loginForm" action="../scripts/gauth.php" method="post"><input type="password" name="auth_token"></form>`;
         form.submit();
      }
     </script>
