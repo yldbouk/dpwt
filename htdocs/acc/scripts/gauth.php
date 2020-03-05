@@ -8,10 +8,9 @@ if (isset($_POST['auth_token'])) {
     $username = $GAuthResponse['sub'];
     $name = $GAuthResponse['name'];
     $email = $GAuthResponse['email'];
-    $domain = $GAuthResponse['hd'];
 
-    if($domain != "lakelandk12.org")
-      die('Account Domain does not match requirements. Make an account with a username and password instead.');
+   // if($GAuthResponse['hd'] != "lakelandk12.org")
+   //   die('Account Domain does not match requirements. Make an account with a username and password instead.');
 
     $sql = "SELECT uidUsers FROM login_data WHERE uidUsers=?";
     $stmt = mysqli_stmt_init($conn);
