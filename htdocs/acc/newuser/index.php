@@ -1,4 +1,24 @@
-<?php session_start(); $needsAcc=TRUE; $forcePwdReset=FALSE;?>
+<?php session_start(); 
+
+//check if user is a gauth account. If so, do not allow access to page.
+require "../../scripts/handledb.script.php";
+$sql = "SELECT * FROM login_data WHERE uidUsers=?;";
+		$stmt = mysqli_stmt_init($conn);
+		if (!mysqli_stmt_prepare($stmt, $sql)) {
+			header("Location: ../login/index.php?result=sqlerror");
+			exit();
+		} else {
+			mysqli_stmt_bind_param($stmt, "s", $_SESSION["userUid"]);
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+			if ($row = mysqli_fetch_assoc($result)) {
+				if ($row['typeUsers'] != "password") {
+					die("A user authenticated with Google can not change their password.");
+				}
+      }
+    }
+
+$needsAcc=TRUE; $forcePwdReset=FALSE;?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
