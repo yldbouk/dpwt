@@ -33,6 +33,7 @@ if (isset($_SESSION['userUid'])) {
           $username = $row['uidUsers'];
           $email = $row['emailUsers'];
           $perms = $row['permsUsers'];
+          $type = $row['typeUsers'];
         }
       }}
   
