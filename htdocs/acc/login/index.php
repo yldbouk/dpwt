@@ -58,7 +58,7 @@
       } else {
         echo '<h4>An unknown error occured. Please try again.</h4>';
       }
-   echo "<script>var auth2 = gapi.auth2.getAuthInstance(); auth2.signOut().then(function () {});</script>"
+   echo "<script>var auth2 = gapi.auth2.getAuthInstance(); auth2.signOut().then(function () {});</script>";
     }
    ?>
          <br>
