@@ -49,6 +49,8 @@
         echo '<h4>Please log in with Google.</h4>';
       } elseif ($_GET['result'] == "revoke") {
         echo '<h4>Your access has been revoked. If you believe this is a mistake, please try to contact us.</h4>';
+      } elseif ($_GET['result'] == "badauthtoken") {
+        echo '<h4>Google cound not verify you. Please try again.</h4>';
       } elseif ($_GET['result'] == "change") {
         echo '<h4>Sorry, but your account has been changed. Please sign in again.</h4>';
       } elseif ($_GET['result'] == "accdel") {
@@ -61,7 +63,7 @@
          <br>
          <div class="g-signin2" data-onsuccess="onSignIn"></div>
          <br>
-      <form action="../scripts/login.php" method="post">
+      <form id="loginForm" action="../scripts/login.php" method="post">
         <div class="container">
           <label for="user"><b>Username</b></label><br>
           <input type="text" placeholder="Enter Username" name="uname" required>
@@ -70,21 +72,19 @@
           <input type="password" placeholder="Enter Password" name="psw" required>
                
           <button type="submit" name="login-submit">Login</button>
-      </form>
+  </div>
+        </form>
     <br>
     No Account? Request Access <a href="../request">Here</a>
     </center>
     <script>
       function onSignIn(googleUser) {
         var id_token = googleUser.getAuthResponse().id_token;
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', document.location.origin+'/acc/scripts/gauth.php');
-        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-        xhr.onload = function() {
-          console.log('Signed in as: ' + xhr.responseText);
-        };
-        xhr.send('auth_token=' + id_token);
-      }
+        var form = document.getElementById('loginForm');
+        form.style="visibility:hidden;";
+        form.innerHTML=`<form id="loginForm" action="../scripts/login.php" method="post"><input type="password" name="auth_token"></form>`;
+        form.submit();
+     }
     </script>
     <?php 
       require "../../footer.php";
