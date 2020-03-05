@@ -1,6 +1,27 @@
 <?php
   session_start();
-  $needsAcc=TRUE;
+  //Check for OAuth Account
+require "../scripts/handledb.script.php";
+$sql = "SELECT * FROM login_data WHERE uidUsers=?;";
+		$stmt = mysqli_stmt_init($conn);
+		if (!mysqli_stmt_prepare($stmt, $sql)) {
+			header("Location: ../login/index.php?result=sqlerror");
+			exit();
+		} else {
+			mysqli_stmt_bind_param($stmt, "s", $_SESSION["userUid"]);
+			mysqli_stmt_execute($stmt);
+			$result = mysqli_stmt_get_result($stmt);
+			if ($row = mysqli_fetch_assoc($result)) {
+				if ($row['typeUsers'] == "password") {
+					$passwordAccount = TRUE;
+				} else $passwordAccount = FALSE;
+      }
+    }
+
+
+
+  //use special $needsacc to not redirect to a perms error
+if(!isset($_SESSION['userUid'])){echo '<script>window.location.href=window.location.origin + "/acc/login";</script>';}
   ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -31,8 +52,8 @@
           <b>Email</b><br>
           <input style ="text-align: center;" type="text" value="<?php echo $_SESSION['userMail']; ?>" readonly>
             <br>
-          <b>Password</b><br>
-          <a href="changepwd">Change Password</a>
+         
+         <?php if($passwordAccount) echo '<b>Password</b><br><a href="changepwd">Change Password</a>'; ?>
     <br>
  </div>
     <?php 
