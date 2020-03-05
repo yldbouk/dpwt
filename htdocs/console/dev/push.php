@@ -1,4 +1,6 @@
 <?php
 
-shell_exec('cd /opt/lampp && git reset --hard HEAD && git pull');
-shell_exec('cd /opt/lampp/htdocs/extras && git reset --hard HEAD && git pull');
+exec('cd /opt/lampp/lampp && git reset --hard && git pull 2>&1', $output);
+            print_r($output);  
+exec('cd /opt/lampp/lampp/htdocs/extras && git reset --hard && git pull 2>&1', $output);
+            print_r($output);  
