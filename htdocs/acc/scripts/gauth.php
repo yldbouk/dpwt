@@ -2,7 +2,7 @@
 if (isset($_POST['auth_token'])) {
   require "../../scripts/handledb.script.php";
   $GAuthResponseJSON = file_get_contents("https://oauth2.googleapis.com/tokeninfo?id_token=".$_POST['auth_token']);
-  $GAuthResponse = json_decode($GAuthResponseJSON);
+  $GAuthResponse = json_decode($GAuthResponseJSON, true);
   if($GAuthResponse['aud'] == "944575927528-hs8dm7ogbn804qksdffdq3dk9uletued.apps.googleusercontent.com"){
    
     $username = $GAuthResponse['sub'];
