@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/form.css">
     <meta charset="utf-8">
-    <script src="https://apis.google.com/js/platform.js" async defer></script><meta name="google-signin-client_id" content="944575927528-hs8dm7ogbn804qksdffdq3dk9uletued.apps.googleusercontent.com">
+  <?php if (!isset($_GET['result'])) echo '<script src="https://apis.google.com/js/platform.js" async defer></script>';
+    <meta name="google-signin-client_id" content="944575927528-hs8dm7ogbn804qksdffdq3dk9uletued.apps.googleusercontent.com">
     
     <title>Login - DPWT</title>
   </head>
@@ -61,12 +62,21 @@
     }
    ?>
          <br>
+         <script>
+           function loadGAPI(){
+             var script = document.createElement('script');
+             script.setAttribute('type', 'text/javascript');
+             script.setAttribute('src', 'https://apis.google.com/js/platform.js');
+             script.setAttribute('async', '');
+             script.setAttribute('defer', '');
+             document.head.appendChild(script);
+           }
+         </script>
        <?php
          if(isset($_GET['result']))
-           echo '<a onclick="document.location=document.location.origin+"/acc/login/"> Sign in with Google</a>';
-         else
-         echo '<div class="g-signin2" data-onsuccess="onSignIn"></div>';   
+           echo '<a onclick="loadGAPI();"> Sign in with Google</a>';
          ?>
+         <div class="g-signin2" data-onsuccess="onSignIn"></div>
          <br>
          <div id="loginFormContainer">
         <form action="../scripts/login.php" method="post">
