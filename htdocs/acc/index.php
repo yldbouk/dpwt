@@ -1,7 +1,7 @@
 <?php
   session_start();
   //Check for OAuth Account
-require "../../scripts/handledb.script.php";
+require "../scripts/handledb.script.php";
 $sql = "SELECT * FROM login_data WHERE uidUsers=?;";
 		$stmt = mysqli_stmt_init($conn);
 		if (!mysqli_stmt_prepare($stmt, $sql)) {
