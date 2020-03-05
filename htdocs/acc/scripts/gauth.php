@@ -10,6 +10,9 @@ if (isset($_POST['auth_token'])) {
     $email = $GAuthResponse['email'];
     $domain = $GAuthResponse['hd'];
 
+    if($domain != "lakelandk12.org")
+      die('Account Domain does not match requirements. Make an account with a username and password instead.');
+
     $sql = "SELECT uidUsers FROM login_data WHERE uidUsers=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
@@ -71,11 +74,7 @@ if (isset($_POST['auth_token'])) {
         } else {
           $hashpwd = "Account is using OAuth. No Password is nessasary.";
           $type = "gauth";
-          //Check domain
-          if($domain === "lakelandk12.org")
-            $permissions = "default";
-          else
-            $permissions = "awaitingAction";
+          $permissions = "default";
 
           mysqli_stmt_bind_param($stmt, "sssss", $username, $name, $email, $hashpwd, $type, $permissions);
           mysqli_stmt_execute($stmt);
