@@ -36,6 +36,7 @@ require "scripts/getJobs.script.php";
             <th>Job Name</th>
             <th>Reason For Print</th>
             <th>Date Requested</th>
+            <th>Requested Color</th>
             <th>Current Status</th>
             <th>Requestor</th>
             <th>Reviewed By</th>
@@ -73,6 +74,7 @@ require "scripts/getJobs.script.php";
                     <td>".$row["jobName"]."</td>
                     <td><i><a onclick='alert(`".$row["reason"]."`)'>View</a></i></td>
                     <td><i><a onclick='alert(`".$row["date"]."`)'>View</a></i></td>
+                    <td>".$row["color"]."</td>
                     <td>".$jobStatus."</td>
                     <td>".$row["createdBy"]."</td>
                     <td>".$row["reviewedBy"]."</td>
@@ -120,6 +122,7 @@ require "scripts/getJobs.script.php";
                   <th>Job Name</th>
                   <th>Reason For Print</th>
                   <th>Date Requested</th>
+                  <th>Requested Color</th>
                   <th>Current Status</th>
                   <th>Requestor</th>
                   <th>Reviewed By</th>
@@ -135,6 +138,7 @@ require "scripts/getJobs.script.php";
                       <td>".$name0."</td>
                       <td><i><a onclick='alert(`".$reason0."`)'>View</a></i></td>
                       <td><i><a onclick='alert(`".$date0."`)'>View</a></i></td>
+                      <td>".$color0."</td>
                       <td>".$status0."</td>
                       <td>".$requestor0."</td>
                       <td>".$reviewedBy0."</td>
