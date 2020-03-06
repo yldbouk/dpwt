@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="/css/header.css">
     <link rel="stylesheet" href="/css/form.css">
     <meta charset="utf-8">
+  <?php if (!isset($_GET['result'])) echo '<script src="https://apis.google.com/js/platform.js" async defer></script>'; ?>
+    <meta name="google-signin-client_id" content="944575927528-hs8dm7ogbn804qksdffdq3dk9uletued.apps.googleusercontent.com">
+    
     <title>Login - DPWT</title>
   </head>
   <body>
@@ -18,11 +21,9 @@
     $loginActive = TRUE;
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
-      <br><br> 
        <center>
          <!-- SPLITTER -->
       <h1>Log In</h1><br><h3>Welcome Back, you can log in here.</h3>
-      <br><br>
    <?php 
     if (isset($_GET['result'])) {
       if ($_GET['result'] == "incomplete") {
@@ -45,8 +46,12 @@
         echo '<h4>You have successfully changed your password! Please login again.</h4>';
       } elseif ($_GET['result'] == "noperms") {
         echo '<h4>Your request for access has been reviewed and denied. If you believe this is a mistake, please try to contact us.</h4>';
+      } elseif ($_GET['result'] == "gauth") {
+        echo '<h4>Please log in with Google.</h4>';
       } elseif ($_GET['result'] == "revoke") {
         echo '<h4>Your access has been revoked. If you believe this is a mistake, please try to contact us.</h4>';
+      } elseif ($_GET['result'] == "badauthtoken") {
+        echo '<h4>Google cound not verify you. Please try again.</h4>';
       } elseif ($_GET['result'] == "change") {
         echo '<h4>Sorry, but your account has been changed. Please sign in again.</h4>';
       } elseif ($_GET['result'] == "accdel") {
@@ -56,7 +61,15 @@
       }
     }
    ?>
-      <form action="../scripts/login.php" method="post">
+         <br>
+       <?php
+         if(isset($_GET['result']))
+           echo '<a href="../"> Sign in with Google</a><br>';
+         ?>
+         <div class="g-signin2" data-onsuccess="onSignIn"></div>
+         <br>
+         <div id="loginFormContainer">
+        <form action="../scripts/login.php" method="post">
         <div class="container">
           <label for="user"><b>Username</b></label><br>
           <input type="text" placeholder="Enter Username" name="uname" required>
@@ -65,16 +78,21 @@
           <input type="password" placeholder="Enter Password" name="psw" required>
                
           <button type="submit" name="login-submit">Login</button>
-      </form>
+        </div>
+        </form>
+  </div>
     <br>
-    No Account? Request Access <a href="../request">Here</a>
     </center>
-  
+    <script>
+      function onSignIn(googleUser) {
+        document.getElementById('loginFormContainer').style="visibility:hidden;";
+        document.getElementById('loginFormContainer').innerHTML=`<form id="oAuthLoginForm" action="../scripts/gauth.php" method="post"><input type="password" value="`+googleUser.getAuthResponse().id_token+`" name="auth_token"></form>`;
+        document.getElementById('oAuthLoginForm').submit();
+     }
+    </script>
     <?php 
       require "../../footer.php";
     ?>
-  
-  
   </body>
 </html>
 

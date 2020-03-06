@@ -153,10 +153,12 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
             if($perms == "awaitingAction"){
               $givePerms = TRUE; $denyPerms = TRUE; $changePerms = FALSE;
             }
+                   
               if($changePerms) echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editperms();"><b><i>Change Permissions</i></b></button>|';
               if($givePerms) echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editperms();"><b><i>Give Permissions</i></b></button>|';
               if($denyPerms) echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-deny"><b><i>Deny</i></b></button>|';
-              if($resetPwd) echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="resetpwd();"><b><i>Reset Password</i></b></button>|';
+              if($resetPwd && $type == "password") echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="resetpwd();"><b><i>Reset Password</i></b></button>|';
+              if($type != "password" && $perms != "deleted") echo '|<button style="background:none!important;color:#f98b81;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:not-allowed;"type="button"onclick="alert(`Account is authenticated through Google.`);"><b><i>Reset Password</i></b></button>|';
               if($delUser) echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:not-allowed;"type="button"onclick="editdelete();"><b><i>Delete User</i></b></button>|';
               
             ?>

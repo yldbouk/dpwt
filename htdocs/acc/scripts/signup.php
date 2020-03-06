@@ -46,14 +46,15 @@ if (isset($_POST['signup-submit'])) {
         header("Location: ../request/index.php?result=usertaken&email=".$email);
         exit();
       } else {
-        $sql = "INSERT INTO login_data (uidUsers, nameUsers, emailUsers, pwdUsers, permsUsers) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO login_data (uidUsers, nameUsers, emailUsers, pwdUsers, typeUsers, permsUsers) VALUES (?, ?, ?, ?, ?, ?)";
         $stmt = mysqli_stmt_init($conn);
         if (!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../request/index.php?result=sqlerror");
           exit();
         } else {
           $hashpwd = password_hash($password, PASSWORD_DEFAULT);
-          mysqli_stmt_bind_param($stmt, "sssss", $username, $name, $email, $hashpwd, $permissions);
+          $password = "password";
+          mysqli_stmt_bind_param($stmt, "ssssss", $username, $name, $email, $hashpwd, $password, $permissions);
           mysqli_stmt_execute($stmt);
           
           $sql = "INSERT INTO job_data (jobName, reason, jobStatus, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?)";
@@ -62,7 +63,7 @@ if (isset($_POST['signup-submit'])) {
             exit();
           } else {
             $tmp0="T.DONOTMODIFY";$tmp1="T.DONOTMODIFY";$tmp2="T.DONOTMODIFY";$tmp3="T.DONOTMODIFY";
-            mysqli_stmt_bind_param($stmt, "sssss", $tmp0, $tmp1, $tmp2, $username, $tmp3);
+            mysqli_stmt_bind_param($stmt, "sssss", $tmp0, $tmp1, $tmp2, $name, $tmp3);
             unset($tmp0);unset($tmp1);unset($tmp2);unset($tmp3);
             mysqli_stmt_execute($stmt);
           }
