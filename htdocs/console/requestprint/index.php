@@ -50,9 +50,9 @@ $needsPrinter=TRUE;
             <br>
           <label for="color"><b>Color</b></label><br>
           <select name="color" required>
-            <option value="red">Red</option>
+            <option value="Red">Red</option>
             <option value="Blue">Blue</option>
-            <option value="purple">Purple</option>
+            <option value="Purple">Purple</option>
           </select>
             <br><br>
           <?php 
