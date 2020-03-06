@@ -14,6 +14,9 @@ session_start();
     $homeActive = TRUE;
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
+<video width="1280" height="720" controls>
+  <source src="goot_times.mp4" type="video/mp4">
+</video>
      
     <?php 
       require $_SERVER['DOCUMENT_ROOT']."/footer.php";
