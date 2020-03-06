@@ -21,6 +21,7 @@ if(isset($_SESSION['userUid'])) {
         $status0 = $row['jobStatus'];
         $requestor0 = $row['createdBy'];
         $location0 = $row["location"];
+        $color0 = $row["color"];
         $reviewedBy0 = $row['reviewedBy'];
         $printer0 = $row["whatPrinter"];
        
