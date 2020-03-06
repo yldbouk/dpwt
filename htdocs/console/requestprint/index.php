@@ -13,8 +13,7 @@ $needsPrinter=TRUE;
     <title>Request a Print - DPWT</title>
   </head>
   <body>
-    
-    <<?php
+<?php
     $consoleActive = TRUE;
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
@@ -49,7 +48,7 @@ $needsPrinter=TRUE;
           <label for="reason"><b>Reason</b></label><br>
           <input type="text" placeholder="Why should we allow you to print this?" name="reason" required>
             <br>
-          <label for="color"><b>Color</b></label>
+          <label for="color"><b>Color</b></label><br>
           <select name="color" required>
             <option value="red">Red</option>
             <option value="Blue">Blue</option>
