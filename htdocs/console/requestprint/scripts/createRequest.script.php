@@ -6,6 +6,7 @@ require "../../scripts/handledb.script.php";
  
   $name = $_POST['name'];
   $reason = $_POST['reason'];
+  $color = $_POST['color'];
   $createdBy = $_SESSION['userName'];
       
   if (isset($_POST['autoaccept']) && $_POST['autoaccept'] == 1 ? 1 : 0) {
@@ -16,7 +17,7 @@ require "../../scripts/handledb.script.php";
   
 
 
-  if (empty($name) || empty($reason) || empty($_FILES['stlobj'])){
+  if (empty($name) || empty($reason) || empty($color) || empty($_FILES['stlobj'])){
     header("Location: ../index.php?result=incomplete");
     exit();
   }
@@ -39,12 +40,12 @@ require "../../scripts/handledb.script.php";
         exit();
       } else {
             
-        $sql = "INSERT INTO job_data (jobName, reason, jobStatus, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO job_data (jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?, ?)";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../requestprint/index.php?result=sqlerror");
           exit();
         } else {
-            mysqli_stmt_bind_param($stmt, "sssss", $name, $reason, $status, $createdBy, $_SESSION['friendlyname']);
+            mysqli_stmt_bind_param($stmt, "ssssss", $name, $reason, $status, $color, $createdBy, $_SESSION['friendlyname']);
             mysqli_stmt_execute($stmt);
             $sql = "SELECT * FROM job_data WHERE jobName=?";
             $stmt = mysqli_stmt_init($conn);
