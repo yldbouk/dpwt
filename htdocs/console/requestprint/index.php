@@ -50,7 +50,7 @@ $needsPrinter=TRUE;
           <input type="text" placeholder="Why should we allow you to print this?" name="reason" required>
             <br>
           <label for="color"><b>Color</b></label><br>
-          <select name="reason" required>
+          <select name="color" required>
 		  <option value="red">Red</option>
 		  <option value="Blue">Blue</option>
 		  <option value="purple">Purple</option>
