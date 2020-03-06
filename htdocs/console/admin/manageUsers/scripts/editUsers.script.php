@@ -19,7 +19,7 @@ if (isset($_SESSION['userUid'])) {
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
       if ($row = mysqli_fetch_assoc($result)) {
-        $username = $row['uidUsers'];
+        $username = $row['nameUsers'];
         $sql = "SELECT * FROM job_data WHERE createdBy=?";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../../error.php/?e=internal");
