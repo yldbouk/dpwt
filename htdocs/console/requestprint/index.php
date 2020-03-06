@@ -49,13 +49,13 @@ $needsPrinter=TRUE;
           <label for="reason"><b>Reason</b></label><br>
           <input type="text" placeholder="Why should we allow you to print this?" name="reason" required>
             <br>
-          <label for="color"><b>Color</b></label><br>
+          <label for="color"><b>Color</b></label>
           <select name="color" required>
-		  <option value="red">Red</option>
-		  <option value="Blue">Blue</option>
-		  <option value="purple">Purple</option>
+            <option value="red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="purple">Purple</option>
           </select>
-            <br>
+            <br><br>
           <?php 
             if ($_SESSION['permsUsers'] == "developer" || $_SESSION['permsUsers'] == "admin") {
             echo '
