@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Mar 04, 2020 at 10:59 PM
+-- Generation Time: Mar 06, 2020 at 12:20 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -32,6 +32,7 @@ CREATE TABLE `job_data` (
   `id` int(11) NOT NULL,
   `jobName` tinytext NOT NULL,
   `reason` text NOT NULL,
+  `color` tinytext NOT NULL,
   `date` timestamp NOT NULL DEFAULT current_timestamp(),
   `jobStatus` tinytext NOT NULL,
   `createdBy` tinytext NOT NULL,
@@ -44,9 +45,6 @@ CREATE TABLE `job_data` (
 --
 -- Dumping data for table `job_data`
 --
-
-INSERT INTO `job_data` (`id`, `jobName`, `reason`, `date`, `jobStatus`, `createdBy`, `location`, `reviewedBy`, `fileLocation`, `whatPrinter`) VALUES
-(1, 'T.DONOTMODIFY', 'T.DONOTMODIFY', '2020-02-29 01:26:58', 'T.DONOTMODIFY', 'yldbouk', NULL, NULL, NULL, 'T.DONOTMODIFY');
 
 -- --------------------------------------------------------
 
@@ -64,6 +62,8 @@ CREATE TABLE `login_data` (
   `permsUsers` tinytext NOT NULL,
   `lastUpdated` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `printer_data`
@@ -116,19 +116,19 @@ ALTER TABLE `printer_data`
 -- AUTO_INCREMENT for table `job_data`
 --
 ALTER TABLE `job_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `login_data`
 --
 ALTER TABLE `login_data`
-  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 
 --
 -- AUTO_INCREMENT for table `printer_data`
 --
 ALTER TABLE `printer_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

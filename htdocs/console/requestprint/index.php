@@ -13,8 +13,7 @@ $needsPrinter=TRUE;
     <title>Request a Print - DPWT</title>
   </head>
   <body>
-    
-    <<?php
+<?php
     $consoleActive = TRUE;
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
@@ -49,10 +48,17 @@ $needsPrinter=TRUE;
           <label for="reason"><b>Reason</b></label><br>
           <input type="text" placeholder="Why should we allow you to print this?" name="reason" required>
             <br>
+          <label for="color"><b>Color</b></label><br>
+          <select name="color" required>
+            <option value="Red">Red</option>
+            <option value="Blue">Blue</option>
+            <option value="Purple">Purple</option>
+          </select>
+            <br><br>
           <?php 
             if ($_SESSION['permsUsers'] == "developer" || $_SESSION['permsUsers'] == "admin") {
             echo '
-            <label for="autoaccept"><b>Auto Accept</b></label><br>
+            <label for="autoaccept"><b>Place in Queue</b></label><br>
             <input type="checkbox" name="autoaccept" id="autoaccept" value="1"/><br><br>
             '; //no matter what, it sets as on
             }
