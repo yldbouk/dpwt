@@ -9,8 +9,8 @@ if (isset($_POST['auth_token'])) {
     $name = $GAuthResponse['name'];
     $email = $GAuthResponse['email'];
 
-   // if($GAuthResponse['hd'] != "lakelandk12.org")
-   //   die('Account Domain does not match requirements. Make an account with a username and password instead.');
+    if($GAuthResponse['hd'] != "lakelandk12.org")
+      die('Account Domain does not match requirements. Make an account with a username and password instead.');
 
     $sql = "SELECT uidUsers FROM login_data WHERE uidUsers=?";
     $stmt = mysqli_stmt_init($conn);
@@ -73,7 +73,7 @@ if (isset($_POST['auth_token'])) {
         } else {
           $hashpwd = "Account is using OAuth. No Password is nessasary.";
           $type = "gauth";
-          $permissions = "default";
+          $permissions = "awaitingActions";
 
           mysqli_stmt_bind_param($stmt, "ssssss", $username, $name, $email, $hashpwd, $type, $permissions);
           mysqli_stmt_execute($stmt);
