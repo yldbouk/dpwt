@@ -56,7 +56,9 @@ if (isset($_POST['signup-submit'])) {
           $password = "password";
           mysqli_stmt_bind_param($stmt, "ssssss", $username, $name, $email, $hashpwd, $password, $permissions);
           mysqli_stmt_execute($stmt);
-        }
+          header("Location: ../login/index.php?result=signup");
+          exit();
+        } 
       }
     }
   }
