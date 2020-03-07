@@ -25,6 +25,7 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
   ?>
   <br>
   <center>
+  <a href="./bulk.php">Bulk Change Permissions</a>&nbsp&nbsp&nbsp&nbsp&nbsp
   <a id="showallbtn" onclick="searchall();">Show All Users</a>
   <!-- SPLITTER -->
   <br>
