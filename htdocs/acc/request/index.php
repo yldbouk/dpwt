@@ -15,6 +15,7 @@
       <br><br>
        <center>
          <!-- SPLITTER -->
+         <h1>Request Access</h1>
       <br>
       <?php 
     if (isset($_GET['result'])) {
