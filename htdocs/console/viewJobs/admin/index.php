@@ -177,7 +177,7 @@ require "../scripts/getJobs.script.php";
         document.getElementById("editform").submit();
       }
       function download() {
-        var url = document.location.origin+"/console/scripts/dl.php?id=<?php if(isset($id)) echo $id; ?>";
+        var url = document.location.origin+"/console/viewJobs/scripts/dl.php?id=<?php if(isset($id)) echo $id; ?>";
         window.open(url, '_blank');
       }
       function editpurge() {
