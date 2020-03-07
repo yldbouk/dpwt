@@ -23,15 +23,15 @@ if (isset($_SESSION["userUid"])) {
         if ($jobStatus == "purge") die("The job with id ".$id." is purged. (".$jobStatus.")");
         else {
           if ($row["createdBy"] == $_SESSION['userName'] || $_SESSION["permsUsers"] == "admin" || $_SESSION["permsUsers"] == "developer") {
-            if (file_exists("../uploads/".$id."/".$id.".stl")) {
-              $extension = ".STL";
+            if (file_exists($_SERVER['DOCUMENT_ROOT']."/console/uploads/".$id."/".$id.".stl")) {
+              $extension = ".stl";
             }
-            elseif(file_exists("../uploads/".$id."/".$id.".obj")) {
-              $extension = ".OBJ";
+            elseif(file_exists($_SERVER['DOCUMENT_ROOT']."/console/uploads/".$id."/".$id.".obj")) {
+              $extension = ".obj";
 
             } else die("Job has no viewable files.");
             $ok = 0;
-    $file = "../../uploads/".$id."/".$id.$extension;
+    $file = $_SERVER['DOCUMENT_ROOT']."/console/uploads/".$id."/".$id.$extension;
   if (!file_exists($file)) {
     $ok = 0;
     die("The file you are trying to access doesn't exist. Check the file format in your URL.");
@@ -44,7 +44,21 @@ if (isset($_SESSION["userUid"])) {
    } else $ok = 0;
    
    if ($ok == 1){
-     unset($_SESSION['view3d_jobOwner']);
+
+    $quoted = sprintf('"%s"', addcslashes(basename($file), '"\\'));
+    $size   = filesize($file);
+
+    header('Content-Description: File Transfer');
+    header('Content-Type: application/octet-stream');
+    header('Content-Disposition: attachment; filename=' . $quoted); 
+    header('Content-Transfer-Encoding: binary');
+    header('Connection: Keep-Alive');
+    header('Expires: 0');
+    header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+    header('Pragma: public');
+    header('Content-Length: ' . $size);
+
+
     readfile($file);
   } else die("An authorization error has occured. You do not have permission.");
 
