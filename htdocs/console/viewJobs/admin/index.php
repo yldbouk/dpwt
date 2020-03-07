@@ -157,10 +157,10 @@ require "../scripts/getJobs.script.php";
                 echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-deny"><b><i>Deny Job</i></b></button>|';}
                 if ($status0 == "printing") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editcomplete();"><b><i>Set as Complete</i></b></button>|';
                 if ($status0 == "complete_waiting") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editcomplete();"><b><i>Finish Completion Process</i></b></button>|';
+                if ($status0 != "purge"){ echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="document.location=`/console/view3d/?id='.$id.'`"><b><i>View in 3D</button></i></b></button>|';
+                  echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="download();"><b><i>Download</button></i></b></button>|';}
                 if ($status0 == "complete") echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-redo"><b><i>Redo Job</i></b></button>|';
-                if ($status0 == "purge") {} else echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="document.location=`/console/view3d/?id='.$id.'`"><b><i>View in 3D</button></i></b></button>|';
-                if ($status0 == "purge" || $status0 == "printing" || $status0 == "complete_waiting") {} else echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editpurge();"><b><i>Purge</i></b></button>|';
-                  
+                if ($status0 == "purge" || $status0 == "printing" || $status0 == "complete_waiting") {} else echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editpurge();"><b><i>Purge</i></b></button>|'; 
               ?>
            </form>
           </center>
@@ -175,6 +175,10 @@ require "../scripts/getJobs.script.php";
         var location = prompt("Breifly explain where the finished product is located:");
         document.getElementById("location").value=location;
         document.getElementById("editform").submit();
+      }
+      function download() {
+        var url = document.location.origin+"/console/scripts/dl.php?id=<?php if(isset($id)) echo $id; ?>";
+        window.open(url, '_blank');
       }
       function editpurge() {
         if(confirm('WARNING: YOU ARE ABOUT TO PURGE THIS JOB. THIS WILL DELETE ALL FILES RELATED TO THIS JOB. DO YOU WANT TO CONTINUE?')) {
