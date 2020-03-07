@@ -2,7 +2,7 @@
 
 if (isset($_POST['submitted'])) {
   session_start();
-  require '../../scripts/handledb.script.php';
+  require $_SERVER['DOCUMENT_ROOT'].'/scripts/handledb.script.php';
 
   $startRange = $_POST['rangeStart'];
   $endRange = $_POST['rangeEnd'];
