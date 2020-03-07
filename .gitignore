@@ -65,3 +65,4 @@ uninstall
 xampp
 *.swp
 htdocs/extras/*
+dns.php
