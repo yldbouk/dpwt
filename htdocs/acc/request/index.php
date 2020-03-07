@@ -15,7 +15,6 @@
       <br><br>
        <center>
          <!-- SPLITTER -->
-      <h1>Request Access</h1><h6>If you need access to the Dimensional Printing Web Terminal, you can get it here. Just fill out the form, and you will recieve your access shortly.</h6>
       <br>
       <?php 
     if (isset($_GET['result'])) {

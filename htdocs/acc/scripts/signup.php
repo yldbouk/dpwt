@@ -56,19 +56,6 @@ if (isset($_POST['signup-submit'])) {
           $password = "password";
           mysqli_stmt_bind_param($stmt, "ssssss", $username, $name, $email, $hashpwd, $password, $permissions);
           mysqli_stmt_execute($stmt);
-          
-          $sql = "INSERT INTO job_data (jobName, reason, jobStatus, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?)";
-          if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../requestprint/index.php?result=sqlerror");
-            exit();
-          } else {
-            $tmp0="T.DONOTMODIFY";$tmp1="T.DONOTMODIFY";$tmp2="T.DONOTMODIFY";$tmp3="T.DONOTMODIFY";
-            mysqli_stmt_bind_param($stmt, "sssss", $tmp0, $tmp1, $tmp2, $name, $tmp3);
-            unset($tmp0);unset($tmp1);unset($tmp2);unset($tmp3);
-            mysqli_stmt_execute($stmt);
-          }
-          header("Location: ../login/index.php?result=signup");
-          exit();
         }
       }
     }
