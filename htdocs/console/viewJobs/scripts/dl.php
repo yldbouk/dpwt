@@ -31,7 +31,7 @@ if (isset($_SESSION["userUid"])) {
 
             } else die("Job has no viewable files.");
             $ok = 0;
-    $file = "../../uploads/".$id."/".$id.$extension;
+    $file = $_SERVER['DOCUMENT_ROOT']."/console/uploads/".$id."/".$id.$extension;
   if (!file_exists($file)) {
     $ok = 0;
     die("The file you are trying to access doesn't exist. Check the file format in your URL.");
