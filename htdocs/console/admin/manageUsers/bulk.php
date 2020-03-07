@@ -38,7 +38,7 @@ $needsAdmin=TRUE;
 <form type="post" action="scripts/bulk.php">
 Change the Permission of user IDs <input name="rangeStart" required type="number" /> through <input required name="rangeEnd" type="number" /> to <select name="perms" required><option disabled selected /><option value="default">Default Permissions</option><option value="none">No Permissions</option></select>
 <br><br>
-<button name="submitted" type="submit">Submit</button>
+<button type="submit" name="submitted">Submit</button>
 </form>
 
 
