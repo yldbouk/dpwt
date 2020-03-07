@@ -23,10 +23,10 @@ if (isset($_SESSION["userUid"])) {
         if ($jobStatus == "purge") die("The job with id ".$id." is purged. (".$jobStatus.")");
         else {
           if ($row["createdBy"] == $_SESSION['userName'] || $_SESSION["permsUsers"] == "admin" || $_SESSION["permsUsers"] == "developer") {
-            if (file_exists("../uploads/".$id."/".$id.".stl")) {
+            if (file_exists($_SERVER['DOCUMENT_ROOT']."/console/uploads/".$id."/".$id.".stl")) {
               $extension = ".STL";
             }
-            elseif(file_exists("../uploads/".$id."/".$id.".obj")) {
+            elseif(file_exists($_SERVER['DOCUMENT_ROOT']."/console/uploads/".$id."/".$id.".obj")) {
               $extension = ".OBJ";
 
             } else die("Job has no viewable files.");
