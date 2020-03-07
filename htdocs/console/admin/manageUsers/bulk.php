@@ -28,7 +28,7 @@ $needsAdmin=TRUE;
       elseif ($_GET['result'] == "invalidRange") 
         echo '<h4>The database did not return any users with your supplied range. Please recheck them and try again.</h4>';
       elseif ($_GET['result'] == "unchangeable") 
-        echo '<h4>Please note uses with ID 1-3 are not changeable for security purposes. Please adjust your ranges and try again.</h4>';
+        echo '<h4>Please note users with ID 1-3 are not changeable for security purposes. Please adjust your ranges and try again.</h4>';
       else
         echo '<h4>An unknown error occured. Please try again.</h4>';
     }
