@@ -87,7 +87,7 @@ require "scripts/getJobs.script.php";
             } else {
               echo "
                 <tr>
-                  <td>No Results. This is most likely an error.</td>
+                  <td>No Results. Make a Print!</td>
                 </tr>
               ";
             } ?>
