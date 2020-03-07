@@ -150,9 +150,9 @@ require "../scripts/getJobs.script.php";
            <input id="location" type="text" name="location" style="visibility:hidden;">
            <input id="printing" type="text" name="printing" style="visibility:hidden;">
            <input id="purge" type="text" name="purge" style="visibility:hidden;">
+           <input type="text" name="id" style="visibility:hidden;" value="<?php echo $id; ?>"><br>
            <div id="buttons">
-              <?php  
-                echo '<input type="text" name="id" style="visibility:hidden;" value="'.$id.'"><br>';
+              <?php              
                 if ($status0 == "queue"){ echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-pause"><b><i>Pause Job</i></b></button>|';
                                           echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editOverridePrint();"><b><i>Override to Printing Status</i></b></button>|';}
                   if ($status0 == "pause") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-unpause"><b><i>Unpause Job</i></b></button>|';
