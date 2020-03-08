@@ -31,7 +31,7 @@
 </head>
 
 <body>
-<input onclick="history.go(-1)" type="button" value="<< Back" />
+<input onclick="history.go(-1)" type="button" value="<< Back" /> <p> The 3D Viewer is currently broken. It will be fixed soon.</p>
   <center>
   <script>
       var stl_viewer=new StlViewer(document.getElementById("stl_cont"), { models: [ {id:1, filename:"./openFile.script.php?fileID=<?php echo $id; ?>&extension=<?php echo $extension; ?>"} ] });
