@@ -73,7 +73,7 @@ require "../../scripts/handledb.script.php";
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
             $row = mysqli_fetch_assoc($result);
-            die(strval($row));
+            die(strval(mysqli_insert_id($conn)));
             if($status == "queue"){
               $sql = "UPDATE job_data SET jobQueue = (SELECT MAX(jobQueue) FROM job_data) + 1 WHERE jobName = ?;";
               $stmt = mysqli_stmt_init($conn);
