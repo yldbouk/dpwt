@@ -61,15 +61,12 @@ require "../../scripts/handledb.script.php";
         header("Location: ../index.php?result=existingjob");
         exit();
       } else {
-        if (isset($_POST['autoaccept']) && $_POST['autoaccept'] == 1 ? 1 : 0) {
-          $status = "queue";
-          $sql = "INSERT INTO job_data (jobQueue, jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES (((SELECT MAX(jobQueue) FROM job_data) + 1), ?, ?, ?, ?, ?, ?)";
-        } else {
-           $status = "review";
-           $sql = "INSERT INTO job_data (jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?, ?)";
-        }
+        if (isset($_POST['autoaccept']) && $_POST['autoaccept'] == 1 ? 1 : 0) 
+          $sql = "INSERT INTO job_data SET jobQueue=(SELECT MAX(jobQueue) FROM job_data) + 1, jobName=?, reason=?, jobStatus='queue', color=?, createdBy=?, whatPrinter=?;";
+        else
+          $sql = "INSERT INTO job_data (jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES (?, ?, 'review', ?, ?, ?)";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../requestprint/index.php?result=sqlerror");
+          header("Location: ../index.php?result=sqlerror");
           exit();
         } else {
             mysqli_stmt_bind_param($stmt, "ssssss", $name, $reason, $status, $color, $createdBy, $friendlyName);
