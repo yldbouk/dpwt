@@ -78,7 +78,7 @@ These are used to identify the status of print jobs.
 These are settings for the printers.
 
 - Name (readonly): The name of the printer.
-- Grade (readonly): Restricts printers that are not the same grade as user. (not implemented)
+- ~~Grade (readonly): Restricts printers that are not the same grade as user.~~ removed
 - Filament Color: Color of the filament currently in the printer. Only used for file preview.
 - Locked: Locks the printer so users can not access or create jobs on it.
 
