@@ -5,11 +5,18 @@ if(isset($_POST['feedback-submit'])){
   
   $webhookurl = "https://discordapp.com/api/webhooks/685706427922251807/wXuBIF6JBFWPmfn-laKtlFH54NWV-vTMTUPSPL1ePp_0iwrbNaxlQ44XRUY33fiNmxtv";
   
+  if(isset($_POST['username']))
+    $msg = '**New Feedback** 
+Name: '.$_POST['name'].' 
+Username: '.$_POST['username'].'
+Type: '.$_POST['type'].' 
+```'.$_POST['feedback'].'```';
+  else
   $msg = '**New Feedback** 
-  Name: '.$_POST['name'].' 
-  Type: '.$_POST['type'].' 
-  
-  ```'.$_POST['feedback'].'```';
+Name: '.$_POST['name'].' 
+Type: '.$_POST['type'].' 
+```'.$_POST['feedback'].'```';
+
   
   $json_data = array ('content'=>"$msg");
   $make_json = json_encode($json_data);

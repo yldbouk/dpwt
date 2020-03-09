@@ -31,7 +31,7 @@ session_start();
       }
     }
    ?>
-      <form action="./scripts/feedback.script.php" method="get">
+      <form action="./scripts/feedback.php" method="post">
         <div class="container">
           <label for="name"><b>Name</b></label><br>
           <input style="text-align: center;" type="text" placeholder="Enter Name" <?php if(isset($_SESSION["userName"])) echo 'value="'.$_SESSION["userName"].'"' ?> name="name" required>
