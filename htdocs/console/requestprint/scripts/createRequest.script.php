@@ -1,5 +1,4 @@
 <?php
-// !!!makee sure priinter is set
 session_start();
 if(isset($_POST["request-submit"])) {
 require "../../scripts/handledb.script.php";
