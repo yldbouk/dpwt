@@ -48,6 +48,13 @@ $needsPrinter=TRUE;
           <label for="reason"><b>Reason</b></label><br>
           <input type="text" placeholder="Why should we allow you to print this?" name="reason" required>
             <br>
+          <select name="printer">
+            <option value="orion">SeeMeCNC Orion Delta</option>
+            <option disabled value="minimaker">da Vinci miniMaker</option>
+            <option disabled value="flashforge">FlashForge Finder</option>
+            <option disabled value="minimaker2">da Vinci miniMaker2</option>
+          </select>
+	   <br>
           <label for="color"><b>Color</b></label><br>
           <select name="color" required>
             <option value="Red">Red</option>
