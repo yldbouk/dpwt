@@ -61,15 +61,16 @@ require "../../scripts/handledb.script.php";
         header("Location: ../index.php?result=existingjob");
         exit();
       } else {
-        if (isset($_POST['autoaccept']) && $_POST['autoaccept'] == 1 ? 1 : 0) 
-          $sql = "INSERT INTO job_data SET jobQueue=(SELECT MAX(jobQueue) FROM job_data) + 1, jobName=?, reason=?, jobStatus='queue', color=?, createdBy=?, whatPrinter=?;";
-        else
+        if (isset($_POST['autoaccept']) && $_POST['autoaccept'] == 1 ? 1 : 0) {
+          $sql = "INSERT INTO job_data (jobQueue, jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES ((SELECT MAX(jobQueue) FROM job_data) + 1, ?, ?, 'queue', ?, ?, ?);";
+          $status = "queue";
+        } else
           $sql = "INSERT INTO job_data (jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES (?, ?, 'review', ?, ?, ?)";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../index.php?result=sqlerror");
           exit();
         } else {
-            mysqli_stmt_bind_param($stmt, "ssssss", $name, $reason, $status, $color, $createdBy, $friendlyName);
+            mysqli_stmt_bind_param($stmt, "sssss", $name, $reason, $color, $createdBy, $friendlyName);
             mysqli_stmt_execute($stmt);
             $sql = "SELECT * FROM job_data WHERE jobName=?";
             $stmt = mysqli_stmt_init($conn);
@@ -119,7 +120,7 @@ require "../../scripts/handledb.script.php";
                       } else {
                         mysqli_stmt_bind_param($stmt, "ss", $fileLocation, $id);
                         mysqli_stmt_execute($stmt);
-                        if ($status == 'queue') copy('../../uploads/'.$id."/".$id.".stl", '../../uploads/__queue/'.$id.".stl");
+                        if (isset($status)) copy('../../uploads/'.$id."/".$id.".stl", '../../uploads/__queue/'.$id.".stl");
 
                         
                         header("Location: ../../viewJobs/index.php?edit=".$id);
