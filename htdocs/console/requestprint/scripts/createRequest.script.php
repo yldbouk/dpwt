@@ -63,7 +63,7 @@ require "../../scripts/handledb.script.php";
       } else {
         if (isset($_POST['autoaccept']) && $_POST['autoaccept'] == 1 ? 1 : 0) {
           $status = "queue";
-          $sql = "INSERT INTO job_data (jobQueue, jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES ((SELECT MAX(jobQueue) FROM job_data) + 1, ?, ?, ?, ?, ?, ?)";
+          $sql = "INSERT INTO job_data (jobQueue, jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES (((SELECT MAX(jobQueue) FROM job_data) + 1), ?, ?, ?, ?, ?, ?)";
         } else {
            $status = "review";
            $sql = "INSERT INTO job_data (jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?, ?)";
