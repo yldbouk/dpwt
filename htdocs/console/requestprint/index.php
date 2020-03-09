@@ -35,6 +35,8 @@ $needsPrinter=TRUE;
         echo '<h4>Sorry, this job already exists. Please confirm your job does not already exist or rename it.</h4>';
       } elseif ($_GET['result'] == "filesize") {
         echo '<h4>Your file is too large. Please contact us for a special request.</h4>';
+      } elseif ($_GET['result'] == "locked") {
+        echo '<h4>Sorry, but this printer is locked. Please try again later or pick another one.</h4>';
       } else {
         echo '<h4>An unknown error occured. Please try again.</h4>';
       }
