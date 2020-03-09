@@ -71,19 +71,26 @@ require "../../scripts/handledb.script.php";
         } else {
             mysqli_stmt_bind_param($stmt, "ssssss", $name, $reason, $status, $color, $createdBy, $friendlyName);
             mysqli_stmt_execute($stmt);
-            if($status = "queue")
-              $sql = "SELECT * FROM job_data WHERE jobName=?";
-            else
-              $sql = "UPDATE job_data SET jobQueue = (SELECT MAX(jobQueue) FROM job_data) + 1 WHERE jobName = ?; SELECT * FROM job_data WHERE jobName=?;";
+            $result = mysqli_stmt_get_result($stmt);
+            die($result);
+            if($status == "queue"){
+              $sql = "UPDATE job_data SET jobQueue = (SELECT MAX(jobQueue) FROM job_data) + 1 WHERE jobName = ?;";
+              $stmt = mysqli_stmt_init($conn);
+              if (!mysqli_stmt_prepare($stmt, $sql)) {
+                header("Location: ../index.php?result=sqlerror");
+                exit();
+              } else {
+                mysqli_stmt_bind_param($stmt, "s", $name);
+                mysqli_stmt_execute($stmt);
+              }
+            }
+            $sql = "SELECT * FROM job_data WHERE jobName=?";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
               header("Location: ../index.php?result=sqlerror");
               exit();
             } else {
-              if($status = "queue")
-                mysqli_stmt_bind_param($stmt, "s", $name);
-              else
-                mysqli_stmt_bind_param($stmt, "ss", $name, $name);
+              mysqli_stmt_bind_param($stmt, "s", $name);
               mysqli_stmt_execute($stmt);
               $result = mysqli_stmt_get_result($stmt);
               if ($row = mysqli_fetch_assoc($result)) {
