@@ -83,7 +83,6 @@ require "../../scripts/handledb.script.php";
                 mysqli_stmt_execute($stmt);
               }
             }
-            $id = $row['id'];
             $target_dir = "../../uploads/".$id."/";
             $target_file = $target_dir . basename($_FILES["stlobj"]["name"]);
             $uploadOk = 1;
