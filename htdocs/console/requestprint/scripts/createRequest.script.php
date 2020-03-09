@@ -35,11 +35,8 @@ require "../../scripts/handledb.script.php";
         if ($row["locked"] == 1) {
           header("Location: ../index.php?result=locked");
           exit();
-        } else {
+        } else 
           $friendlyName = $row["friendlyname"];
-          header("Location: /console");
-          exit();
-        }
       } else {
         header("Location: ../error.php");
         exit();
