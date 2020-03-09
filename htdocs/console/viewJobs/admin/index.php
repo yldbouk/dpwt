@@ -186,7 +186,7 @@ require "../scripts/getJobs.script.php";
       }
       function changeQueue() {
         document.getElementById("buttons").innerHTML=`<br>
-        Position in Queue: <input name="pos" type="number" min="1" /> OR <select name="first-last"><option disabled selected></option><option value="first">First</option><option value="last">Last</option></select>
+        Position in Queue: <input name="pos" type="number" min="1" max="10000" style="width:50px;"/> OR <select name="first-last"><option disabled selected></option><option value="first">First</option><option value="last">Last</option></select>
         <br><br><button style='background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;'type='submit'name='edit-queue'><b><i>Go</i></b></button>`;
       }
       function download() {
