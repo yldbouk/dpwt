@@ -37,6 +37,8 @@ $needsPrinter=TRUE;
         echo '<h4>Your file is too large. Please contact us for a special request.</h4>';
       } elseif ($_GET['result'] == "locked") {
         echo '<h4>Sorry, but this printer is locked. Please try again later or pick another one.</h4>';
+      } elseif ($_GET['result'] == "printer") {
+        echo '<h4>It looks like the printer you chose is invalid. Please try again.</h4>';
       } else {
         echo '<h4>An unknown error occured. Please try again.</h4>';
       }

@@ -1,26 +1,55 @@
 <?php
 // !!!makee sure priinter is set
 session_start();
-if(isset($_POST["request-submit"])) {    
+if(isset($_POST["request-submit"])) {
 require "../../scripts/handledb.script.php";
  
   $name = $_POST['name'];
   $reason = $_POST['reason'];
   $color = $_POST['color'];
   $createdBy = $_SESSION['userName'];
+  $printer = $_POST['printer'];
       
   if (isset($_POST['autoaccept']) && $_POST['autoaccept'] == 1 ? 1 : 0) {
     $status = "queue";
   } else {
     $status = "review";
   }
-  
 
-
-  if (empty($name) || empty($reason) || empty($color) || empty($_FILES['stlobj'])){
+  if (empty($name) || empty($reason) || empty($color) || empty($_FILES['stlobj']) || empty($printer)){
     header("Location: ../index.php?result=incomplete");
     exit();
   }
+
+  //Set printer data.
+  if ($printer == "orion") {
+    $sql = "SELECT * FROM `printer_data` WHERE `printer_data`.`id` = 2";
+    $stmt = mysqli_stmt_init($conn);
+    if (!mysqli_stmt_prepare($stmt, $sql)) {
+      header("Location: ../index.php?result=sqlerror");
+      exit();
+    } else {
+      mysqli_stmt_execute($stmt);
+      $result = mysqli_stmt_get_result($stmt);
+      if ($row = mysqli_fetch_assoc($result)) {
+        if ($row["locked"] == 1) {
+          header("Location: ../index.php?result=locked");
+          exit();
+        } else {
+          $friendlyName = $row["friendlyname"];
+          header("Location: /console");
+          exit();
+        }
+      } else {
+        header("Location: ../error.php");
+        exit();
+      }
+    }
+  } else {
+    header("Location: ../index.php?result=printer");
+    exit();
+}
+
   if ($name == "T.DONOTMODIFY" || $reason == "T.DONOTMODIFY"){
     header("Location: ../index.php?result=servername");
     exit();
@@ -45,7 +74,7 @@ require "../../scripts/handledb.script.php";
           header("Location: ../requestprint/index.php?result=sqlerror");
           exit();
         } else {
-            mysqli_stmt_bind_param($stmt, "ssssss", $name, $reason, $status, $color, $createdBy, $_SESSION['friendlyname']);
+            mysqli_stmt_bind_param($stmt, "ssssss", $name, $reason, $status, $color, $createdBy, $friendlyName);
             mysqli_stmt_execute($stmt);
             $sql = "SELECT * FROM job_data WHERE jobName=?";
             $stmt = mysqli_stmt_init($conn);
