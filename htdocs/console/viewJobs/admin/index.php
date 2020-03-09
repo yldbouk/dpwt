@@ -148,20 +148,24 @@ require "../scripts/getJobs.script.php";
             <br><br>&nbsp
            <form method='post' id="editform" action='../scripts/editJobs.script.php'>
            <input id="location" type="text" name="location" style="visibility:hidden;">
+           <input id="printing" type="text" name="printing" style="visibility:hidden;">
            <input id="purge" type="text" name="purge" style="visibility:hidden;">
-              <?php  
-                echo '<input type="text" name="id" style="visibility:hidden;" value="'.$id.'"><br>';
-                if ($status0 == "queue") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-pause"><b><i>Pause Job</i></b></button>|';
-                if ($status0 == "pause") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-unpause"><b><i>Unpause Job</i></b></button>|';
+           <input type="text" name="id" style="visibility:hidden;" value="<?php echo $id; ?>"><br>
+           <div id="buttons">
+              <?php              
+                if ($status0 == "queue"){ echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-pause"><b><i>Pause Job</i></b></button>|';
+                                          echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editOverridePrint();"><b><i>Override to Printing Status</i></b></button>|';}
+                  if ($status0 == "pause") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-unpause"><b><i>Unpause Job</i></b></button>|';
                 if ($status0 == "review") {echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-accept"><b><i>Accept Job</i></b></button>|';
                 echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-deny"><b><i>Deny Job</i></b></button>|';}
                 if ($status0 == "printing") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editcomplete();"><b><i>Set as Complete</i></b></button>|';
                 if ($status0 == "complete_waiting") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editcomplete();"><b><i>Finish Completion Process</i></b></button>|';
+                if ($status0 != "purge"){ echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="document.location=`/console/view3d/?id='.$id.'`"><b><i>View in 3D</button></i></b></button>|';
+                  echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="download();"><b><i>Download</button></i></b></button>|';}
                 if ($status0 == "complete") echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-redo"><b><i>Redo Job</i></b></button>|';
-                if ($status0 == "purge") {} else echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="document.location=`/console/view3d/?id='.$id.'`"><b><i>View in 3D</button></i></b></button>|';
-                if ($status0 == "purge" || $status0 == "printing" || $status0 == "complete_waiting") {} else echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editpurge();"><b><i>Purge</i></b></button>|';
-                  
+                if ($status0 == "purge" || $status0 == "printing" || $status0 == "complete_waiting") {} else echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editpurge();"><b><i>Purge</i></b></button>|'; 
               ?>
+              </div>
            </form>
           </center>
         </div>
@@ -175,6 +179,13 @@ require "../scripts/getJobs.script.php";
         var location = prompt("Breifly explain where the finished product is located:");
         document.getElementById("location").value=location;
         document.getElementById("editform").submit();
+      }
+      function editOverridePrint() {
+        document.getElementById("buttons").innerHTML=`<br><button style='background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;'type='submit'name='edit-overridePrinting'><b><i>Override to Printing Status (May Break Website!)</i></b></button>`;
+      }
+      function download() {
+        var url = document.location.origin+"/console/viewJobs/scripts/dl.php?id=<?php if(isset($id)) echo $id; ?>";
+        window.open(url, '_blank');
       }
       function editpurge() {
         if(confirm('WARNING: YOU ARE ABOUT TO PURGE THIS JOB. THIS WILL DELETE ALL FILES RELATED TO THIS JOB. DO YOU WANT TO CONTINUE?')) {

@@ -41,9 +41,10 @@ require "../../../scripts/handledb.script.php";
     } else {
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
-      if (!$row = mysqli_fetch_assoc($result)) { 
-       header("Location: ../../error.php/?e=.internal");
-  }
+//      if (!$row = mysqli_fetch_assoc($result)) { 
+//       header("Location: ../../error.php/?e=internal");
+//  }
+//  This is causing the first SQL result to not being displayed.
   if(!isset($row["reviewedBy"])){ $reviewedBy = "<i>None</i>";}
   if(!isset($row["location"])){ $location = "<i>None</i>";}
 }}
@@ -59,10 +60,11 @@ if($access == "true-personal") {
         mysqli_stmt_bind_param($stmt, "s", $_SESSION['userName']);
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
-        if (!$row = mysqli_fetch_assoc($result)) { 
-          header("Location: /console/error.php/?e=internal");
-          exit();
-    }
+//        if (!$row = mysqli_fetch_assoc($result)) { 
+//          header("Location: /console/error.php/?e=internal");
+//          exit();
+//   }
+//  This is causing the first SQL result to not being displayed.
    if(!isset($row["reviewedBy"])){ $reviewedBy = "<i>None</i>";}
    if(!isset($row["location"])){ $location = "<i>None</i>";}
   }}
@@ -77,9 +79,10 @@ if($access == "true-personal") {
         } else {
           mysqli_stmt_execute($stmt);
           $result = mysqli_stmt_get_result($stmt);
-          if (!$row = mysqli_fetch_assoc($result)) { 
-            header("Location: ../../error.php/?e=internal");
-      }
+//          if (!$row = mysqli_fetch_assoc($result)) { 
+//           header("Location: ../../error.php/?e=internal");
+//      }
+//  This is causing the first SQL result to not being displayed.
       if(!isset($row["reviewedBy"])){ $reviewedby = "<i>None</i>";}
       if(!isset($row["location"])){ $location = "<i>None</i>";}
     }}

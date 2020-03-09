@@ -2,7 +2,7 @@
 
  $servername = "localhost";
  $dbusr = "root";
- $dbpwd = "";
+ $dbpwd = "morefan";
  $dbname = "dpwt";
 
  $conn = mysqli_connect($servername, $dbusr, $dbpwd, $dbname);

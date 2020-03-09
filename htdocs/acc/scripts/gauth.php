@@ -74,22 +74,8 @@ if (isset($_POST['auth_token'])) {
           $hashpwd = "Account is using OAuth. No Password is nessasary.";
           $type = "gauth";
           $permissions = "awaitingActions";
-
           mysqli_stmt_bind_param($stmt, "ssssss", $username, $name, $email, $hashpwd, $type, $permissions);
           mysqli_stmt_execute($stmt);
-          
-          $sql = "INSERT INTO job_data (jobName, reason, jobStatus, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?)";
-          if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../requestprint/index.php?result=sqlerror");
-            exit();
-          } else {
-            $tmp0="T.DONOTMODIFY";$tmp1="T.DONOTMODIFY";$tmp2="T.DONOTMODIFY";$tmp3="T.DONOTMODIFY";
-            mysqli_stmt_bind_param($stmt, "sssss", $tmp0, $tmp1, $tmp2, $username, $tmp3);
-            unset($tmp0);unset($tmp1);unset($tmp2);unset($tmp3);
-            mysqli_stmt_execute($stmt);
-          }
-          header("Location: ../login/index.php?result=signup");
-          exit();
         }
         exit();
       }

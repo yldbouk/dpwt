@@ -10,9 +10,10 @@ if (isset($_SESSION['userUid'])) {
     } else {
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
-      if (!$row = mysqli_fetch_assoc($result)) {
-        header("Location: ../../error.php/?e=internal");
-      }
+//      if (!$row = mysqli_fetch_assoc($result)) {
+//        header("Location: ../../error.php/?e=internal");
+//      }
+//  This is causing the first SQL result to not being displayed.
     }
   
     if (isset($id)) {
