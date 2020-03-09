@@ -3,7 +3,7 @@
 if(isset($_POST['feedback-submit'])){
   if (empty($_POST['name']) || empty($_POST['type']) empty($_POST['feedback'])) { header('Location: ../feedback.php'); exit(); }
   
-  $webhookurl = "YOUR_WEBHOOK_URL";
+  $webhookurl = "https://discordapp.com/api/webhooks/685706427922251807/wXuBIF6JBFWPmfn-laKtlFH54NWV-vTMTUPSPL1ePp_0iwrbNaxlQ44XRUY33fiNmxtv";
   
   $msg = '**New Feedback**\n
           `Name:` "'.$_POST['name'].'"\n
