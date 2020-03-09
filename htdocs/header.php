@@ -12,7 +12,6 @@ if(!isset($devActive)) $devActive = FALSE;
 if(!isset($needsAcc)) $needsAcc = FALSE;
 if(!isset($needsAdmin)) $needsAdmin = FALSE;
 if(!isset($needsDev)) $needsDev = FALSE;
-if(!isset($needsPrinter)) $needsPrinter = FALSE;
 if(!isset($forcePwdReset)) $forcePwdReset = TRUE;
 
 
@@ -30,30 +29,10 @@ $sql2 = "SELECT * FROM login_data WHERE uidUsers=?;";
         }
       }
     }
-# check for printer changed
-if (isset($_SESSION['printid'])) {
-  $sql3 = "SELECT * FROM printer_data WHERE id=?;";
-	$stmt3 = mysqli_stmt_init($conn);
-	if (mysqli_stmt_prepare($stmt3, $sql3)) {
-    mysqli_stmt_bind_param($stmt3, "s", $_SESSION['printid']);
-		mysqli_stmt_execute($stmt3);
-		$result3 = mysqli_stmt_get_result($stmt3);
-    if ($row3 = mysqli_fetch_assoc($result3)) {
-       if ($row3["locked"] == 1) {
-        unset($_SESSION['printid']);
-        unset($_SESSION['friendlyname']);
-        unset($_SESSION['grade']);
-        unset($_SESSION['filamentColor']);
-        unset($_SESSION['locked']);
-        echo '<script>window.location.href=window.location.origin + "/console/selectprinter.php?e=change";</script>';
-      }
-    } 
-  }
-}
+
 
 #Use this part to check for page prerequisites.
 if($needsAcc){if(!isset($_SESSION['userUid'])){echo '<script>window.location.href=window.location.origin + "/acc/login?result=perm";</script>';}}
-if($needsPrinter){if(!isset($_SESSION['printid'])){echo '<script>window.location.href=window.location.origin + "/console/selectprinter.php";</script>';}}
 if($needsAdmin){if(!$_SESSION['permsUsers'] == "admin" || !$_SESSION['permsUsers'] == "developer"){echo '<script>history.go(-1);</script>';}}
 if($needsDev){if(!$_SESSION['permsUsers'] == "developer"){echo '<script>history.go(-1);</script>';}}
 if(isset($_SESSION['permsUsers'])){if($_SESSION['permsUsers'] == "newUser"){if($forcePwdReset){echo '<script>window.location.href=window.location.origin + "/acc/newuser";</script>';}}}
