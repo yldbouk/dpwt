@@ -10,11 +10,7 @@ require "../../scripts/handledb.script.php";
   $createdBy = $_SESSION['userName'];
   $printer = $_POST['printer'];
       
-  if (isset($_POST['autoaccept']) && $_POST['autoaccept'] == 1 ? 1 : 0) {
-    $status = "queue";
-  } else {
-    $status = "review";
-  }
+  
 
   if (empty($name) || empty($reason) || empty($color) || empty($_FILES['stlobj']) || empty($printer)){
     header("Location: ../index.php?result=incomplete");
@@ -54,7 +50,7 @@ require "../../scripts/handledb.script.php";
     $sql = "SELECT jobName FROM job_data WHERE jobName=?";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-      header("Location: ../index.php?result=sqlerror");
+\r("Location: ../index.php?result=sqlerror");
       exit();
     } else {
       mysqli_stmt_bind_param($stmt, "s", $name);
@@ -65,8 +61,13 @@ require "../../scripts/handledb.script.php";
         header("Location: ../index.php?result=existingjob");
         exit();
       } else {
-            
-        $sql = "INSERT INTO job_data (jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?, ?)";
+        if (isset($_POST['autoaccept']) && $_POST['autoaccept'] == 1 ? 1 : 0) {
+          $status = "queue";
+          $sql = "INSERT INTO job_data (jobQueue, jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES ((SELECT MAX(jobQueue) FROM job_data) + 1, ?, ?, ?, ?, ?, ?)";
+        } else {
+           $status = "review";
+           $sql = "INSERT INTO job_data (jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?, ?)";
+        }
         if (!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../requestprint/index.php?result=sqlerror");
           exit();
