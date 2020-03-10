@@ -236,7 +236,7 @@ if(isset($_POST['edit-pause'])) {
         $result = mysqli_stmt_get_result($stmt);
         if ($row = mysqli_fetch_assoc($result)) { 
           $queue = $row['jobQueue'];
-          
+          echo($queue);
           $sql = "SELECT MAX(jobQueue) FROM job_data WHERE id=? AND jobQueue<?;";
           if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("Location: ../../error.php/?e=internal");
