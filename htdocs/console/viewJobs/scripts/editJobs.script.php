@@ -226,7 +226,7 @@ if(isset($_POST['edit-pause'])) {
         } 
       } 
     } else if (isset($_POST['edit-queue'])) {
-      $sql = "SELECT jobQueue FROM job_data WHERE id=?;";
+      $sql = "SELECT * FROM job_data WHERE id=?;";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../../error.php/?e=internal");
         exit();
