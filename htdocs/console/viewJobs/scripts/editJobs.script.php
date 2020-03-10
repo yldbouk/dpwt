@@ -245,9 +245,9 @@ if(isset($_POST['edit-pause'])) {
             mysqli_stmt_bind_param($stmt, "ss", $do, $queue);
             mysqli_stmt_execute($stmt);
             $result = mysqli_stmt_get_result($stmt);
-        if ($row = mysqli_fetch_assoc($result)) { 
+        if ($row = mysqli_fetch_assoc($result))
          die($row['jobQueue']) 
-        }
+   
             usleep(250);
             echo "<script>history.go(-1);</script>";
           }
