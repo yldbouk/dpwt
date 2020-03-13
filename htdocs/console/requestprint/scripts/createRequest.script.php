@@ -76,16 +76,6 @@ require "../../scripts/handledb.script.php";
               header("Location: ../index.php?result=sqlerror");
               exit();
             } else {
-              mysqli_stmt_bind_param($stmt, "ss", $id, $createdBy);
-              mysqli_stmt_execute($stmt);
-            $id = strval(mysqli_insert_id($conn));
-            $fileLocation = "../../uploads/".$id;
-            mkdir($fileLocation, 0700);
-            // Check if $uploadOk is set to 0 by an error
-            if ($uploadOk == 0) {
-                echo "Sorry, your file was not uploaded.";
-            // if everything is ok, try to upload file
-            } else {
               mysqli_stmt_bind_param($stmt, "ss", $name, $createdBy);
               mysqli_stmt_execute($stmt);
               $result = mysqli_stmt_get_result($stmt);
@@ -144,6 +134,5 @@ require "../../scripts/handledb.script.php";
         }
       }
    }
-      }
-    }
+   }
 }
