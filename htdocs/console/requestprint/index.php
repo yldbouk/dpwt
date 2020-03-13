@@ -29,8 +29,10 @@ $needsPrinter=TRUE;
         echo '<h4>An internal error has occured. Please try again later.</h4>';
       } elseif ($_GET['result'] == "servername") {
         echo '<h4>The text either in your name or reason is blacklisted. Please replace it and try again.</h4>';
-      } elseif ($_GET['result'] == "filetype") {
+      } elseif ($_GET['result'] == "filetype") {		       
         echo '<h4>Sorry, we only accept STL and OBJ files.</h4>';
+      } elseif ($_GET['result'] == "existingjob") {		
+        echo "<h4>You've already made a job with that name! Try a different name.</h4>";		
       } elseif ($_GET['result'] == "filesize") {
         echo '<h4>Your file is too large. Please contact us for a special request.</h4>';
       } else {
