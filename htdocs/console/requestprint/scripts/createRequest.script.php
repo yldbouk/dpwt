@@ -47,13 +47,13 @@ require "../../scripts/handledb.script.php";
         } else {
             mysqli_stmt_bind_param($stmt, "ssssss", $name, $reason, $status, $color, $createdBy, $_SESSION['friendlyname']);
             mysqli_stmt_execute($stmt);
-            $sql = "SELECT * FROM job_data WHERE jobName=?";
+            $sql = "SELECT * FROM job_data WHERE jobName=? AND createdBy=?";
             $stmt = mysqli_stmt_init($conn);
             if (!mysqli_stmt_prepare($stmt, $sql)) {
               header("Location: ../index.php?result=sqlerror");
               exit();
             } else {
-              mysqli_stmt_bind_param($stmt, "s", $name);
+              mysqli_stmt_bind_param($stmt, "ss", $name, $createdBy);
               mysqli_stmt_execute($stmt);
               $result = mysqli_stmt_get_result($stmt);
               if ($row = mysqli_fetch_assoc($result)) {
