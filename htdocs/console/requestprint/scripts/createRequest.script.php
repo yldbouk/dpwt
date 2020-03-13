@@ -143,4 +143,7 @@ require "../../scripts/handledb.script.php";
           }
         }
       }
+   }
+      }
     }
+}
