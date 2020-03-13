@@ -35,6 +35,10 @@ $needsPrinter=TRUE;
         echo "<h4>You've already made a job with that name! Try a different name.</h4>";		
       } elseif ($_GET['result'] == "filesize") {
         echo '<h4>Your file is too large. Please contact us for a special request.</h4>';
+      } elseif ($_GET['result'] == "locked") {
+        echo '<h4>Sorry, but this printer is locked. Please try again later or pick another one.</h4>';
+      } elseif ($_GET['result'] == "printer") {
+        echo '<h4>It looks like the printer you chose is invalid. Please try again.</h4>';
       } else {
         echo '<h4>An unknown error occured. Please try again.</h4>';
       }
@@ -47,7 +51,15 @@ $needsPrinter=TRUE;
             <br>
           <label for="reason"><b>Reason</b></label><br>
           <input type="text" placeholder="Why should we allow you to print this?" name="reason" required>
-            <br>
+            <br><br>
+          <label for="printer"><b>Printer</b></label><br>
+          <select name="printer">
+            <option value="orion">SeeMeCNC Orion Delta</option>
+            <option disabled value="minimaker">da Vinci miniMaker</option>
+            <option disabled value="flashforge">FlashForge Finder</option>
+            <option disabled value="minimaker2">da Vinci miniMaker2</option>
+          </select>
+	   <br><br>
           <label for="color"><b>Color</b></label><br>
           <select name="color" required>
             <option value="Red">Red</option>
