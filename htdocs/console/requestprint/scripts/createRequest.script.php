@@ -76,7 +76,7 @@ require "../../scripts/handledb.script.php";
               header("Location: ../index.php?result=sqlerror");
               exit();
             } else {
-              mysqli_stmt_bind_param($stmt, "s", $id);
+              mysqli_stmt_bind_param($stmt, "ss", $id, $createdBy);
               mysqli_stmt_execute($stmt);
             $id = strval(mysqli_insert_id($conn));
             $fileLocation = "../../uploads/".$id;
