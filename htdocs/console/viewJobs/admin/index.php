@@ -154,6 +154,7 @@ require "../scripts/getJobs.script.php";
            <div id="buttons">
               <?php              
                 if ($status0 == "queue"){ echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-pause"><b><i>Pause Job</i></b></button>|';
+                                          echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="changeQueue();"><b><i>Change Queue Position</i></b></button>|';
                                           echo '|<button style="background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="button"onclick="editOverridePrint();"><b><i>Override to Printing Status</i></b></button>|';}
                   if ($status0 == "pause") echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-unpause"><b><i>Unpause Job</i></b></button>|';
                 if ($status0 == "review") {echo '|<button style="background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;"type="submit"name="edit-accept"><b><i>Accept Job</i></b></button>|';
@@ -182,6 +183,11 @@ require "../scripts/getJobs.script.php";
       }
       function editOverridePrint() {
         document.getElementById("buttons").innerHTML=`<br><button style='background:none!important;color:red;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;'type='submit'name='edit-overridePrinting'><b><i>Override to Printing Status (May Break Website!)</i></b></button>`;
+      }
+      function changeQueue() {
+        document.getElementById("buttons").innerHTML=`<br>
+        Position in Queue: <input name="pos" type="number" min="1" max="10000" style="width:50px;"/> OR <select name="first-last"><option disabled selected></option><option value="first">First</option><option value="last">Last</option></select>
+        <br><br><button style='background:none!important;color:inherit;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;'type='submit'name='edit-queue'><b><i>Go</i></b></button>`;
       }
       function download() {
         var url = document.location.origin+"/console/viewJobs/scripts/dl.php?id=<?php if(isset($id)) echo $id; ?>";

@@ -144,7 +144,6 @@ require "scripts/getJobs.script.php";
                       <td>".$reviewedBy0."</td>
                       <td>".$location0."</td>
                       <td>".$printer0."</td>
-
                     </tr>
                   ";
                 }

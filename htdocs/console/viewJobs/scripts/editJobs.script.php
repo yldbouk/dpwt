@@ -20,7 +20,7 @@ if(isset($_POST['edit-pause'])) {
       if ($row == "printing") {
         die('Job can not be editied because it is printing.');
         } else {
-      $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`id`= ?";
+      $sql = "UPDATE `job_data` SET `jobStatus`= ?, jobQueue = NULL WHERE `job_data`.`id`= ?";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../../error.php/?e=internal");
         exit();
@@ -48,7 +48,7 @@ if(isset($_POST['edit-pause'])) {
       if ($row == "printing") {
         die('Job can not be editied because it is printing.');
         } else {
-      $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`id`= ?";
+      $sql = "UPDATE `job_data` SET `jobStatus`= ?, jobQueue = (SELECT MAX(jobQueue) FROM job_data) + 1 WHERE `job_data`.`id`= ?";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../../error.php/?e=internal");
         exit();
@@ -73,7 +73,7 @@ if(isset($_POST['edit-pause'])) {
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     if ($row = mysqli_fetch_assoc($result)) {  
-      $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`id`= ?";
+      $sql = "UPDATE `job_data` SET `jobStatus`= ?, jobQueue = (SELECT MAX(jobQueue) FROM job_data) + 1 WHERE `job_data`.`id`= ?";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../../error.php/?e=internal");
         exit();
@@ -98,7 +98,7 @@ if(isset($_POST['edit-pause'])) {
     mysqli_stmt_execute($stmt);
     $result = mysqli_stmt_get_result($stmt);
     if ($row = mysqli_fetch_assoc($result)) {  
-      $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`id`= ?";
+      $sql = "UPDATE `job_data` SET `jobStatus`= ?, jobQueue = NULL WHERE id= ?;";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../../error.php/?e=internal");
         exit();
@@ -125,7 +125,7 @@ if(isset($_POST['edit-pause'])) {
       if ($row == "printing") {
         die('Job can not be edited because it is printing.');
         } else {
-      $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`id`= ?";
+      $sql = "UPDATE `job_data` SET `jobStatus`= ?, jobQueue = NULL WHERE `job_data`.`id`= ?;";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../../error.php/?e=internal");
         exit();
@@ -212,7 +212,7 @@ if(isset($_POST['edit-pause'])) {
         mysqli_stmt_execute($stmt);
         $result = mysqli_stmt_get_result($stmt);
         if ($row = mysqli_fetch_assoc($result)) { 
-          $sql = "UPDATE `job_data` SET `jobStatus`= ?, `reviewedBy`= ? WHERE `job_data`.`id`= ?";
+          $sql = "UPDATE `job_data` SET `jobStatus`= ?, `reviewedBy`= ?, jobQueue = (SELECT MAX(jobQueue) FROM job_data) + 1 WHERE `job_data`.`id`= ?";
           if (!mysqli_stmt_prepare($stmt, $sql)) {
             header("Location: ../../error.php/?e=internal");
             exit();
@@ -224,6 +224,46 @@ if(isset($_POST['edit-pause'])) {
             echo "<script>history.go(-1);</script>";
           }
         } 
+      } 
+    } else if (isset($_POST['edit-queue'])) {
+      $sql = "SELECT * FROM job_data WHERE id=?;";
+      if (!mysqli_stmt_prepare($stmt, $sql)) {
+        header("Location: ../../error.php/?e=internal");
+        exit();
+      } else {
+        mysqli_stmt_bind_param($stmt, "s", $id);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
+        if ($row = mysqli_fetch_assoc($result)) { 
+          $on = $row['jobQueue'];
+          $sql = "SELECT MAX(jobQueue) AS jobQueue FROM job_data WHERE jobQueue<?;";
+          if (!mysqli_stmt_prepare($stmt, $sql)) {
+            header("Location: ../../error.php/?e=internal");
+            exit();
+          } else {
+            mysqli_stmt_bind_param($stmt, "s", $on);
+            mysqli_stmt_execute($stmt);
+            $result = mysqli_stmt_get_result($stmt);
+        if ($row = mysqli_fetch_assoc($result))
+         $before = $row['jobQueue'];
+         //calculate mean
+            $added = $on + $before;
+            $mean = $added / 2;
+            
+            $sql = "UPDATE `job_data` SET jobQueue =? WHERE id=?;";
+            if (!mysqli_stmt_prepare($stmt, $sql)) {
+              header("Location: ../../error.php/?e=internal");
+              exit();
+            } else {
+              mysqli_stmt_bind_param($stmt, "ss", $mean, $id);
+              mysqli_stmt_execute($stmt);
+            
+            usleep(250);
+            echo "<script>history.go(-1);</script>";
+          
+            }
+          } 
+        }
       } 
     } else {
   die("No Action to Take.");

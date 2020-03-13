@@ -33,7 +33,7 @@ if(isset($_SESSION['userUid'])) {
 
 if($access == "true") {
 require "../../../scripts/handledb.script.php";
-    $sql = "SELECT * FROM `job_data` WHERE `jobStatus` != 'purge' AND `jobStatus` != 'complete' AND `jobStatus` != 'denied' AND `jobName` NOT LIKE 'T.DONOTMODIFY'";
+    $sql = "SELECT * FROM `job_data` WHERE `jobStatus` != 'purge' AND `jobStatus` != 'complete' AND `jobStatus` != 'denied' AND `jobName` NOT LIKE 'T.DONOTMODIFY' ORDER BY jobQueue ASC;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
       header("Location: ../../error.php/?e=internal");
@@ -51,7 +51,7 @@ require "../../../scripts/handledb.script.php";
 
 if($access == "true-personal") {
   require "../../scripts/handledb.script.php";
-      $sql = "SELECT * FROM job_data WHERE createdBy=? AND `jobName` NOT LIKE 'T.DONOTMODIFY'";
+      $sql = "SELECT * FROM job_data WHERE createdBy=? AND `jobName` NOT LIKE 'T.DONOTMODIFY' ORDER BY jobQueue ASC;";
       $stmt = mysqli_stmt_init($conn);
       if (!mysqli_stmt_prepare($stmt, $sql)) {
         header("Location: ../../error.php/?e=internal");
