@@ -25,21 +25,6 @@ require "../../scripts/handledb.script.php";
     header("Location: ../index.php?result=servername");
     exit();
   }
-    $sql = "SELECT jobName FROM job_data WHERE jobName=?";
-    $stmt = mysqli_stmt_init($conn);
-    if (!mysqli_stmt_prepare($stmt, $sql)) {
-      header("Location: ../index.php?result=sqlerror");
-      exit();
-    } else {
-      mysqli_stmt_bind_param($stmt, "s", $name);
-      mysqli_stmt_execute($stmt);
-      mysqli_stmt_store_result($stmt);
-      $resultcheck = mysqli_stmt_num_rows($stmt);
-      if ($resultcheck > 0) {
-        header("Location: ../index.php?result=existingjob");
-        exit();
-      } else {
-            
         $sql = "INSERT INTO job_data (jobName, reason, jobStatus, color, createdBy, whatPrinter) VALUES (?, ?, ?, ?, ?, ?)";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
           header("Location: ../requestprint/index.php?result=sqlerror");
@@ -111,6 +96,3 @@ require "../../scripts/handledb.script.php";
             }
           }
         }
-      }
-    }
-  
