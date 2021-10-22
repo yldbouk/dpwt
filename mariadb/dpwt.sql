@@ -1,14 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.0.1
--- https://www.phpmyadmin.net/
---
--- Host: localhost
--- Generation Time: Mar 06, 2020 at 12:20 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -41,10 +31,6 @@ CREATE TABLE `job_data` (
   `fileLocation` tinytext DEFAULT NULL,
   `whatPrinter` tinytext NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `job_data`
---
 
 -- --------------------------------------------------------
 
@@ -116,19 +102,19 @@ ALTER TABLE `printer_data`
 -- AUTO_INCREMENT for table `job_data`
 --
 ALTER TABLE `job_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `login_data`
 --
 ALTER TABLE `login_data`
-  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `idUsers` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `printer_data`
 --
 ALTER TABLE `printer_data`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

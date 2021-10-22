@@ -1,0 +1,28 @@
+version: "3"
+services:
+  http:
+    build: "./nginx"
+    volumes:
+      - ./www:/var/www/html
+    ports:
+      - 80:80
+    #  - 443:443
+    restart: always
+  php:
+    build: ./php/
+    volumes:
+      - ./www:/var/www/html
+    restart: always
+  mariadb:
+    build: ./mariadb/
+    environment:
+      - MARIADB_ROOT_PASSWORD=TempPasswordThatWillChangeItselfInTheNearFuture
+    volumes:
+      - ./db:/var/lib/mysql
+    restart: always
+  pma:
+    image: "phpmyadmin:latest"
+    ports: 
+      - 81:80
+    environment: 
+      - PMA_HOST=mariadb
