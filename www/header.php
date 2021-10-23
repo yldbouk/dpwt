@@ -40,15 +40,15 @@ if(isset($_SESSION['permsUsers'])){if($_SESSION['permsUsers'] == "newUser"){if($
 
 <header>
       <div class="header">
-        <?php if($devActive) echo '<a onclick="document.location.href=window.location.origin;" class="logo">{ D P W T }</a>'; else echo '<a onclick="document.location.href=window.location.origin;" class="logo">D P W T</a>'; ?>
+      <a onclick="document.location.href=window.location.origin;" class="logo">D P W T</a>
         <div class="header-right">
         <nav> 
            <?php if(isset($_SESSION['userid'])) echo "<text>".$_SESSION['userName']."</text>"?>
            <a class='noclick'></a>
            <a onclick="document.location.href=window.location.origin;" <?php if($homeActive) echo "class='active'";?>>Home</a>
             <a class="noclick" />
-            <?php if(isset($_SESSION['userid'])){if($_SESSION['permsUsers'] == "developer") {echo "<a onclick='window.location.href=window.location.origin+`/console/dev`;'"; if($devActive) echo "class='active'"; echo ">Developer</a><a class='noclick'></a>";}}
-           
+            
+            <?php 
            if(isset($_SESSION['userid'])){if($_SESSION['permsUsers'] == "admin" || $_SESSION['permsUsers'] == "developer") {echo "<a onclick='window.location.href=window.location.origin+`/console/admin`;'"; if($adminActive) echo "class='active'"; echo ">Admin</a><a class='noclick'></a>";}}
             
            if(isset($_SESSION['userid'])){ echo "<a onclick='window.location.href=window.location.origin+`/console`;'"; if($consoleActive) echo "class='active'"; echo ">Console</a><a class='noclick'></a>";}
