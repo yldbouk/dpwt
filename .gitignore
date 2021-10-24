@@ -1,2 +1,4 @@
 *.DS_Store
 /db/
+www/scripts/handledb.script.php
+www/console/uploads/*
