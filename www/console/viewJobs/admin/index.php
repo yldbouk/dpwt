@@ -6,7 +6,7 @@ if (isset($_GET['edit'])) {
   $id = $_GET['edit'];
 }
 $access = "true";
-require "../scripts/getJobs.script.php";
+require $_SERVER['DOCUMENT_ROOT']."/console/viewJobs/scripts/getJobs.script.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +25,7 @@ require "../scripts/getJobs.script.php";
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
     <nav style="text-align:center;">
-    <a href="printsall.php" style="color:inherit;text-decoration:none;"><b><i>&nbsp Include Denied, Purged, and Completed Prints &nbsp</i></b></a>
+    <a href="printsall.php" style="color:inherit;text-decoration:none;"><b><i>Include Completed, Denied, and Purged Prints &nbsp</i></b></a>
      </nav>
       <!-- SPLITTER -->
     <center>
@@ -86,7 +86,7 @@ require "../scripts/getJobs.script.php";
             } else {
               echo "
                 <tr>
-                  <td>No Results. This is most likely an error.</td>
+                  <td>No Results.</td>
                 </tr>
               ";
             } ?>
@@ -146,7 +146,7 @@ require "../scripts/getJobs.script.php";
             </table>
 
             <br><br>&nbsp
-           <form method='post' id="editform" action='../scripts/editJobs.script.php'>
+           <form method='post' id="editform" action='/console/viewJobs/scripts/editJobs.script.php'>
            <input id="location" type="text" name="location" style="visibility:hidden;">
            <input id="printing" type="text" name="printing" style="visibility:hidden;">
            <input id="purge" type="text" name="purge" style="visibility:hidden;">
@@ -176,7 +176,9 @@ require "../scripts/getJobs.script.php";
     </div>
     <script>
       function editcomplete() {
-        var location = prompt("Breifly explain where the finished product is located:");
+        var location = prompt("Briefly explain where the finished product is located:");
+        if (location == null) return;
+        if (location == "") location = "Not Set";
         document.getElementById("location").value=location;
         document.getElementById("editform").submit();
       }
@@ -195,6 +197,6 @@ require "../scripts/getJobs.script.php";
       }
     </script>
     <?php if (isset($_GET['edit'])) echo "<script>document.getElementById('editActions').style.display='block'</script>";    
-          require "../../../footer.php"; ?>
+          require $_SERVER['DOCUMENT_ROOT']."/footer.php"; ?>
   </body>
 </html>

@@ -103,7 +103,7 @@ $needsPrinter=TRUE;
     </form>
     </center>  
    <br> <br>  
-<?php require "../../footer.php"; ?>
+<?php require $_SERVER['DOCUMENT_ROOT']."/footer.php"; ?>
 
 </body>
 </html>

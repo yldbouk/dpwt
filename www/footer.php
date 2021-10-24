@@ -5,8 +5,8 @@
       <br>
         Dimensional Printing Web Terminal
           <br><br>
-          Copyright © 2019-2020 Youssef Dbouk<br>
-          &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspAll Rights Reserved.
+          <span style="margin: 0 auto;display: table;">Copyright © 2019-2021<br> 
+          Youssef Dbouk, Dean Anderson<br>All Rights Reserved.</span>
           <br><br>
     </div>
     

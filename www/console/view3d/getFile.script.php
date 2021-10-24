@@ -11,7 +11,7 @@ if (isset($_SESSION["userUid"])) {
     $sql = "SELECT * FROM job_data WHERE id=?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-      header("Location: ../../error.php/?e=internal");
+      header("Location: /console/error.php/?e=internal");
       exit();
     } else {
       mysqli_stmt_bind_param($stmt, "s", $id);
@@ -27,10 +27,10 @@ if (isset($_SESSION["userUid"])) {
 
           if ($row["createdBy"] == $_SESSION['userName'] || $_SESSION["permsUsers"] == "admin" || $_SESSION["permsUsers"] == "developer") {
 
-            if (file_exists("../uploads/".$id."/".$id.".stl")) {
+            if (file_exists($_SERVER['DOCUMENT_ROOT']."/console/uploads/".$id."/".$id.".stl")) {
               $extension = ".STL";
             }
-            elseif(file_exists("../uploads/".$id."/".$id.".obj")) {
+            elseif(file_exists($_SERVER['DOCUMENT_ROOT']."/cpnsole/uploads/".$id."/".$id.".obj")) {
               $extension = ".OBJ";
 
             } else die("Job has no viewable files.");

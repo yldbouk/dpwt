@@ -21,6 +21,6 @@ session_start();
 <b style="font-size:45px;">We can't find what you're looking for. <br><br>Did we make a mistake? Let us know.</b>
 
   </div>
-  <?php require "../footer.php"; ?>
+  <?php require $_SERVER['DOCUMENT_ROOT']."/footer.php"; ?>
 </body>
 </html>

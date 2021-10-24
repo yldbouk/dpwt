@@ -1,11 +1,11 @@
 <?php session_start(); 
 
 //check if user is a gauth account. If so, do not allow access to page.
-require "../../scripts/handledb.script.php";
+require $_SERVER['DOCUMENT_ROOT']."/scripts/handledb.script.php";
 $sql = "SELECT * FROM login_data WHERE uidUsers=?;";
 		$stmt = mysqli_stmt_init($conn);
 		if (!mysqli_stmt_prepare($stmt, $sql)) {
-			header("Location: ../login/index.php?result=sqlerror");
+			header("Location: /acc/login/index.php?result=sqlerror");
 			exit();
 		} else {
 			mysqli_stmt_bind_param($stmt, "s", $_SESSION["userUid"]);
@@ -33,7 +33,7 @@ $needsAcc=TRUE; $forcePwdReset=FALSE;?>
       <div class="header">
         <a class="logo">D P W T</a>
         <div class="header-right">
-      <a class="blacknav" style="color: white;" href="../scripts/logout.php">Log Out</a>
+      <a class="blacknav" style="color: white;" href="/acc/scripts/logout.php">Log Out</a>
         </div>
       </div>
     </header>
@@ -54,7 +54,7 @@ $needsAcc=TRUE; $forcePwdReset=FALSE;?>
     }
    ?>
    
-      <form action="../scripts/changepwd.script.php" method="post">
+      <form action="/acc/scripts/changepwd.php" method="post">
         <div class="container">
           <label for="psw"><b>Password</b></label><br> 
           <input type="password" placeholder="Password" name="psw" required>

@@ -9,7 +9,7 @@ if (isset($_SESSION["userUid"])) {
     $sql = "SELECT * FROM job_data WHERE id=?;";
     $stmt = mysqli_stmt_init($conn);
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-      header("Location: ../../error.php/?e=internal");
+      header("Location: /console/error.php/?e=internal");
       exit();
     } else {
       mysqli_stmt_bind_param($stmt, "s", $id);

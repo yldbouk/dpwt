@@ -191,7 +191,7 @@ if (isset($_GET['edit'])) $id = $_GET['edit'];
       document.getElementById("buttons").innerHTML=`<br><button style='background:none!important;color:black;border:none;padding:0!important;font:inherit;border-bottom:1pxsolid#444;cursor:pointer;'type='submit'name='reset-pwd'><b><i>Confirm</i></b></button>`
     }
   </script>
-  <?php require "../../../footer.php"; ?>
+  <?php require $_SERVER['DOCUMENT_ROOT']."/footer.php"; ?>
 </body>
 
 </html>

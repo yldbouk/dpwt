@@ -1,11 +1,11 @@
 <?php
   session_start();
   //Check for OAuth Account
-require "../scripts/handledb.script.php";
+require $_SERVER['DOCUMENT_ROOT']."/scripts/handledb.script.php";
 $sql = "SELECT * FROM login_data WHERE uidUsers=?;";
 		$stmt = mysqli_stmt_init($conn);
 		if (!mysqli_stmt_prepare($stmt, $sql)) {
-			header("Location: ../login/index.php?result=sqlerror");
+			header("Location: /acc/login/index.php?result=sqlerror");
 			exit();
 		} else {
 			mysqli_stmt_bind_param($stmt, "s", $_SESSION["userUid"]);

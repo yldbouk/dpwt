@@ -5,7 +5,7 @@
 <html lang="en" dir="ltr">
   <head>
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
-    <link rel="stylesheet" href="../../css/header.css">
+    <link rel="stylesheet" href="/css/header.css">
     <meta charset="utf-8">
     <title>Error - DPWT</title>
   </head>

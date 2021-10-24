@@ -1,10 +1,10 @@
 <?php session_start(); 
 
-require "../../scripts/handledb.script.php";
+require $_SERVER['DOCUMENT_ROOT']."/scripts/handledb.script.php";
 $sql = "SELECT * FROM login_data WHERE uidUsers=?;";
 		$stmt = mysqli_stmt_init($conn);
 		if (!mysqli_stmt_prepare($stmt, $sql)) {
-			header("Location: ../login/index.php?result=sqlerror");
+			header("Location: /acc/login/index.php?result=sqlerror");
 			exit();
 		} else {
 			mysqli_stmt_bind_param($stmt, "s", $_SESSION["userUid"]);
@@ -12,7 +12,7 @@ $sql = "SELECT * FROM login_data WHERE uidUsers=?;";
 			$result = mysqli_stmt_get_result($stmt);
 			if ($row = mysqli_fetch_assoc($result)) {
 				if ($row['typeUsers'] != "password") {
-					header("Location: ../");
+					header("Location: /acc");
           exit();
 				}
       }
@@ -52,7 +52,7 @@ $needsAcc=TRUE;?>
     }
    ?>
    
-      <form action="../scripts/changepwd.php" method="post">
+      <form action="/acc/scripts/changepwd.php" method="post">
         <div class="container">
           <label for="oldpsw"><b>Old Password</b></label><br> 
           <input type="password" placeholder="Old Password" name="oldpsw" required>

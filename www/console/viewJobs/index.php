@@ -95,7 +95,7 @@ require "scripts/getJobs.script.php";
       </table>
     </center>
     <!-- SPLITTER -->
-    <?php function showViewer() {require "../../view3d/index.php";} ?>
+    <?php function showViewer() {require $_SERVER['DOCUMENT_ROOT']."/console/view3d/index.php";} ?>
     <script>
       var $rows = $('#jobs tr');
       $('#search').keyup(function() {
@@ -158,6 +158,6 @@ require "scripts/getJobs.script.php";
       </div>
     </div>
     <?php if (isset($_GET['edit'])) echo "<script>document.getElementById('editActions').style.display='block'</script>";    
-          require "../../footer.php"; ?>
+          require $_SERVER['DOCUMENT_ROOT']."/footer.php"; ?>
   </body>
 </html>

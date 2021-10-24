@@ -1,7 +1,7 @@
 <?php
   session_start();
   if (isset($_SESSION['userUid'])) {
-    header("Location: ../../console");
+    header("Location: /console");
   }
   ?>
 <!DOCTYPE html>
@@ -64,12 +64,12 @@
          <br>
        <?php
          if(isset($_GET['result']))
-           echo '<a href="../"> Sign in with Google</a><br>';
+           echo '<a href="acc"> Sign in with Google</a><br>';
          ?>
          <div class="g-signin2" data-onsuccess="onSignIn"></div>
          <br>
          <div id="loginFormContainer">
-        <form action="../scripts/login.php" method="post">
+        <form action="/acc/scripts/login.php" method="post">
         <div class="container">
           <label for="user"><b>Username</b></label><br>
           <input type="text" placeholder="Enter Username" name="uname" required>
@@ -86,12 +86,12 @@
     <script>
       function onSignIn(googleUser) {
         document.getElementById('loginFormContainer').style="visibility:hidden;";
-        document.getElementById('loginFormContainer').innerHTML=`<form id="oAuthLoginForm" action="../scripts/gauth.php" method="post"><input type="password" value="`+googleUser.getAuthResponse().id_token+`" name="auth_token"></form>`;
+        document.getElementById('loginFormContainer').innerHTML=`<form id="oAuthLoginForm" action="/acc/scripts/gauth.php" method="post"><input type="password" value="`+googleUser.getAuthResponse().id_token+`" name="auth_token"></form>`;
         document.getElementById('oAuthLoginForm').submit();
      }
     </script>
     <?php 
-      require "../../footer.php";
+      require $_SERVER['DOCUMENT_ROOT']."/footer.php";
     ?>
   </body>
 </html>

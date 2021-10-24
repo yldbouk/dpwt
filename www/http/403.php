@@ -24,6 +24,6 @@ session_start();
 </b>
 
   </div>
-  <?php require "../footer.php"; ?>
+  <?php require $_SERVER['DOCUMENT_ROOT']."/footer.php"; ?>
 </body>
 </html>
