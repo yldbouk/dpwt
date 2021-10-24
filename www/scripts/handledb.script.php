@@ -1,8 +1,8 @@
  <?php
 
- $servername = "localhost";
+ $servername = "mariadb";
  $dbusr = "root";
- $dbpwd = "morefan";
+ $dbpwd = "";
  $dbname = "dpwt";
 
  $conn = mysqli_connect($servername, $dbusr, $dbpwd, $dbname);
