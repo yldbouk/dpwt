@@ -2,7 +2,7 @@
 session_start();
 function emptyDir($dir){if(is_dir($dir)){$scn=scandir($dir);foreach($scn as $files){if($files !== '.'){if($files !== '..'){if(!is_dir($dir.'/'.$files)){unlink($dir.'/'.$files);}else{emptyDir($dir.'/'.$files);rmdir($dir .'/'.$files);}}}}}}
 if(isset($_SESSION['userUid'])) {
-  require "../../../scripts/handledb.script.php";
+  require $_SERVER['DOCUMENT_ROOT']."/scripts/handledb.script.php";
   $id = $_POST['id'];
   if(isset($_POST['user'])) $user = $_POST['user'];
   $stmt = mysqli_stmt_init($conn);
@@ -10,7 +10,7 @@ if(isset($_POST['edit-pause'])) {
   $do = "pause";
   $sql = "SELECT * FROM job_data WHERE id=?;";
   if (!mysqli_stmt_prepare($stmt, $sql)) {
-    header("Location: ../../error.php/?e=internal");
+    header("Location: /console/error.php/?e=internal");
     exit();
   } else {
     mysqli_stmt_bind_param($stmt, "s", $id);
@@ -22,12 +22,12 @@ if(isset($_POST['edit-pause'])) {
         } else {
       $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`id`= ?";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: ../../error.php/?e=internal");
+        header("Location: /console/error.php/?e=internal");
         exit();
       } else {
         mysqli_stmt_bind_param($stmt, "ss", $do, $id);
         mysqli_stmt_execute($stmt);
-        unlink('../../uploads/__queue/'.$id.".stl");
+        unlink($_SERVER['DOCUMENT_ROOT'].'/console/uploads/__queue/'.$id.".stl");
         usleep(250);
         echo "<script>history.go(-1);</script>";
       } 
@@ -38,7 +38,7 @@ if(isset($_POST['edit-pause'])) {
   $do = "queue";
   $sql = "SELECT * FROM job_data WHERE id=?;";
   if (!mysqli_stmt_prepare($stmt, $sql)) {
-    header("Location: ../../error.php/?e=internal");
+    header("Location: /console/error.php/?e=internal");
     exit();
   } else {
     mysqli_stmt_bind_param($stmt, "s", $id);
@@ -50,12 +50,12 @@ if(isset($_POST['edit-pause'])) {
         } else {
       $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`id`= ?";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: ../../error.php/?e=internal");
+        header("Location: /console/error.php/?e=internal");
         exit();
       } else {
         mysqli_stmt_bind_param($stmt, "ss", $do, $id);
         mysqli_stmt_execute($stmt);
-        copy('../../uploads/'.$id."/".$id.".stl", '../../uploads/__queue/'.$id.".stl");
+        copy($_SERVER['DOCUMENT_ROOT'].'/console/uploads/'.$id."/".$id.".stl", $_SERVER['DOCUMENT_ROOT'].'/uploads/__queue/'.$id.".stl");
         usleep(250);
         echo "<script>history.go(-1);</script>";
       } 
@@ -66,7 +66,7 @@ if(isset($_POST['edit-pause'])) {
   $do = "queue";
   $sql = "SELECT * FROM job_data WHERE id=?;";
   if (!mysqli_stmt_prepare($stmt, $sql)) {
-    header("Location: ../../error.php/?e=internal");
+    header("Location: /console/error.php/?e=internal");
     exit();
   } else {
     mysqli_stmt_bind_param($stmt, "s", $id);
@@ -75,12 +75,12 @@ if(isset($_POST['edit-pause'])) {
     if ($row = mysqli_fetch_assoc($result)) {  
       $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`id`= ?";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: ../../error.php/?e=internal");
+        header("Location: /console/error.php/?e=internal");
         exit();
       } else {
         mysqli_stmt_bind_param($stmt, "ss", $do, $id);
         mysqli_stmt_execute($stmt);
-        copy('../../uploads/'.$id."/".$id.".stl", '../../uploads/__queue/'.$id.".stl");
+        copy($_SERVER['DOCUMENT_ROOT'].'/console/uploads/'.$id."/".$id.".stl", $_SERVER['DOCUMENT_ROOT'].'/uploads/__queue/'.$id.".stl");
         usleep(250);
         echo "<script>history.go(-1);</script>";
       } 
@@ -91,7 +91,7 @@ if(isset($_POST['edit-pause'])) {
   $do = "printing";
   $sql = "SELECT * FROM job_data WHERE id=?;";
   if (!mysqli_stmt_prepare($stmt, $sql)) {
-    header("Location: ../../error.php/?e=internal");
+    header("Location: /console/error.php/?e=internal");
     exit();
   } else {
     mysqli_stmt_bind_param($stmt, "s", $id);
@@ -100,7 +100,7 @@ if(isset($_POST['edit-pause'])) {
     if ($row = mysqli_fetch_assoc($result)) {  
       $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`id`= ?";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: ../../error.php/?e=internal");
+        header("Location: /console/error.php/?e=internal");
         exit();
       } else {
         mysqli_stmt_bind_param($stmt, "ss", $do, $id);
@@ -115,7 +115,7 @@ if(isset($_POST['edit-pause'])) {
   $sql = "SELECT * FROM job_data WHERE id=?;";
   
   if (!mysqli_stmt_prepare($stmt, $sql)) {
-    header("Location: ../../error.php/?e=internal");
+    header("Location: /console/error.php/?e=internal");
     exit();
   } else {
     mysqli_stmt_bind_param($stmt, "s", $id);
@@ -127,12 +127,12 @@ if(isset($_POST['edit-pause'])) {
         } else {
       $sql = "UPDATE `job_data` SET `jobStatus`= ? WHERE `job_data`.`id`= ?";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: ../../error.php/?e=internal");
+        header("Location: /console/error.php/?e=internal");
         exit();
       } else {
-        $dir = '../../uploads/'.$id;
+        $dir = $_SERVER['DOCUMENT_ROOT'].'/console/uploads/'.$id;
         emptyDir($dir);
-        if(rmdir('../../uploads/'.$id)) {
+        if(rmdir($_SERVER['DOCUMENT_ROOT'].'/console/uploads/'.$id)) {
           usleep(250);
           echo "<script>history.go(-1);</script>";
         } else {
@@ -152,7 +152,7 @@ if(isset($_POST['edit-pause'])) {
   $sql = "SELECT * FROM job_data WHERE id=?;";
   
   if (!mysqli_stmt_prepare($stmt, $sql)) {
-    header("Location: ../../error.php/?e=internal");
+    header("Location: /console/error.php/?e=internal");
     exit();
   } else {
     mysqli_stmt_bind_param($stmt, "s", $id);
@@ -164,7 +164,7 @@ if(isset($_POST['edit-pause'])) {
         } else {
       $sql = "UPDATE `job_data` SET `jobStatus`= ?, `location`=? WHERE `job_data`.`id`= ?";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: ../../error.php/?e=internal");
+        header("Location: /console/error.php/?e=internal");
         exit();
       } else {
         mysqli_stmt_bind_param($stmt, "sss", $do, $location, $id);
@@ -180,7 +180,7 @@ if(isset($_POST['edit-pause'])) {
   $by = $_SESSION['userUid'];
   $sql = "SELECT * FROM job_data WHERE id=?;";
   if (!mysqli_stmt_prepare($stmt, $sql)) {
-    header("Location: ../../error.php/?e=internal");
+    header("Location: /console/error.php/?e=internal");
     exit();
   } else {
     mysqli_stmt_bind_param($stmt, "s", $id);
@@ -189,7 +189,7 @@ if(isset($_POST['edit-pause'])) {
     if ($row = mysqli_fetch_assoc($result)) { 
       $sql = "UPDATE `job_data` SET `jobStatus`= ?, `reviewedBy`= ? WHERE `job_data`.`id`= ?";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: ../../error.php/?e=internal");
+        header("Location: /console/error.php/?e=internal");
         exit();
       } else {
         mysqli_stmt_bind_param($stmt, "sss", $do, $by, $id);
@@ -205,7 +205,7 @@ if(isset($_POST['edit-pause'])) {
       $by = $_SESSION['userUid'];
       $sql = "SELECT * FROM job_data WHERE id=?;";
       if (!mysqli_stmt_prepare($stmt, $sql)) {
-        header("Location: ../../error.php/?e=internal");
+        header("Location: /console/error.php/?e=internal");
         exit();
       } else {
         mysqli_stmt_bind_param($stmt, "s", $id);
@@ -214,12 +214,12 @@ if(isset($_POST['edit-pause'])) {
         if ($row = mysqli_fetch_assoc($result)) { 
           $sql = "UPDATE `job_data` SET `jobStatus`= ?, `reviewedBy`= ? WHERE `job_data`.`id`= ?";
           if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../../error.php/?e=internal");
+            header("Location: /console/error.php/?e=internal");
             exit();
           } else {
             mysqli_stmt_bind_param($stmt, "sss", $do, $by, $id);
             mysqli_stmt_execute($stmt);
-            copy('../../uploads/'.$id."/".$id.".stl", '../../uploads/__queue/'.$id.".stl");
+            copy($_SERVER['DOCUMENT_ROOT'].'/console/uploads/'.$id."/".$id.".stl", $_SERVER['DOCUMENT_ROOT'].'/console/uploads/__queue/'.$id.".stl");
             usleep(250);
             echo "<script>history.go(-1);</script>";
           }
@@ -230,5 +230,5 @@ if(isset($_POST['edit-pause'])) {
 }
 echo 'Please Wait...';
 } else {
-  header("Location: ../index.php/");
+  header("Location: /console/viewJobs/index.php/");
 }

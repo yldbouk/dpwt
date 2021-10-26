@@ -2,7 +2,7 @@
 session_start();
 function emptyDir($dir){if(is_dir($dir)){$scn=scandir($dir);foreach($scn as $files){if($files !== '.'){if($files !== '..'){if(!is_dir($dir.'/'.$files)){unlink($dir.'/'.$files);}else{emptyDir($dir.'/'.$files);rmdir($dir .'/'.$files);}}}}}}
 if (isset($_SESSION['userUid'])) {
-  require "../../../../scripts/handledb.script.php";
+  require $_SERVER['DOCUMENT_ROOT']."/scripts/handledb.script.php";
   $id = $_POST['id'];
   if (isset($_POST['user'])) $user = $_POST['user'];
   $stmt = mysqli_stmt_init($conn);
@@ -12,7 +12,7 @@ if (isset($_SESSION['userUid'])) {
     $empty = NULL;
     $sql = "SELECT * FROM login_data WHERE idUsers=?;";
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-      header("Location: ../../error.php/?e=internal");
+      header("Location: /console/error.php/?e=internal");
       exit();
     } else {
       mysqli_stmt_bind_param($stmt, "s", $id);
@@ -22,7 +22,7 @@ if (isset($_SESSION['userUid'])) {
         $username = $row['nameUsers'];
         $sql = "SELECT * FROM job_data WHERE createdBy=?";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../../error.php/?e=internal");
+          header("Location: /console/error.php/?e=internal");
           exit();
         } else {
           mysqli_stmt_bind_param($stmt, "s", $username);
@@ -49,9 +49,9 @@ if (isset($_SESSION['userUid'])) {
               if (mysqli_num_rows($result) > 0) {
                 while ($row = mysqli_fetch_assoc($result)) {
                   $id1 = $row['id'];
-                  $dir = '../../../uploads/'.$id1;
+                  $dir = $_SERVER['DOCUMENT_ROOT'].'/console/uploads/'.$id1;
                   emptyDir($dir);
-                  if (rmdir('../../../uploads/'.$id1)) {
+                  if (rmdir($_SERVER['DOCUMENT_ROOT'].'/console/uploads/'.$id1)) {
                   } else {
                     die("Could Not Successfully Purge Job. Reload the page and confirm resubmission to try again.");
                   }
@@ -61,7 +61,7 @@ if (isset($_SESSION['userUid'])) {
               mysqli_stmt_execute($stmt);
               $sql = "UPDATE `login_data` SET `nameUsers`=?,`emailUsers`=?,`pwdUsers`=?,`permsUsers`=? WHERE `idUsers`=?";
               if (!mysqli_stmt_prepare($stmt, $sql)) {
-                header("Location: ../../error.php/?e=internal");
+                header("Location: /console/error.php/?e=internal");
                 exit();
               } else {
                 mysqli_stmt_bind_param($stmt, "sssss", $empty, $empty, $empty, $do, $id);
@@ -80,7 +80,7 @@ if (isset($_SESSION['userUid'])) {
     $do = $_POST['perms'];
     $sql = "SELECT * FROM login_data WHERE idUsers=?;";
     if (!mysqli_stmt_prepare($stmt, $sql)) {
-      header("Location: ../../error.php/?e=internal");
+      header("Location: /console/error.php/?e=internal");
       exit();
     } else {
       mysqli_stmt_bind_param($stmt, "s", $id);
@@ -89,7 +89,7 @@ if (isset($_SESSION['userUid'])) {
       if ($row = mysqli_fetch_assoc($result)) { 
         $sql = "UPDATE `login_data` SET `permsUsers`= ? WHERE `login_data`.`idUsers`= ?";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../../error.php/?e=internal");
+          header("Location: /console/error.php/?e=internal");
           exit();
         } else {
           mysqli_stmt_bind_param($stmt, "ss", $do, $id);
@@ -104,7 +104,7 @@ if (isset($_SESSION['userUid'])) {
         $do = "none";
         $sql = "SELECT * FROM login_data WHERE idUsers=?;";
         if (!mysqli_stmt_prepare($stmt, $sql)) {
-          header("Location: ../../error.php/?e=internal");
+          header("Location: /console/error.php/?e=internal");
           exit();
         } else {
           mysqli_stmt_bind_param($stmt, "s", $id);
@@ -113,7 +113,7 @@ if (isset($_SESSION['userUid'])) {
           if ($row = mysqli_fetch_assoc($result)) { 
             $sql = "UPDATE `login_data` SET `permsUsers`= ? WHERE `login_data`.`idUsers`= ?";
             if (!mysqli_stmt_prepare($stmt, $sql)) {
-              header("Location: ../../error.php/?e=internal");
+              header("Location: /console/error.php/?e=internal");
               exit();
             } else {
               mysqli_stmt_bind_param($stmt, "ss", $do, $id);
@@ -127,7 +127,7 @@ if (isset($_SESSION['userUid'])) {
         } else if (isset($_POST['reset-pwd'])) {
           $sql = "SELECT * FROM login_data WHERE idUsers=?;";
           if (!mysqli_stmt_prepare($stmt, $sql)) {
-            header("Location: ../../error.php/?e=internal");
+            header("Location: /console/error.php/?e=internal");
             exit();
           } else {
             mysqli_stmt_bind_param($stmt, "s", $id);
@@ -136,7 +136,7 @@ if (isset($_SESSION['userUid'])) {
             if ($row = mysqli_fetch_assoc($result)) { 
               $sql = "UPDATE `login_data` SET `pwdUsers`= ? WHERE `login_data`.`idUsers`= ?";
               if (!mysqli_stmt_prepare($stmt, $sql)) {
-                header("Location: ../../error.php/?e=internal");
+                header("Location: /console/error.php/?e=internal");
                 exit();
               } else {
                 $password = "lmps3D";
@@ -145,7 +145,7 @@ if (isset($_SESSION['userUid'])) {
                 mysqli_stmt_execute($stmt);
                 $sql = "UPDATE `login_data` SET `permsUsers`= ? WHERE `login_data`.`idUsers`= ?";
                 if (!mysqli_stmt_prepare($stmt, $sql)) {
-                  header("Location: ../../error.php/?e=internal");
+                  header("Location: /console/error.php/?e=internal");
                   exit();
              } else { 
                   $newUser = "newUser";
@@ -162,5 +162,5 @@ if (isset($_SESSION['userUid'])) {
     die("No Action to Take.");
   }
 } else {
-  header("Location: ../index.php/");
+  header("Location: /console/admin/manageUsers/index.php");
 }

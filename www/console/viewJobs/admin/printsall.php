@@ -6,7 +6,7 @@ if (isset($_GET['edit'])) {
   $id = $_GET['edit'];
 }
 $access = "true-showall";
-require "../scripts/getJobs.script.php";
+require $_SERVER['DOCUMENT_ROOT']."/console/viewJobs/scripts/getJobs.script.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -142,7 +142,7 @@ require "../scripts/getJobs.script.php";
             </table>
 
             <br><br>&nbsp
-            <form method='post' id="editform" action='../scripts/editJobs.script.php'>
+            <form method='post' id="editform" action='/console/viewJobs/scripts/editJobs.script.php'>
            <input id="location" type="text" name="location" style="visibility:hidden;">
            <input id="purge" type="text" name="purge" style="visibility:hidden;">
               <?php  
@@ -167,8 +167,10 @@ require "../scripts/getJobs.script.php";
     </div>
     <script>
       function editcomplete() {
-        var location = prompt("Breifly explain where the finished product is located:");
-        document.getElementById("location").value=location;
+        var location = prompt("Briefly explain where the finished product is located:");
+        if (location == null) return;
+        if (location == "") document.getElementById("location").value="Not Set";
+        else document.getElementById("location").value=location;
         document.getElementById("editform").submit();
       }
       function editpurge() {
@@ -179,6 +181,6 @@ require "../scripts/getJobs.script.php";
       }
     </script>
     <?php if (isset($_GET['edit'])) echo "<script>document.getElementById('editActions').style.display='block'</script>";    
-          require "../../../footer.php"; ?>
+          require $_SERVER['DOCUMENT_ROOT']."/footer.php"; ?>
   </body>
 </html>

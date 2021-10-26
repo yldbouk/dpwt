@@ -41,7 +41,7 @@
   </center>
   <script src="https://apis.google.com/js/platform.js?onload=onLoad" async defer></script>
   <?php 
-      require "../../footer.php";
+      require $_SERVER['DOCUMENT_ROOT']."/footer.php";
     ?>
 
 </body>

@@ -19,9 +19,10 @@ services:
       - MARIADB_ROOT_PASSWORD=TempPasswordThatWillChangeItselfInTheNearFuture
     volumes:
       - ./db:/var/lib/mysql
+      - ./www:/var/www/html
     restart: always
   pma:
-    image: "phpmyadmin:latest"
+    image: "phpmyadmin:fpm-alpine"
     ports: 
       - 81:80
     environment: 

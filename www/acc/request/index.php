@@ -32,14 +32,14 @@
       } elseif ($_GET['result'] == "sqlerror") {
         echo '<h4>An internal error has occured. Please try again later.</h4>';
       } elseif ($_GET['result'] == "usertaken") {
-        echo '<h4>That username is already taken. You can log in <a href="../login">here.</a></h4>';
+        echo '<h4>That username is already taken. You can log in <a href="/acc/login">here.</a></h4>';
       } else {
         echo '<h4>An unknown error occured. Please try again.</h4>';
       }
     }
    ?>
    
-      <form action="../scripts/signup.php" method="post">
+      <form action="/acc/scripts/signup.php" method="post">
         <div class="container">
           <label for="user"><b>Username</b></label><br>
           <input type="text" placeholder="Username" name="uname" required>
@@ -60,7 +60,7 @@
     </center>
   
     <?php 
-      require "../../footer.php";
+      require $_SERVER['DOCUMENT_ROOT']."/footer.php";
     ?>
   
   
