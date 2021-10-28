@@ -22,7 +22,7 @@ services:
       - ./www:/var/www/html
     restart: always
   pma:
-    image: "phpmyadmin:fpm-alpine"
+    image: "phpmyadmin:5.1"
     ports: 
       - 81:80
     environment: 
