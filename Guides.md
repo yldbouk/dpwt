@@ -1,34 +1,33 @@
 # Guides
-This is a guide on operating DPWT.\
-To make the guide simpler, we will use a fake URL at http://www.dpwt.org. **DO NOT ACTUALLY GO TO THIS WEBSITE.** Just translate this to wherever it is hosted currently. \
+This is a manual on operating DPWT.\
+To make the guide simpler, we will use a fake URL at http://www.dpwt.org. **This is just a placeholder. Do not actually go to this website.** \
 **NOTE:** The site is constantly changing, so things on here may not be accurate with the website.
 
 ## Basics
 
 http://www.dpwt.org is the home page.\
-On the top of the page is the header. To the left of the header is the name of the website. It is a button to the home page. To the right of the header is the navigation panel. There, you will see links to the specific parts of the website, like account, console, etc.\
-The bottom of the page houses the footer. You will seldom use it. It just contains some quick-links and copyright information.
+On the top of the page is the header. To the left of the header is the name of the website. It is a button to the home page. To the right of the header is the navigation panel. There, you will see links to the specific parts of the website like account, console, etc.\
+The bottom of the page houses the footer. You will almost never use it. It just contains some quick-links and copyright info.
 
 # Account
 
 ## Request/Create An Account
 
-First, navigate to the request page. You can either do this by using the `Request Access` link in the footer or by clicking `Request Access Here` right below the login button on the login page. Once on the page, fill out the details needed, then submit. You are done. Now, an admin has to give you permissions so you can log in.
+First, navigate to the request page. You can do this by using the `Request Access` link in the footer. Once on the page, fill out the info needed, then submit. You are done. Now, an admin has to give you permissions so you can log in.
 
 ## Login
 
-Click the `Login` button on the header. This will only show up if you are currently logged out. Once on the page, fill out the details needed, then submit. Fater submitting, select the printer you want to use, the press `Select this Printer`.
+Click the `Login` button on the header. This will only show up if you are currently logged out. Once on the page, enter your credentials, then submit.
 
 ## Accessing Account Details
 
-**NOTE:** This page is currently being worked on, so there is no way to access it normally. However, you could get to it by going to `dpwt.org/acc` when logged in.\
-This page consists of your account data. You can not edit this information. However, if you need to change something, contact an admin. You can also change your password here.
+This page consists of your account data. You can only change your password. You can not edit any other info. However, if you need to change something, contact an admin.
 
-## Changing Your Own Password
+## Changing Passwords
 
-To change your password, go to the accounts page, the click on `Change Password`. Then, type your new password in, and submit.
+To change your own password, go to the account page, then click on `Change Password`. Type your new password in, and submit.
 
-## Resetting Another User's Password (Admin Only)
+### Resetting Another User's Password (Admin Only)
 
 Please refer to `Reset a User's Password` in the `Admin Console` section.
 
@@ -52,9 +51,9 @@ This is only available to admins. To get to the Admin Console, go to the regular
 
 ## Manage Users
  
-To manage users, go to the Admin Console, and click on `User Management`. From there, you can see all users registered on DPWT. At first, users needing access are the only thing you'll see. To see all the users, click on `Show All Users` at the top of the page. To edit a user, first find the user in the table, then click `edit` on the rightmost side of the table. This will bring up a detailed view of the user, where the edit options are.
+To manage users, go to the Admin Console, and click on `User Management`. From there, you can see all users registered on DPWT. At first, users needing access are the only thing you'll see. To see all users, click on `Show All Users` at the top of the page. To edit a user, first find the user in the table, then click `edit` on the rightmost side of the table. This will bring up a detailed view of the user, where the edit options are.
 
-- **Manage New Users:** Once a new user creates an account, they will be automatically given the `Awaiting Review` role. This will prevent them from logging in until they recieve permissions. To give them permissions, bring up the detailed view of the user. From there, you will see two options, `Give Permissions` and `Deny`. Obvioulsly, the `Deny` button will deny them access and will not allow them to log in. The `Give Permissions` button will bring up a dropdown box requesting a rank. Select the rank you want to give that user, then submit.
+- **Manage New Users:** Once a new user creates an account, they will be automatically given the `Awaiting Review` role. This will prevent them from logging in until they recieve permissions. To give them permissions, bring up the detailed view of the user. From there, you will see two options, `Give Permissions` and `Deny`. The `Deny` button will deny them access and will not allow them to log in. The `Give Permissions` button will bring up a dropdown box requesting a rank. Select the rank you want to give that user, then submit.
 
 - **Reset a User's Password:** To reset another user's password, navigate to the Admin Console, and to `User Management`. From there. find the user whose password you want to reset. Then, view the user. There will be a red button labeled `Reset Password`. Clicking it will reset their passeord to the default password (`lmps3D`). If nothing shows up, then you can not reset that user's password. It will have to be manually reset.
 
