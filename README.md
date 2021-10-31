@@ -88,5 +88,5 @@ The guides are located [here.](Guides.md)
 ## Copyright
 Dimensional Printing Web Terminal (DPWT)
 
-© 2019  Youssef Dbouk\
+© 2019-2020  Youssef Dbouk\
 All Rights Reserved.
