@@ -42,6 +42,6 @@ First, you need an account. <a href="/acc/login">Sign in</a> or <a href="/acc/re
 
 
   </div></center>
-  <?php require $_SERVER['DOCUMENT_ROOT']."footer.php"; ?>
+  <?php require $_SERVER['DOCUMENT_ROOT']."/footer.php"; ?>
 </body>
 </html>
