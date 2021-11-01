@@ -15,6 +15,7 @@ session_start();
     require $_SERVER['DOCUMENT_ROOT']."/header.php";
   ?>
      
+     <img src="/assests/l.jpg" style="width:100%">
     <?php 
       require $_SERVER['DOCUMENT_ROOT']."/footer.php";
     ?>
