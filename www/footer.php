@@ -3,7 +3,7 @@
   <div class="footer">
     <div class="left">
       <br>
-        Dimensional Printing Web Terminal
+        QMaster
           <br><br>
           <span style="margin: 0 auto;display: table;">Copyright © 2019-2021<br> 
           Youssef Dbouk, Dean Anderson<br>All Rights Reserved.</span>

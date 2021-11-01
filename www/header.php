@@ -40,7 +40,7 @@ if(isset($_SESSION['permsUsers'])){if($_SESSION['permsUsers'] == "newUser"){if($
 
 <header>
       <div class="header">
-      <a onclick="document.location.href=window.location.origin;" class="logo">D P W T</a>
+      <img src="/assests/logo.png" style="width:7%" onclick="document.location.href=window.location.origin;" class="logo">
         <div class="header-right">
         <nav> 
            <?php if(isset($_SESSION['userid'])) echo "<text>".$_SESSION['userName']."</text>"?>

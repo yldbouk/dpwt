@@ -7,7 +7,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
     <link rel="stylesheet" href="/css/header.css">
     <meta charset="utf-8">
-    <title>Home - DPWT</title>
+    <title>Home - QMaster</title>
   </head>
   <body>
   <?php
