@@ -1,6 +1,6 @@
-# DPWT
+# QMaster
 
-Dimensional Printing Web Terminal
+QMaster
 
 Management software that allows users to create and manage requests to print on specified 3D printers.\
 Future plans include fully automating the printer side of things.
@@ -58,7 +58,7 @@ These are settings for the printers.
 The guides are located [here.](Guides.md)
 
 ## Copyright
-Dimensional Printing Web Terminal (DPWT)
+QMaster
 
 © 2019-2021 Youssef Dbouk, Dean Anderson\
 All Rights Reserved.
